@@ -10342,7 +10342,7 @@ h2.title {
       content: "";
       display: block;
       background: #FFFFFF;
-      opacity: .87; }
+      opacity: .83; }
   .sidebar .logo {
     padding: 15px 0px;
     margin: 0;
@@ -10364,6 +10364,7 @@ h2.title {
       color: #fff;
       line-height: 20px; }
     .sidebar .logo .simple-text {
+
       padding: 5px 0px;
       display: inline-block;
       font-size: 25px;
