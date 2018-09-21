@@ -10342,7 +10342,7 @@ h2.title {
       content: "";
       display: block;
       background: #FFFFFF;
-      opacity: .93; }
+      opacity: .87; }
   .sidebar .logo {
     padding: 15px 0px;
     margin: 0;
@@ -10364,10 +10364,9 @@ h2.title {
       color: #fff;
       line-height: 20px; }
     .sidebar .logo .simple-text {
-      text-transform: uppercase;
       padding: 5px 0px;
       display: inline-block;
-      font-size: 18px;
+      font-size: 25px;
       color: #3C4858;
       white-space: nowrap;
       font-weight: 400;
@@ -10448,12 +10447,12 @@ h2.title {
   .sidebar[data-background-color="red"] .user:after,
   .sidebar[data-background-color="red"] .logo:after,
   .sidebar[data-background-color="red"] .nav li.separator:after {
-    background-color: rgba(255, 255, 255, 0.3); }
+    background-color: rgba(255, 255, 255, 0.9); }
   .sidebar[data-background-color="red"] .nav li:hover:not(.active) > a,
   .sidebar[data-background-color="red"] .nav li.active > [data-toggle="collapse"] {
-    background-color: rgba(255, 255, 255, 0.1); }
+    background-color: rgba(255, 255, 255, 0.9); }
   .sidebar[data-image]:after, .sidebar.has-image:after {
-    opacity: .90; }
+    opacity: .30; }
 
 .off-canvas-sidebar .navbar-collapse .nav > li > a,
 .off-canvas-sidebar .navbar-collapse .nav > li > a:hover {
@@ -10483,10 +10482,6 @@ h2.title {
       margin-top: 10px;
       margin-bottom: 10px; }
 
-.perfect-scrollbar-on .sidebar,
-.perfect-scrollbar-on .main-panel {
-  height: 100%;
-  max-height: 100%; }
 
 .sidebar,
 .main-panel,

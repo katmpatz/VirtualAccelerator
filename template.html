@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Creative Tim
+    Virtual Accelerator
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -15,6 +15,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+
+  <!-- Donut chart dependencies -->
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="_styles/style.css" type="text/css">
+  <link rel="stylesheet" href="_styles/simple-donut.css" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script type="text/javascript" src="_scripts/simple-donut-jquery.js"></script>
 </head>
 
 <body class="">
@@ -26,8 +33,8 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+        <a href="" class="simple-text logo-normal">
+          Virtual Accelerator
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -38,6 +45,19 @@
               <p>Dashboard</p>
             </a>
           </li>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="">
+            <i class="material-icons">person</i>
+            <p>User Profile</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="">
+            <i class="material-icons">content_paste</i>
+            <p>Calendar</p>
+          </a>
+        </li>
           <!-- your sidebar here -->
         </ul>
       </div>
@@ -70,7 +90,272 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <!-- your content here -->
+          <div class="row">
+            <!--TEAM-->
+            <div class="col-md-4 col-sm-6">
+                <div class="card  text-center card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">group</i>
+                      </div>
+                      <h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>TEAM</b></h3>
+                      <div id="TeamProgress" class="donut-size">
+                          <div class="pie-wrapper">
+                            <span class="label">
+                              <span class="num">0</span><span class="smaller">%</span>
+                            </span>
+
+                            <div class="pie">
+                              <div class="left-side half-circle"></div>
+                              <div class="right-side half-circle"></div>
+                            </div>
+                            <div class="shadow"></div>
+                          </div>
+                        </div>
+                        <!-- Progress -->
+                        <script>updateDonutChart('#TeamProgress', 77, true);</script>
+
+                        <!--Stars-->
+                        <div class="text-center">
+                          <i class="material-icons" style="color:#ED5565" >star</i>
+                          <i class="material-icons" style="color:#ED5565">star</i>
+                          <i class="material-icons" style="color:#ED5565">star</i>
+                          <i class="material-icons" style="color:#ED5565">star_half</i>
+                          <i class="material-icons" style="color:#ED5565">star_border</i>
+                          <p style="color:rgb(127, 140, 141); font-size:23px;">Grade: 3.6<p>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        <i class="material-icons">access_time</i> Deadline: 27/10/18
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- MARKET -->
+          <div class="col-md-4 col-sm-6">
+              <div class="card  text-center card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>MARKET</b></h3>
+                    <div id="MarketProgress" class="donut-size">
+                        <div class="pie-wrapper">
+                          <span class="label">
+                            <span class="num">0</span><span class="smaller">%</span>
+                          </span>
+
+                          <div class="pie">
+                            <div class="left-side half-circle"></div>
+                            <div class="right-side half-circle"></div>
+                          </div>
+                          <div class="shadow"></div>
+                        </div>
+                      </div>
+                      <!-- Progress -->
+                      <script>updateDonutChart('#MarketProgress', 55, true);</script>
+
+                      <!--Stars-->
+                      <div class="text-center">
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star_border</i>
+                        <p style="color:rgb(127, 140, 141); font-size:23px;">Grade: 4.1<p>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">edit</i>
+                          <a href="#pablo" class="warning-link">Edit...</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!--Technology-->
+          <div class="col-md-4 col-sm-6">
+              <div class="card  text-center card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">desktop_mac</i>
+                    </div>
+                    <h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>TECHNOLOGY</b></h3>
+                    <div id="TechnologyProgress" class="donut-size">
+                        <div class="pie-wrapper">
+                          <span class="label">
+                            <span class="num">0</span><span class="smaller">%</span>
+                          </span>
+
+                          <div class="pie">
+                            <div class="left-side half-circle"></div>
+                            <div class="right-side half-circle"></div>
+                          </div>
+                          <div class="shadow"></div>
+                        </div>
+                      </div>
+                      <!-- Progress -->
+                      <script>updateDonutChart('#TechnologyProgress', 32, true);</script>
+
+                      <!--Stars-->
+                      <div class="text-center">
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star_border</i>
+                        <i class="material-icons" style="color:#ED5565">star_border</i>
+                        <i class="material-icons" style="color:#ED5565">star_border</i>
+                        <p style="color:rgb(127, 140, 141); font-size:23px;">Grade: 2<p>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">edit</i>
+                          <a href="#pablo" class="warning-link">Edit...</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+          <div class="row">
+
+          <!-- Design -->
+          <div class="col-md-4 col-sm-6">
+              <div class="card  text-center card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">color_lens</i>
+                    </div>
+                    <h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>DESIGN</b></h3>
+                    <div id="DesignProgress" class="donut-size">
+                        <div class="pie-wrapper">
+                          <span class="label">
+                            <span class="num">0</span><span class="smaller">%</span>
+                          </span>
+
+                          <div class="pie">
+                            <div class="left-side half-circle"></div>
+                            <div class="right-side half-circle"></div>
+                          </div>
+                          <div class="shadow"></div>
+                        </div>
+                      </div>
+                      <!-- Progress -->
+                      <script>updateDonutChart('#DesignProgress', 77, true);</script>
+
+                      <!--Stars-->
+                      <div class="text-center">
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star</i>
+                        <i class="material-icons" style="color:#ED5565">star_half</i>
+                        <p style="color:rgb(127, 140, 141); font-size:23px;">Grade: 4.6<p>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">edit</i>
+                          <a href="#pablo" class="warning-link">Edit...</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Validation-->
+          <div class="col-md-4 col-sm-6">
+            <div class="card  text-center card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                      <i class="material-icons">feedback</i>
+                  </div>
+                  <h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>VALIDATION</b></h3>
+                  <div id="ValidationProgress" class="donut-size">
+                      <div class="pie-wrapper">
+                        <span class="label">
+                          <span class="num">0</span><span class="smaller">%</span>
+                        </span>
+
+                        <div class="pie">
+                          <div class="left-side half-circle"></div>
+                          <div class="right-side half-circle"></div>
+                        </div>
+                        <div class="shadow"></div>
+                      </div>
+                    </div>
+                    <!-- Progress -->
+                    <script>updateDonutChart('#ValidationProgress', 5, true);</script>
+
+                    <!--Stars-->
+                    <div class="text-center">
+                      <i class="material-icons" style="color:#ED5565">star_half</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <p style="color:rgb(127, 140, 141); font-size:23px;">Grade: 0.5<p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">edit</i>
+                        <a href="#pablo" class="warning-link">Edit...</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <!--Financial-->
+          <div class="col-md-4 col-sm-6">
+            <div class="card  text-center card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                      <i class="material-icons">euro_symbol</i>
+                  </div>
+                  <h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>FINANCIAL</b></h3>
+                  <div id="FinancialProgress" class="donut-size">
+                      <div class="pie-wrapper">
+                        <span class="label">
+                          <span class="num">0</span><span class="smaller">%</span>
+                        </span>
+
+                        <div class="pie">
+                          <div class="left-side half-circle"></div>
+                          <div class="right-side half-circle"></div>
+                        </div>
+                        <div class="shadow"></div>
+                      </div>
+                    </div>
+                    <!-- Progress -->
+                    <script>updateDonutChart('FinancialProgress', 40, true);</script>
+
+                    <!--Stars-->
+                    <div class="text-center">
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <i class="material-icons" style="color:#ED5565">star_border</i>
+                      <p style="color:rgb(127, 140, 141); font-size:23px;">Grade: 0<p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">edit</i>
+                        <a href="#pablo" class="warning-link">Edit...</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          </div>
+
+
+
+          </div>
         </div>
       </div>
       <footer class="footer">
@@ -78,19 +363,12 @@
           <nav class="float-left">
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="">
+                  Virtual Accelerator
                 </a>
               </li>
             </ul>
           </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-          </div>
           <!-- your footer here -->
         </div>
       </footer>
