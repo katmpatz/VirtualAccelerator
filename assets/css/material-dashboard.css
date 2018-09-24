@@ -1035,7 +1035,7 @@ pre {
   .offset-sm-11 {
     margin-left: 91.66667%; } }
 
-@media (min-width: 768px) {
+@media (min-width: 668px) {
   .col-md {
     flex-basis: 0;
     flex-grow: 1;
@@ -1135,7 +1135,7 @@ pre {
   .offset-md-11 {
     margin-left: 91.66667%; } }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .col-lg {
     flex-basis: 0;
     flex-grow: 1;
@@ -9400,7 +9400,7 @@ fieldset[disabled] .form-group .form-control {
     border: 1px solid #FFF;
     right: 10px;
     font-size: 9px;
-    background: #f44336;
+    background: #e91e63;
     color: #FFFFFF;
     min-width: 20px;
     padding: 0px 5px;
@@ -9749,7 +9749,7 @@ h2.title {
 .nav-tabs .nav-link {
   color: #555555; }
   .nav-tabs .nav-link.active {
-    color: #333333;
+    color: #fff;
     border-color: #9c27b0; }
     .nav-tabs .nav-link.active:hover, .nav-tabs .nav-link.active:focus {
       border-color: #9c27b0; }
@@ -10283,9 +10283,11 @@ h2.title {
       color: #3C4858;
       box-shadow: none; }
     .sidebar .nav li.active > [data-toggle="collapse"] i {
-      color: #a9afbb; }
+      color: #fff; }
     .sidebar .nav li.active > a,
     .sidebar .nav li.active > a i {
+      color: #fff; }
+    .sidebar .nav li.active > a p {
       color: #fff; }
     .sidebar .nav li.separator {
       margin: 15px 0; }
@@ -10364,7 +10366,6 @@ h2.title {
       color: #fff;
       line-height: 20px; }
     .sidebar .logo .simple-text {
-
       padding: 5px 0px;
       display: inline-block;
       font-size: 25px;
@@ -10393,7 +10394,9 @@ h2.title {
   .sidebar[data-background-color="black"] .nav .nav-item.active [data-toggle="collapse"], .sidebar[data-background-color="black"] .nav .nav-item:hover [data-toggle="collapse"] {
     color: #fff; }
     .sidebar[data-background-color="black"] .nav .nav-item.active [data-toggle="collapse"] i, .sidebar[data-background-color="black"] .nav .nav-item:hover [data-toggle="collapse"] i {
-      color: rgba(255, 255, 255, 0.8); }
+      color: #fff; }
+      .sidebar[data-background-color="black"] .nav .nav-item.active [data-toggle="collapse"] p, .sidebar[data-background-color="black"] .nav .nav-item:hover [data-toggle="collapse"] p {
+        color: #fff; }
   .sidebar[data-background-color="black"] .user a {
     color: #fff; }
   .sidebar[data-background-color="black"] .simple-text {
@@ -11358,6 +11361,7 @@ body {
   background-color: #eee;
   color: #3C4858;
   font-weight: 300; }
+
 
 legend {
   border-bottom: 0; }
@@ -13018,3 +13022,46 @@ Copyright (c) 2015 Daniel Eden
     display: none !important; } }
 
 /*# sourceMappingURL=material-dashboard.css.map */
+
+
+/*Custom css*/
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+    text-decoration: none;
+    display: block;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+}
+
+/*Style of active dropdown button*/
+.active_drop {
+  background-color: rgba(199, 88, 218, 0.3);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
+  border-radius: 3px;
+  margin: 10px 15px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.sidebar .nav .active_drop i {
+    font-size: 24px;
+    float: left;
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+    color: #656f81;
+}
+
+.active_drop a p{
+  color:#656f81;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  text-align: center;
+}
