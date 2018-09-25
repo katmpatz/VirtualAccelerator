@@ -189,7 +189,7 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
+  margin: 10px;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit; }
@@ -12559,7 +12559,7 @@ Copyright (c) 2015 Daniel Eden
 /*          Changes for small display      */
 @media (max-width: 991px) {
   .form-group textarea {
-    padding-top: 15px; }
+    padding-top: 25px; }
   .nav-open .menu-on-left .main-panel {
     position: initial; }
   html,
