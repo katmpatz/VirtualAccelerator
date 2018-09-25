@@ -191,11 +191,50 @@
 <div class="content">
   <div class="container-fluid">
 
-    <div class="card card-nav-tabs">
-      <h4 class="card-header card-header-info">Team Manifesto</h4>
-      <div class="card-body">
-        <div>
 
+
+
+
+
+    <div class="card card-nav-tabs">
+      <h4 class="card-header card-header-warning">Team Manifesto</h4>
+      <div class="card-body">
+        <div class="row">
+        <div class="col-4">
+          <!-- Progress -->
+          <div id="TeamProgress" class="donut-size" style="width: 230px;height: 200px;">
+              <div class="pie-wrapper" style="margin: 0px 20px;">
+                <span class="label">
+                  <span class="num">0</span><span class="smaller">%</span>
+                </span>
+
+                <div class="pie">
+                  <div class="left-side half-circle"></div>
+                  <div class="right-side half-circle"></div>
+                </div>
+                <div class="shadow"></div>
+              </div>
+            </div>
+            <script>updateDonutChart('#TeamProgress', 77, true);</script>
+        </div>
+        <div class="col-6">.col-6<br>Subsequent columns continue along the new line.
+          <!--Stars-->
+          <div style="width: 140px;">
+            <i class="material-icons" style="color:#e91e63" >star</i>
+            <i class="material-icons" style="color:#e91e63">star</i>
+            <i class="material-icons" style="color:#e91e63">star</i>
+            <i class="material-icons" style="color:#e91e63">star_half</i>
+            <i class="material-icons" style="color:#e91e63">star_border</i>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+<!--Deliverable-->
+        <div>
         <button class="collapsible">1.Team Vision</button>
         <div class="coll_content">
           <form>
