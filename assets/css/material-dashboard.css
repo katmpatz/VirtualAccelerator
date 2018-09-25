@@ -9658,9 +9658,16 @@ h5, .h5 {
   margin-bottom: 15px; }
 
 h6, .h6 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  font-weight: 500; }
+  font-size: 0.90rem;
+  color:#a9b0bc;
+  font-weight: 350; }
+
+  .bold{
+    font-size: 0.99rem;
+    color:#656f81;
+    font-weight: 450;
+     }
+
 
 .title,
 .title a,
