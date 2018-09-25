@@ -1589,6 +1589,7 @@ select.form-control:focus::-ms-value {
   color: #495057;
   background-color: rgba(0, 0, 0, 0); }
 
+
 .form-control-file,
 .form-control-range {
   display: block;
@@ -8847,7 +8848,7 @@ fieldset[disabled][disabled] .has-rose .form-control, .has-rose .form-control.di
   position: relative; }
   .bmd-form-group:not(.has-success):not(.has-danger) [class^='bmd-label'].bmd-label-floating,
   .bmd-form-group:not(.has-success):not(.has-danger) [class*=' bmd-label'].bmd-label-floating {
-    color: #AAAAAA; }
+    color: #656f81; }
   .bmd-form-group [class^='bmd-label'],
   .bmd-form-group [class*=' bmd-label'] {
     position: absolute;
@@ -8858,7 +8859,7 @@ fieldset[disabled][disabled] .has-rose .form-control, .has-rose .form-control.di
       will-change: left, top, contents;
       margin: 0;
       line-height: 1.4;
-      font-weight: 400; }
+      font-weight: 500; }
   .bmd-form-group.is-filled .bmd-label-placeholder {
     display: none; }
   .bmd-form-group.bmd-collapse-inline {
@@ -8905,15 +8906,15 @@ fieldset[disabled][disabled] .has-rose .form-control, .has-rose .form-control.di
   .bmd-form-group .checkbox label,
   .bmd-form-group .radio label,
   .bmd-form-group label {
-    font-size: 0.875rem; }
+    font-size: 1rem; }
   .bmd-form-group .bmd-label-floating,
   .bmd-form-group .bmd-label-placeholder {
-    top: 0.6125rem; }
+    top: 0.7rem; }
   .bmd-form-group .is-focused .bmd-label-floating,
   .bmd-form-group .is-filled .bmd-label-floating {
     top: -1rem;
     left: 0;
-    font-size: 0.6875rem; }
+    font-size: 0.8rem; }
   .bmd-form-group .bmd-label-static {
     top: 0.35rem;
     left: 0;
@@ -9093,7 +9094,7 @@ label {
 .is-filled .bmd-label-floating {
   top: -1rem;
   left: 0;
-  font-size: 0.6875rem; }
+  font-size: 0.9rem; }
 
 .bmd-label-static {
   top: 0.35rem;
