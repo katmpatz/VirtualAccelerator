@@ -51,7 +51,8 @@
 
 
 .active_coll, .collapsible:hover {
-  background: linear-gradient(60deg, #d24dff, #9900cc);
+  background: #9c27b0;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
   color:white;
 }
 
@@ -122,6 +123,23 @@
   text-align: right;
   padding-right: 0px;
   padding-left: 0px;
+}
+
+.comments{
+  position: absolute;
+  top: -8px;
+  right: -3px;
+  font-size: 9px;
+  background: #e91e63;
+  color: #FFFFFF;
+  min-width: 20px;
+  padding: 0px 5px;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 19px;
+  vertical-align: middle;
+  display: block;
 }
 
 
@@ -277,11 +295,11 @@
           <h6><b class="bold">Last modified:</b> 1 hour and 15 minutes ago, by Maria P.</h6>
           <!--Stars-->
             <h6><b class="bold">Total Grade:</b>
-            <i class="material-icons" style="color:#e91e63" >star</i>
-            <i class="material-icons" style="color:#e91e63">star</i>
-            <i class="material-icons" style="color:#e91e63">star</i>
-            <i class="material-icons" style="color:#e91e63">star_half</i>
-            <i class="material-icons" style="color:#e91e63">star_border</i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star-half-alt fa-lg" style="color:#e91e63"></i>
+            <i class="far fa-star fa-lg" style="color:#e91e63"></i>
             </h6>
         </div>
       </div>
@@ -300,11 +318,16 @@
         <div>
         <button class="collapsible">1.Team Vision</button>
         <div class="coll_content">
-          <form style="margin-bottom:100px;">
-            <div class="form-group">
+          <div style="margin-bottom:80px; margin-top:55px;">
+
+
+          <div class="card">
+            <div class="card-header" style="color: #333; background-color: #f5f5f5;">
               <h4><b class="bold">
-                - What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
+              1.1 What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
               </b></h4>
+            </div>
+            <div class="card-body">
               <div id="editor-container1" class="editor">
                   “Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
                   but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
@@ -315,26 +338,28 @@
                   That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird
               </div>
             </div>
-
-            <div>
-            <h7 style="float: left; height: 22px;"> <b class="bold">Grade:</b>
-            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-          </h7>
-            <div  style="float:right;">
-            <div class="file btn btn-circle btn-default">
-							<i class="material-icons">attach_file</i>
-							<input id="upload" type="file" name="file"/>
-						</div>
-            <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
-            <button type="submit" class="btn btn-info btn-circle"><i class="material-icons">done</i></button>
+            <hr style="margin-bottom: 0px;">
+            <div class="card-footer text-muted">
+              <div class="container row">
+                <div class="col" style="padding-top: 16px;">
+              <h7> <b class="bold">Grade:</b>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                </h7>
+              </div>
+              <div class="col order-12" style="text-align: right;left: 40px;right: 60px;">
+                  <button class="btn btn-default btn-circle"><i class="material-icons">attach_file</i></button>
+                  <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i><span class="comments">1</span></button>
+                  <button class="btn btn-info btn-circle"><i class="material-icons">done</i></button>
+                </div>
+            </div>
+          </div>
           </div>
         </div>
-          </form>
-
+        <h3 class="text-center">Comments:</h3>
           <div class="row">
           <div class="col-sm-12">
           </div><!-- /col-sm-12 -->
@@ -366,11 +391,11 @@
         </div>
         <button class="collapsible">2. Team Roles & Profile</button>
         <div class="coll_content">
-          <div style="margin-bottom:100px; margin-top:55px;">
+          <div style="margin-bottom:80px; margin-top:55px;">
             <div class="card">
               <div class="card-header" style="color: #333; background-color: #f5f5f5;">
                 <h4><b class="bold">
-                  - Describe the team member’s profile, including academic background, professional experience, know-how and skills that are relevant for the project;
+                  2.1 Describe the team member’s profile, including academic background, professional experience, know-how and skills that are relevant for the project;
                 </b></h4>
               </div>
               <div class="card-body">
@@ -382,18 +407,19 @@
                   don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
                   That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird</p>
               </div>
-              <div class="card-footer text-muted container">
+              <hr style="margin-bottom: 0px;">
+              <div class="card-footer text-muted">
                 <div class="container row">
-                  <div class="col">
+                  <div class="col" style="padding-top: 16px;">
                 <h7> <b class="bold">Grade:</b>
                     <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
                     <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
                     <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
                     <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-                    <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                    <i class="far fa-star fa-lg" style="color:#e91e63"></i>
                   </h7>
                 </div>
-                <div class="col order-12" style="text-align: right;">
+                <div class="col order-12" style="text-align: right;left: 40px;right: 60px;">
                     <button class="btn btn-default btn-circle"><i class="material-icons">attach_file</i></button>
                     <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
                     <button class="btn btn-info btn-circle"><i class="material-icons">edit</i></button>
@@ -401,150 +427,135 @@
               </div>
             </div>
             </div>
-
-
-
               </div>
 
 
-        <div style="margin-bottom:100px;">
-            <h4><b class="bold">
-              - For each team member describe the role within team, detailing all responsibilities this person will assume during the course and beyond.
-            </b></h4>
-              <p>“We believe that we can change the things around us in accordance with our desires—we believe it because
-                otherwise we can see no favourable outcome. We do not think of the outcome which generally comes to pass and
-                is also favourable: we do not succeed in changing things in accordance with our desires, but gradually our
-                desires change. The situation that we hoped to change because it was intolerable becomes unimportant to us.
-                We have failed to surmount the obstacle, as we were absolutely determined to do, but life has taken us round it,
-                led us beyond it, and then if we turn round to gaze into the distance of the past, we can barely see it,
-                so imperceptible has it become.” – Marcel Proust, In Search of Lost Time</p>
-                <div>
-                <h7 style="float: left; height: 22px;"> <b class="bold">Grade:</b>
-                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
-              </h7>
-                <div  style="float:right;">
-                <div class="file btn btn-circle btn-default">
-                  <i class="material-icons">attach_file</i>
-                  <input id="upload" type="file" name="file"/>
+        <div style="margin-bottom:80px; margin-top:55px;">
+          <div class="card">
+            <div class="card-header" style="color: #333; background-color: #f5f5f5;">
+              <h4><b class="bold">
+                2.2 For each team member describe the role within team, detailing all responsibilities this person will assume during the course and beyond.
+              </b></h4>
+            </div>
+            <div class="card-body">
+              <p>“Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
+                but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
+                but remember it’s a sin to kill a mockingbird.” That was the only time I ever heard Atticus
+                say it was a sin to do something, and I asked Miss Maudie about it. “Your father’s right,” she said.
+                “Mockingbirds don’t do one thing except make music for us to enjoy. They don’t eat up people’s gardens,
+                don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
+                That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird</p>
+            </div>
+            <hr style="margin-bottom: 0px;">
+            <div class="card-footer text-muted">
+              <div class="container row">
+                <div class="col" style="padding-top: 16px;">
+              <h7> <b class="bold">Grade:</b>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                </h7>
+              </div>
+              <div class="col order-12" style="text-align: right;left: 40px;right: 60px;">
+                  <button class="btn btn-default btn-circle"><i class="material-icons">attach_file</i></button>
+                  <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
+                  <button class="btn btn-info btn-circle"><i class="material-icons">edit</i></button>
                 </div>
-                <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
-                <button type="submit" class="btn btn-info btn-circle"><i class="material-icons">done</i></button>
-              </div>
-            </div>
-            </div>
-
-            <div style="margin-bottom:100px;">
-          <h4><b class="bold">
-            - Name a person to be responsible for scheduling meetings, and uploading deliverables to the platform.
-          </b></h4>
-            <p>“Sometimes fate is like a small sandstorm that keeps changing directions. You change direction but
-              the sandstorm chases you. You turn again, but the storm adjusts. Over and over you play this out,
-              like some ominous dance with death just before dawn. Why? Because this storm isn’t something that
-              blew in from far away, something that has nothing to do with you. This storm is you. Something inside
-              of you. So all you can do is give in to it, step right inside the storm, closing your eyes and plugging
-              up your ears so the sand doesn’t get in, and walk through it, step by step. There’s no sun there, no moon,
-              no direction, no sense of time. Just fine white sand swirling up into the sky like pulverized bones.
-              That’s the kind of sandstorm you need to imagine.
-              And you really will have to make it through that violent, metaphysical, symbolic storm. No matter how
-              metaphysical or symbolic it might be, make no mistake about it: it will cut through flesh like a thousand razor blades.
-              People will bleed there, and you will bleed too. Hot, red blood. You’ll catch that blood in your hands, your own blood
-              and the blood of others.
-              And once the storm is over you won’t remember how you made it through, how you managed to survive.
-              You won’t even be sure, in fact, whether the storm is really over. But one thing is certain.
-              When you come out of the storm you won’t be the same person who walked in.
-              That’s what this storm’s all about.” – Haruki Murakami, Kafka On The Shore</p>
-              <div  style="float:right;">
-              <div class="file btn btn-circle btn-default">
-                <i class="material-icons">attach_file</i>
-                <input id="upload" style="" type="file" name="file"/>
-              </div>
-              <button type="submit" class="btn btn-info btn-circle"><i class="material-icons">edit</i></button>
             </div>
           </div>
+          </div>
+            </div>
+
+            <div style="margin-bottom:80px; margin-top:55px;">
+              <div class="card">
+                <div class="card-header" style="color: #333; background-color: #f5f5f5;">
+                  <h4><b class="bold">
+                    2.3	Name a person to be responsible for scheduling meetings, and uploading deliverables to the platform.
+                  </b></h4>
+                </div>
+                <div class="card-body">
+                  <p>“I never believed in Santa Claus. None of us kids did. Mom and Dad refused to let us. They couldn’t afford
+                    expensive presents and they didn’t want us to think we weren’t as good as other kids who, on Christmas morning,
+                    found all sorts of fancy toys under the tree that were supposedly left by Santa Claus.Dad had lost his job at the gypsum,
+                    and when Christmas came that year, we had no money at all. On Christmas Eve, Dad took each one of us kids out into the desert
+                     night one by one. “Pick out your favorite star”, Dad said. “I like that one!” I said.Dad grinned, “that’s Venus”, he said.
+                     He explained to me that planets glowed because reflected light was constant and stars twinkled because their light pulsed.
+                     “I like it anyway” I said. “What the hell,” Dad said. “It’s Christmas. You can have a planet if you want.”
+                     And he gave me Venus. Venus didn’t have any moons or satellites or even a magnetic field, but it did have an atmosphere sort
+                     of similar to Earth’s, except it was super hot-about 500 degrees or more. “So,” Dad said, “when the sun starts to burn out
+                     and Earth turns cold, everyone might want to move to Venus to get warm. And they’ll have to get permission from your
+                     descendants first.We laughed about all the kids who believed in the Santa myth and got nothing for Christmas but a bunch
+                    of cheap plastic toys. “Years from now, when all the junk they got is broken and long forgotten,” Dad said, “you’ll still have your stars.” – Jeannette Walls, The Glass Castle</p>
+                  <p>“Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
+                    but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
+                    but remember it’s a sin to kill a mockingbird.” That was the only time I ever heard Atticus
+                    say it was a sin to do something, and I asked Miss Maudie about it. “Your father’s right,” she said.
+                    “Mockingbirds don’t do one thing except make music for us to enjoy. They don’t eat up people’s gardens,
+                    don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
+                    That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird</p>
+                </div>
+                <hr style="margin-bottom: 0px;">
+                <div class="card-footer text-muted">
+                  <div class="container row">
+                    <div class="col" style="padding-top: 16px;">
+                  <h7> <b class="bold">Grade:</b>
+                      <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                      <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                      <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                      <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                      <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                    </h7>
+                  </div>
+                  <div class="col order-12" style="text-align: right;left: 40px;right: 60px;">
+                      <button class="btn btn-default btn-circle"><i class="material-icons">attach_file</i></button>
+                      <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
+                      <button class="btn btn-info btn-circle"><i class="material-icons">edit</i></button>
+                    </div>
+                </div>
+              </div>
+              </div>
+                </div>
 
         </div>
         <button class="collapsible">3. Team Expectations and Commitment Level</button>
         <div class="coll_content">
-          <form>
-            <div class="form-group">
+          <div style="margin-bottom:80px; margin-top:55px;">
+          <div class="card">
+            <div class="card-header" style="color: #333; background-color: #f5f5f5;">
               <h4><b class="bold">
-                - What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
+              3.1 Agree upon the amount of hours per week each team member will commit to the startup proposal
               </b></h4>
-              <div id="editor-container3" class="editor">
-                <p>“Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
-                  but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
-                  but remember it’s a sin to kill a mockingbird.” That was the only time I ever heard Atticus
-                  say it was a sin to do something, and I asked Miss Maudie about it. “Your father’s right,” she said.
-                  “Mockingbirds don’t do one thing except make music for us to enjoy. They don’t eat up people’s gardens,
-                  don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
-                  That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird</p>
+            </div>
+            <div class="card-body">
+              <div id="editor-container2" class="editor">
               </div>
             </div>
-
-            <div class="file btn btn-circle btn-default">
-							<i class="material-icons">attach_file</i>
-							<input id="upload" style="" type="file" name="file"/>
-						</div>
-
-            <button type="submit" class="btn btn-primary btn-circle"><i class="material-icons">done</i></button>
-          </form>
-        </div>
-        <button class="collapsible">4. Work-flow Management Agreement</button>
-        <div class="coll_content">
-          <form>
-            <div class="form-group">
-              <h4><b class="bold">
-                - What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
-              </b></h4>
-              <div id="editor-container4" class="editor">
-                <p>“Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
-                  but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
-                  but remember it’s a sin to kill a mockingbird.” That was the only time I ever heard Atticus
-                  say it was a sin to do something, and I asked Miss Maudie about it. “Your father’s right,” she said.
-                  “Mockingbirds don’t do one thing except make music for us to enjoy. They don’t eat up people’s gardens,
-                  don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
-                  That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird</p>
+            <hr style="margin-bottom: 0px;">
+            <div class="card-footer text-muted">
+              <div class="container row">
+                <div class="col" style="padding-top: 16px;">
+              <h7> <b class="bold">Grade:</b>
+                  <i class="far fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="far fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="far fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="far fa-star fa-lg" style="color:#e91e63"></i>
+                  <i class="far fa-star fa-lg" style="color:#e91e63"></i>
+                </h7>
               </div>
+              <div class="col order-12" style="text-align: right;left: 40px;right: 60px;">
+                  <button class="btn btn-default btn-circle"><i class="material-icons">attach_file</i></button>
+                  <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i><span class="comments">1</span></button>
+                  <button class="btn btn-info btn-circle"><i class="material-icons">done</i></button>
+                </div>
             </div>
-
-            <div class="file btn btn-circle btn-default">
-							<i class="material-icons">attach_file</i>
-							<input id="upload" style="" type="file" name="file"/>
-						</div>
-
-            <button type="submit" class="btn btn-primary btn-circle"><i class="material-icons">done</i></button>
-          </form>
+          </div>
+          </div>
         </div>
-        <button class="collapsible">5. Founder’s (Intellectual Property) Agreement</button>
-        <div class="coll_content">
-          <form>
-            <div class="form-group">
-              <h4><b class="bold">
-                - What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
-              </b></h4>
-              <div id="editor-container5" class="editor">
-                “Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
-                  but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
-                  but remember it’s a sin to kill a mockingbird.” That was the only time I ever heard Atticus
-                  say it was a sin to do something, and I asked Miss Maudie about it. “Your father’s right,” she said.
-                  “Mockingbirds don’t do one thing except make music for us to enjoy. They don’t eat up people’s gardens,
-                  don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
-                  That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird
-              </div>
-            </div>
-
-            <div class="file btn btn-circle btn-default">
-              <i class="material-icons">attach_file</i>
-              <input id="upload" style="" type="file" name="file"/>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-circle"><i class="material-icons">done</i></button>
-          </form>
         </div>
+      </div>
+
       </div>
       </div>
     </div>
@@ -560,41 +571,7 @@
 </div>
 
 
-<footer class="footer">
-  <div class="container-fluid">
-    <nav class="float-left">
-      <ul>
-        <li>
-          <a href="https://www.creative-tim.com">
-            Creative Tim
-          </a>
-        </li>
-        <li>
-          <a href="https://creative-tim.com/presentation">
-            About Us
-          </a>
-        </li>
-        <li>
-          <a href="http://blog.creative-tim.com">
-            Blog
-          </a>
-        </li>
-        <li>
-          <a href="https://www.creative-tim.com/license">
-            Licenses
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="copyright float-right">
-      &copy;
-      <script>
-        document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-    </div>
-  </div>
-</footer>
+
 </div>
 </div>
 
