@@ -28,6 +28,7 @@
     <!-- Include Quill stylesheet -->
     <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
 
+
     <style>
 .collapsible {
   color:#656f81;
@@ -107,14 +108,23 @@
 
 .editor{
   height:200px;
-
-
 }
 
-#editor-container1{
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
+.avatar{
+  border-radius: 50%;
+  height:80px;
+  width:80px;
+  border: 2px solid #999999;"
 }
+
+.avatar_position{
+  text-align: right;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+
+
 </style>
   </head>
 
@@ -312,6 +322,31 @@
 
             <button type="submit" class="btn btn-primary btn-circle"><i class="material-icons">done</i></button>
           </form>
+
+
+          <div class="row">
+          <div class="col-sm-12">
+          <h3>Comments</h3>
+          </div><!-- /col-sm-12 -->
+          </div><!-- /row -->
+          <div class="row">
+          <div class="col-sm-2 avatar_position">
+          <img src="avatar4.png" class="avatar">
+          </div>
+
+          <div class="col-sm-10">
+            <div class="card">
+              <div class="card-header" style="color: #333; background-color: #f5f5f5;">
+                  <b>myusername</b> <span class="text-muted">commented 5 days ago</span>
+              </div>
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+          </div><!-- /col-sm-5 -->
+          </div><!-- /row -->
+
+
         </div>
         <button class="collapsible">2. Team Roles & Profile</button>
         <div class="coll_content">
@@ -420,6 +455,10 @@
       </div>
       </div>
     </div>
+
+
+
+
 
 
 
