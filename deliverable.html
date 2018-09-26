@@ -10,6 +10,7 @@
     <title>Virtual Accelerator</title>
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -50,7 +51,7 @@
 
 
 .active_coll, .collapsible:hover {
-  background: linear-gradient(60deg, #ef5d8d,#e91e63);
+  background: linear-gradient(60deg, #d24dff, #9900cc);
   color:white;
 }
 
@@ -299,7 +300,7 @@
         <div>
         <button class="collapsible">1.Team Vision</button>
         <div class="coll_content">
-          <form>
+          <form style="margin-bottom:100px;">
             <div class="form-group">
               <h4><b class="bold">
                 - What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
@@ -315,47 +316,64 @@
               </div>
             </div>
 
+            <div>
+            <h7 style="float: left; height: 22px;"> <b class="bold">Grade:</b>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+            <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+          </h7>
+            <div  style="float:right;">
             <div class="file btn btn-circle btn-default">
 							<i class="material-icons">attach_file</i>
-							<input id="upload" style="" type="file" name="file"/>
+							<input id="upload" type="file" name="file"/>
 						</div>
-
-            <button type="submit" class="btn btn-primary btn-circle"><i class="material-icons">done</i></button>
+            <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
+            <button type="submit" class="btn btn-info btn-circle"><i class="material-icons">done</i></button>
+          </div>
+        </div>
           </form>
-
 
           <div class="row">
           <div class="col-sm-12">
-          <h3>Comments</h3>
           </div><!-- /col-sm-12 -->
           </div><!-- /row -->
           <div class="row">
-          <div class="col-sm-2 avatar_position">
+          <div class="col-lg-1 col-md-2 col-sm-4 avatar_position">
           <img src="avatar4.png" class="avatar">
           </div>
 
-          <div class="col-sm-10">
+          <div class="col-lg-11 col-md-10 col-sm-8">
             <div class="card">
               <div class="card-header" style="color: #333; background-color: #f5f5f5;">
-                  <b>myusername</b> <span class="text-muted">commented 5 days ago</span>
+                  <b>Stefanidis Petros</b> <span class="text-muted">commented 5 days ago</span>
+
               </div>
               <div class="card-body">
-                This is some text within a card body.
+                Excellent work!
+
+              </div>
+              <div class="card-footer">
+                <div class="stats"><button type="submit" class="btn btn-warning btn-sm">Reply</button></div>
               </div>
             </div>
           </div><!-- /col-sm-5 -->
           </div><!-- /row -->
 
 
+
         </div>
         <button class="collapsible">2. Team Roles & Profile</button>
         <div class="coll_content">
-          <form>
-            <div class="form-group">
-              <h4><b class="bold">
-                - What the team’s goal / What are you trying to achieve (during the Course timeframe and beyond)
-              </b></h4>
-              <div id="editor-container2" class="editor">
+          <div style="margin-bottom:100px; margin-top:55px;">
+            <div class="card">
+              <div class="card-header" style="color: #333; background-color: #f5f5f5;">
+                <h4><b class="bold">
+                  - Describe the team member’s profile, including academic background, professional experience, know-how and skills that are relevant for the project;
+                </b></h4>
+              </div>
+              <div class="card-body">
                 <p>“Atticus said to Jem one day, “I’d rather you shot at tin cans in the backyard,
                   but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em,
                   but remember it’s a sin to kill a mockingbird.” That was the only time I ever heard Atticus
@@ -364,15 +382,90 @@
                   don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us.
                   That’s why it’s a sin to kill a mockingbird.” – Harper Lee, To Kill a Mockingbird</p>
               </div>
+              <div class="card-footer text-muted container">
+                <div class="container row">
+                  <div class="col">
+                <h7> <b class="bold">Grade:</b>
+                    <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                    <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                    <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                    <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                    <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                  </h7>
+                </div>
+                <div class="col order-12" style="text-align: right;">
+                    <button class="btn btn-default btn-circle"><i class="material-icons">attach_file</i></button>
+                    <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
+                    <button class="btn btn-info btn-circle"><i class="material-icons">edit</i></button>
+                  </div>
+              </div>
+            </div>
             </div>
 
-            <div class="file btn btn-circle btn-default">
-							<i class="material-icons">attach_file</i>
-							<input id="upload" style="" type="file" name="file"/>
-						</div>
 
-            <button type="submit" class="btn btn-primary btn-circle"><i class="material-icons">done</i></button>
-          </form>
+
+              </div>
+
+
+        <div style="margin-bottom:100px;">
+            <h4><b class="bold">
+              - For each team member describe the role within team, detailing all responsibilities this person will assume during the course and beyond.
+            </b></h4>
+              <p>“We believe that we can change the things around us in accordance with our desires—we believe it because
+                otherwise we can see no favourable outcome. We do not think of the outcome which generally comes to pass and
+                is also favourable: we do not succeed in changing things in accordance with our desires, but gradually our
+                desires change. The situation that we hoped to change because it was intolerable becomes unimportant to us.
+                We have failed to surmount the obstacle, as we were absolutely determined to do, but life has taken us round it,
+                led us beyond it, and then if we turn round to gaze into the distance of the past, we can barely see it,
+                so imperceptible has it become.” – Marcel Proust, In Search of Lost Time</p>
+                <div>
+                <h7 style="float: left; height: 22px;"> <b class="bold">Grade:</b>
+                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+                <i class="fas fa-star fa-lg" style="color:#e91e63"></i>
+              </h7>
+                <div  style="float:right;">
+                <div class="file btn btn-circle btn-default">
+                  <i class="material-icons">attach_file</i>
+                  <input id="upload" type="file" name="file"/>
+                </div>
+                <button class="btn btn-warning btn-circle"><i class="material-icons">mode_comment</i></button>
+                <button type="submit" class="btn btn-info btn-circle"><i class="material-icons">done</i></button>
+              </div>
+            </div>
+            </div>
+
+            <div style="margin-bottom:100px;">
+          <h4><b class="bold">
+            - Name a person to be responsible for scheduling meetings, and uploading deliverables to the platform.
+          </b></h4>
+            <p>“Sometimes fate is like a small sandstorm that keeps changing directions. You change direction but
+              the sandstorm chases you. You turn again, but the storm adjusts. Over and over you play this out,
+              like some ominous dance with death just before dawn. Why? Because this storm isn’t something that
+              blew in from far away, something that has nothing to do with you. This storm is you. Something inside
+              of you. So all you can do is give in to it, step right inside the storm, closing your eyes and plugging
+              up your ears so the sand doesn’t get in, and walk through it, step by step. There’s no sun there, no moon,
+              no direction, no sense of time. Just fine white sand swirling up into the sky like pulverized bones.
+              That’s the kind of sandstorm you need to imagine.
+              And you really will have to make it through that violent, metaphysical, symbolic storm. No matter how
+              metaphysical or symbolic it might be, make no mistake about it: it will cut through flesh like a thousand razor blades.
+              People will bleed there, and you will bleed too. Hot, red blood. You’ll catch that blood in your hands, your own blood
+              and the blood of others.
+              And once the storm is over you won’t remember how you made it through, how you managed to survive.
+              You won’t even be sure, in fact, whether the storm is really over. But one thing is certain.
+              When you come out of the storm you won’t be the same person who walked in.
+              That’s what this storm’s all about.” – Haruki Murakami, Kafka On The Shore</p>
+              <div  style="float:right;">
+              <div class="file btn btn-circle btn-default">
+                <i class="material-icons">attach_file</i>
+                <input id="upload" style="" type="file" name="file"/>
+              </div>
+              <button type="submit" class="btn btn-info btn-circle"><i class="material-icons">edit</i></button>
+            </div>
+          </div>
+
         </div>
         <button class="collapsible">3. Team Expectations and Commitment Level</button>
         <div class="coll_content">
