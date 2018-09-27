@@ -13196,3 +13196,28 @@ Copyright (c) 2015 Daniel Eden
   vertical-align: middle;
   display: block;
 }
+
+
+      .click {
+
+  cursor:pointer;
+}
+
+/* from: http://stackoverflow.com/questions/796087/make-a-div-into-a-link */
+.click a span {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 10;}
+
+
+
+.click:hover {
+box-shadow: 0 2px 2px 0 rgba(115, 115, 115, 0.5), 0 3px 1px -2px rgba(115, 115, 115, 0.5), 0 1px 5px 0 rgba(115, 115, 115, 0.5)
+}
+
+.click:active {
+  top: +2px;
+}
