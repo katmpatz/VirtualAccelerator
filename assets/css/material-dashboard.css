@@ -12018,7 +12018,8 @@ label {
     padding: 0;
     box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); }
     .card-profile .card-avatar + .card-body {
-      margin-top: 15px; }
+      margin-top: -5px;
+      margin-bottom: 15px;  }
     .card-profile .card-avatar img {
       width: 100%;
       height: auto; }
@@ -13220,4 +13221,21 @@ box-shadow: 0 2px 2px 0 rgba(115, 115, 115, 0.5), 0 3px 1px -2px rgba(115, 115, 
 
 .click:active {
   top: +2px;
+}
+
+/*Deliverable's status color*/
+.del_danger{
+  background: #ff085c  !important;
+}
+
+.del_success{
+  background: #37e184 !important;
+}
+
+.del_warning{
+  background: #ffeb3b !important;
+}
+
+.del_info{
+  background: #26c6da !important;
 }
