@@ -9660,7 +9660,7 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 0.90rem;
-  color:#a9b0bc;
+  color:#8d96a5;
   font-weight: 350; }
 
   .bold{
@@ -13172,7 +13172,8 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 50%;
   height:80px;
   width:80px;
-  border: 2px solid #999999;"
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .avatar_position{
@@ -13238,4 +13239,27 @@ box-shadow: 0 2px 2px 0 rgba(115, 115, 115, 0.5), 0 3px 1px -2px rgba(115, 115, 
 
 .del_info{
   background: #26c6da !important;
+}
+
+.dn_danger{
+  border-color: #ff085c  !important;
+}
+
+.dn_success{
+  border-color: #37e184 !important;
+}
+
+.dn_warning{
+  border-color: #ffeb3b !important;
+}
+
+.dn_info{
+  border-color: #26c6da !important;
+}
+
+/*PROGRESS*/
+.bar-position {
+  margin-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
 }

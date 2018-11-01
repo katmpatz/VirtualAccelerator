@@ -24,42 +24,34 @@
     <script type="text/javascript" src="_scripts/simple-donut-jquery.js"></script>
     <!-- CSS Files -->
     <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-
     <style>
-      .bar-position {
-        margin-bottom: 5px;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
+      .team_img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
+    .del {
+      color:rgb(127, 140, 141);
+    }
 
-a {
-  color:rgb(127, 140, 141);
+    .del:hover {
+        color: #c1e2fc;
+    }
+
+    .vl {
+    border-left: 1px solid #dee2e6;
+    height: 85%;
+    position: absolute;
+    left: 33%;
+    top: 33px;
 }
 
-a:hover {
-    color: #c1e2fc;
-}
-
-.circle-icon {
-   background: grey;
-   color:white;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-}
-
-.team_logo {
-
-}
-
-
-
-
-
-    </style>
-
+  </style>
   </head>
 
   <body class="">
@@ -76,7 +68,7 @@ a:hover {
           </div>
           <ul class="nav">
             <li class="nav-item active" >
-              <a class="nav-link" href="#0">
+              <a class="nav-link" href="teams.html">
                 <i class="material-icons">group</i>
                 <p>Teams</p>
               </a>
@@ -149,89 +141,145 @@ a:hover {
 <div class="content">
 <div class="container-fluid">
 <div class="row">
-
-  <div class="col-lg-4 col-md-6 col-sm-12">
-      <div class="card  text-center card-stats">
-        <a href="deliverable.html"><span></span></a>
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon" style="background-image: url('bespot.png'); width:80px; height:80px; background-position: center;background-repeat: no-repeat; background-size: cover; position: relative;">
-            </div>
-            <a href="team.html"><h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>BESPOT</b></h3></a>
-          </div>
-            <div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_success" >group</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_danger" >store</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_info" >desktop_mac</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_info" >feedback</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon" >euro_symbol</i></a></div>
-            </div>
-          <div class="card-footer" style="border-top: 1px solid #eee;">
-            <div class="stats">
-              <i class="material-icons">category</i> ENNOVATION
-            </div>
-          </div>
+<div class="col-lg-8">
+  <div class="card">
+    <div class="card-header card-header-primary user-text click" style="font-weight:500;">
+      <b class="">INAGROS TEAM</b>
+    </div>
+    <div class="card-body">
+      <!--Team Information-->
+      <div class="row">
+      <div class="col-lg-4">
+        <img class="team_img" src="inagros.png" alt="inagros" height="140" width="140"><br>
+        <h6><strong>Pipeline:</strong> Ennovation</h6>
+        <h6><strong>Maturity level:</strong> 3</h6>
+        <h6><strong>Date of entry:</strong> 25/06/2018</h6>
+        <h6><strong>Research Stream:</strong> YES</h6>
+        <h6><strong>Corporate Existance:</strong> NO</h6>
+        <h6><strong>Website:</strong> www.something.com</h6>
       </div>
+      <div class="vl"></div><!--Vertical line-->
+
+      <div class="col-lg-7" style="margin-top:20px;">
+        <!--TEAM MEMBER 1-->
+        <div class="row">
+        <div class="col-lg-3 avatar_position">
+        <img src="assets/img/faces/1m.png" class="avatar">
+        </div>
+
+        <div class="col-lg-9">
+          <h6><strong>Name:</strong> Konstatinos Petropoulos</h6>
+          <h6><strong>Email:</strong> kpetropoulos@gmail.com</h6>
+          <h6><strong>Phone:</strong> 6912345678</h6>
+        </div><!-- /col-sm-5 -->
+        </div><!-- /row -->
+        <hr>
+        <!--TEAM MEMBER 1-->
+        <div class="row">
+        <div class="col-lg-3 avatar_position">
+        <img src="assets/img/faces/1w.png" class="avatar">
+        </div>
+
+        <div class="col-lg-9">
+          <h6><strong>Name:</strong> Maria Tsagkaraki</h6>
+          <h6><strong>Email:</strong> mtsag@gmail.com</h6>
+          <h6><strong>Phone:</strong> 6912390078</h6>
+        </div><!-- /col-sm-5 -->
+        </div><!-- /row -->
+        <hr>
+        <!--TEAM MEMBER 1-->
+        <div class="row">
+        <div class="col-lg-3 avatar_position">
+        <img src="assets/img/faces/2m.png" class="avatar">
+        </div>
+
+        <div class="col-lg-9">
+          <h6><strong>Name:</strong> Giorgos Marinakis</h6>
+          <h6><strong>Email:</strong> marinakis@gmail.com</h6>
+          <h6><strong>Phone:</strong> 6910987654</h6>
+        </div><!-- /col-sm-5 -->
+        </div><!-- /row -->
+
+      </div>
+      </div>
+      <div
+    </div>
+  </div>
+  </DIV>
+  </DIV>
+  </DIV>
+
+  <!--Progress-->
+  <div class="col-lg-4">
+  <div class="card" >
+  <div class="card-header card-header-primary card-header-icon">
+    <div class="card-icon">
+        <i class="material-icons">trending_up</i>
+    </div>
+
   </div>
 
-  <div class="col-lg-4 col-md-6 col-sm-12">
-      <div class="card  text-center card-stats">
-        <a href="deliverable.html"><span></span></a>
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon" style="background-image: url('inagros.png'); width:80px; height:80px; background-color:white; background-position: center;background-repeat: no-repeat; background-size: cover; position: relative;">
-            </div>
-            <a href="team.html"><h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>INAGROS</b></h3></a>
-          </div>
-            <div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <a href="deliverable.html"><i class="material-icons circle-icon del_success" >group</i></a>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <a href="deliverable.html"><i class="material-icons circle-icon del_success" >store</i></a>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <a href="deliverable.html"><i class="material-icons circle-icon del_warning" >desktop_mac</i></a>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <a href="deliverable.html"><i class="material-icons circle-icon del_info" >feedback</i></a>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <a href="deliverable.html"><i class="material-icons circle-icon" >euro_symbol</i></a>
-              </div>
-            </div>
-          <div class="card-footer" style="border-top: 1px solid #eee;">
-            <div class="stats">
-              <i class="material-icons">category</i> ENNOVATION
-            </div>
-            <div class="stats">MATURITY LEVEL: 1</div>
-          </div>
+  <div style="margin-top:-50px; margin-bottom:15px; margin-rigth:10px; margin-left:10px;">
+    <h3 style="color: rgb(127, 140, 141); text-align:center;"><small>PROGRESS</small></h3>
+  <div>
+    <div class="row">
+      <div class="col-2">
+        <a href="deliverable.html" class="del"><i class="material-icons" >group</i></a>
       </div>
+    <div class="progress bar-position col-9">
+      <div class="progress-bar bg-warning" style="width:95%">95%</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <a href="deliverable.html" class="del"><i class="material-icons" >store</i></a>
+    </div>
+  <div class="progress bar-position col-9">
+    <div class="progress-bar bg-info" style="width:55%">40%</div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-2">
+    <a href="deliverable.html" class="del"><i class="material-icons" >desktop_mac</i></a>
+  </div>
+  <div class="progress bar-position col-9">
+  <div class="progress-bar bg-info" style="width:22%">22%</div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-2">
+    <a href="deliverable.html" class="del"><i class="material-icons" >color_lens</i></a>
+  </div>
+  <div class="progress bar-position col-9">
+  <div class="progress-bar bg-info" style="width:15%">15%</div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-2">
+    <a href="deliverable.html" class="del"><i class="material-icons" >feedback</i></a>
+  </div>
+  <div class="progress bar-position col-9">
+  <div class="progress-bar bg-info" style="width:0%">0%</div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-2">
+    <a href="deliverable.html" class="del"><i class="material-icons" >euro_symbol</i></a>
+  </div>
+  <div class="progress bar-position col-9">
+  <div class="progress-bar bg-info" style="width:0%">0%</div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="card-footer" style="border-top: 1px solid #eee;">
+    <div class="stats">
+      <i class="material-icons">error_outline</i>new insertions in design, team
+    </div>
+  </div>
+  </div>
   </div>
 
-  <div class="col-lg-4 col-md-6 col-sm-12">
-      <div class="card  text-center card-stats">
-        <a href="deliverable.html"><span></span></a>
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon" style="background-image: url('cargo.jpg'); width:80px; height:80px; background-position: center;background-repeat: no-repeat; background-size: cover; position: relative;">
-            </div>
-            <a href="team.html"><h3 style="color: rgb(127, 140, 141); font-family: 'Lato', Tahoma, Geneva, sans-serif; text-align:left;"><b>CARGO SHARE</b></h3></a>
-          </div>
-            <div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_danger" >group</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_warning" >store</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon " >desktop_mac</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon del_info" >feedback</i></a></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="deliverable.html"><i class="material-icons circle-icon" >euro_symbol</i></a></div>
-            </div>
-          <div class="card-footer" style="border-top: 1px solid #eee;">
-            <div class="stats">
-              <i class="material-icons">category</i> ENNOVATION
-            </div>
-          </div>
-      </div>
-  </div>
-
-
-
 
 
 
@@ -241,19 +289,6 @@ a:hover {
 </div>
 </div>
 
-
-
-<!-- How to update percentage through button-->
-<!--
-<div class="btns">
-  <button id='update1'>57%</button>
-</div>
-<script>
-	$( "#update1" ).click(function() {
-  updateDonutChart('#specificChart', 57, true);
-  });
-</script>
--->
 
       <!-- Template dependencies -->
 
