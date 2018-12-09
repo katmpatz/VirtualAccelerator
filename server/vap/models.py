@@ -35,7 +35,7 @@ class Team(models.Model):
         return self.name
 
 class TeamMember(User):
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, related_name='teammembers', on_delete=models.CASCADE)
     role = models.CharField(max_length=100, blank=True)
     field = models.CharField(max_length=100, blank=True)
 

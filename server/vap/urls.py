@@ -7,6 +7,10 @@ app_name = 'vap'
 urlpatterns = [
     re_path('^teams/?$', views.TeamList.as_view()),
     re_path(r'^teams/(?P<pk>\d+)/?$', views.TeamDetail.as_view()),
+    re_path('^coaches/?$', views.CoachList.as_view()),
+    re_path(r'^coaches/(?P<pk>\d+)/?$', views.CoachDetail.as_view()),
+    re_path('^teammembers/?$', views.TeamMemberList.as_view()),
+    re_path(r'^teammembers/(?P<pk>\d+)/?$', views.TeamMemberDetail.as_view()),
     # path('', views.index, name='index'),
     # path('teams/<int:team_id>/', views.team, name='team'),
     # path('team/<int:team_id>/teamMember/<int:teamMember_id>', views.teamMember, name='teamMember'),

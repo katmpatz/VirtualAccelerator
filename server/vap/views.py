@@ -7,7 +7,7 @@ from .models import TeamDeliverable
 from .models import Milestone
 from .models import Question
 
-from .serializers import TeamSerializer
+from .serializers import TeamSerializer, TeamMemberSerializer, CoachSerializer
 from rest_framework import generics
 
 from django.contrib.staticfiles import views
@@ -31,6 +31,34 @@ class TeamList(generics.ListCreateAPIView):
 class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
+
+class TeamMemberList(generics.ListCreateAPIView):
+    serializer_class = TeamMemberSerializer
+
+    def get_queryset(self):
+        queryset = TeamMember.objects.all()
+        name = self.request.query_params.get('name', None)
+        if name is not None:
+            queryset = queryset.filter(name__contains=name)
+        return queryset
+
+class TeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TeamMember.objects.all()
+    serializer_class = TeamMemberSerializer
+
+class CoachList(generics.ListCreateAPIView):
+    serializer_class = CoachSerializer
+
+    def get_queryset(self):
+        queryset = Coach.objects.all()
+        name = self.request.query_params.get('name', None)
+        if name is not None:
+            queryset = queryset.filter(name__contains=name)
+        return queryset
+
+class CoachDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Coach.objects.all()
+    serializer_class = CoachSerializer
 
 # def index(request):
 #     available_teams = Team.objects.all()
