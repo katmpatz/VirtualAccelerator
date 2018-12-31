@@ -1,3 +1,5 @@
+import { Team } from './team';
+
 export class TeamMember {
   id: number;
   name: string;
@@ -6,4 +8,5 @@ export class TeamMember {
   phone: string;
   role: string;
   field: string;
+  team: Team;
 }

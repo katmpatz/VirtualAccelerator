@@ -1,29 +1,44 @@
-.content {
-  margin-top: 100px;
+.teams {
+  padding-top:100px;
 }
 
-.team_img {
-border: 1px solid #ddd;
-border-radius: 4px;
-padding: 3px;
-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
-display: block;
-margin-left: auto;
-margin-right: auto;
+.bar-position {
+  margin-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.del {
+.team_name {
+  text-align: left !important;
+  color: rgb(127, 140, 141);
+  font-family: 'Lato', Tahoma, Geneva, sans-serif;
+}
+
+/* .team_card {
+  background-image: url('../../assets/img/inagros.png');
+  width:80px;
+  height:80px;
+  background-color:white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+} */
+
+
+a {
 color:rgb(127, 140, 141);
 }
 
-.del:hover {
-  color: #c1e2fc;
+a:hover {
+color: #c1e2fc;
 }
 
-.vl {
-border-left: 1px solid #dee2e6;
-height: 85%;
-position: absolute;
-left: 33%;
-top: 33px;
+.circle-icon {
+background: grey;
+color:white;
+border-radius: 50%;
+text-align: center;
+vertical-align: middle;
+padding: 10px;
 }

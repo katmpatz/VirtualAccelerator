@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../team';
+import {TeamService} from '../team.service';
+
 
 @Component({
   selector: 'app-teams',
@@ -7,23 +9,17 @@ import { Team } from '../team';
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
+  teams : Team[];
 
-  team: Team = {
-    id: 1,
-    name: 'Inagros',
-    pipeline: 'Ennovation',
-    research_stream: true,
-    maturity_level: 4,
-    date_of_entry: 2017,
-    website: 'https://unichallenge.gr/',
-    coorporate_existance: false,
-    active: true,
-    tag_line: 'We are awsome!'
-  }
+  constructor(private teamService: TeamService) { }
 
-  constructor() { }
+   ngOnInit() {
+     this.getTeams();
+   }
 
-  ngOnInit() {
-  }
+   getTeams(): void {
+     this.teamService.getTeams()
+      .subscribe(teams => this.teams = teams);
+   }
 
 }

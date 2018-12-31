@@ -1,33 +1,39 @@
-<div class="content">
+<div class="teams">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-8">
-        <div class="card">
-          <div class="card-header card-header-primary user-text click" style="font-weight:500;">
-            <b class="">{{ team.name | uppercase }}</b>
-          </div>
-          <div class="card-body">
-            <!--Team Information-->
-            <div class="row">
-              <div class="col-lg-4">
-                <img class="team_img" src="../../assets/img/inagros.png" alt="inagros" height="140" width="140"><br>
-                <h6><strong>Pipeline:</strong> {{ team.pipeline }}</h6>
-                <h6><strong>Maturity level:</strong> {{ team.maturity_level }}</h6>
-                <h6><strong>Date of entry:</strong> 25/06/2018</h6>
-                <h6><strong>Research Stream:</strong> YES</h6>
-                <h6><strong>Corporate Existance:</strong> NO</h6>
-                <h6><strong>Website:</strong> {{ team.website }}</h6>
+      <div *ngFor="let team of teams">
+          <div class="card  text-center card-stats">
+            <a href="deliverable.html"><span></span></a>
+            <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon team_card" style="background-image: url('../../assets/img/inagros.png');width:80px;height:80px;background-color:white;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;"></div>
+              <a [routerLink]="['/teams/', team.id]"><h3 class="team_name"><b>{{ team.name | uppercase}}</b></h3></a>
+            </div>
+            <div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <a href="deliverable.html"><i class="material-icons circle-icon del_success" >group</i></a>
               </div>
-              <div class="vl"></div><!--Vertical line-->
-
-                <div class="col-lg-7" style="margin-top:20px;">
-                  <!--TEAM MEMBERS-->
-                  <app-team-member></app-team-member>
-                </div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <a href="deliverable.html"><i class="material-icons circle-icon del_success" >store</i></a>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <a href="deliverable.html"><i class="material-icons circle-icon del_warning" >desktop_mac</i></a>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <a href="deliverable.html"><i class="material-icons circle-icon del_info" >feedback</i></a>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <a href="deliverable.html"><i class="material-icons circle-icon" >euro_symbol</i></a>
               </div>
             </div>
+            <div class="card-footer" style="border-top: 1px solid #eee;">
+              <div class="stats">
+                <i class="material-icons">category</i> {{ team.pipeline | uppercase }}
+              </div>
+              <div class="stats">MATURITY LEVEL: {{ team.maturity_level }}</div>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
+</div>
+<!-- <app-team-detail [team]="selectedTeam"></app-team-detail> -->

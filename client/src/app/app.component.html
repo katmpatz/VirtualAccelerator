@@ -12,7 +12,13 @@
       </div>
       <ul class="nav">
         <li class="nav-item active" >
-          <a class="nav-link" href="teams.html">
+          <a class="nav-link" routerLink="/dashboard">
+            <i class="material-icons">group</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/teams">
             <i class="material-icons">group</i>
             <p>Teams</p>
           </a>
@@ -81,6 +87,7 @@
     </nav>
     <!-- End Navbar -->
 
-  <app-teams></app-teams>
+  <router-outlet></router-outlet>
+  <!-- <app-messages></app-messages> -->
   </div>
   </div>
