@@ -10,7 +10,7 @@
             <!--Team Information-->
             <div class="row">
               <div class="col-lg-4">
-                <img class="team_img" src="../../assets/img/inagros.png" alt="inagros" height="140" width="140"><br>
+                <img class="team_img" src="../../assets/img/{{ team.id }}.png" alt="inagros" height="140" width="140"><br>
                 <h6><strong>Pipeline:</strong> {{ team.pipeline }}</h6>
                 <h6><strong>Maturity level:</strong> {{ team.maturity_level }}</h6>
                 <h6><strong>Date of entry:</strong> {{team.date_of_entry | date: 'dd/MM/yyyy'}}</h6>
@@ -19,12 +19,32 @@
                 <h6 *ngIf="team.coorporate_existance"><strong>Corporate Existance:</strong> YES </h6>
                 <h6 *ngIf="!team.coorporate_existance"><strong>Corporate Existance:</strong> NO </h6>
                 <h6><strong>Website:</strong> {{ team.website }}</h6>
+
+
               </div>
               <div class="vl"></div><!--Vertical line-->
 
                 <div class="col-lg-7" style="margin-top:20px;">
                   <!--TEAM MEMBERS-->
-                  <app-team-member></app-team-member>
+                  <!-- <app-team-member></app-team-member> -->
+                  <div class="team_members">
+                    <div *ngFor="let teamMember of team.teammembers"
+                    [class.selected]="teamMember === selectedTeamMember"
+                    (click)="onSelect(teamMember)">
+                    <div class="row">
+                      <div class="col-lg-3 avatar_position">
+                        <img src="../../assets/img/faces/{{ teamMember.id }}.png" class="avatar">
+                      </div>
+                      <div class="col-lg-9">
+                        <h6><strong>Name:</strong> {{ teamMember.name }}</h6>
+                        <h6><strong>Email:</strong> {{ teamMember.email }}</h6>
+                        <h6><strong>Phone:</strong> {{ teamMember.phone }}</h6>
+                      </div><!-- /col-sm-5 -->
+                    </div><!-- /row -->
+                    <hr>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

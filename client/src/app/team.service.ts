@@ -7,7 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {MessageService} from './message.service';
 
 import { Team } from './team';
-import { TEAMS } from './mock-teams';
 
 @Injectable({
   providedIn: 'root'

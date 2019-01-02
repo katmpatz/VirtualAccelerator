@@ -15,7 +15,6 @@ import { Team } from '../team';
 export class TeamDetailComponent implements OnInit {
 
     team: Team;
-    // team_of_team_members = this.team;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +25,6 @@ export class TeamDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getTeam();
   }
-
-
 
   getTeam(): void {
     const id = +this.route.snapshot.paramMap.get('id');

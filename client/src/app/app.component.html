@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="wrapper ">
-  <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/plan.jpg">
+  <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/plan.jpg" [ngClass]="{ 'active': navbarOpen }">
     <div class="logo">
       <a href="" class="simple-text logo-normal" style="font-family: 'Lobster', cursive;"><img src="../assets/img/startup.svg" onerror="this.onerror=null; this.src='startup.png'" style="height:30px; width:30px;">Accelerator</a>
     </div>
@@ -8,7 +8,7 @@
       <div class="logo">
         <a href="" class="user-text" style="font-weight:500;">COACH</a>
         <a href="" class="user-text" >
-          <img src="../assets/img/faces/4m.png" class="avatar" style="height:40px; width:40px; margin-right:6px; text-align:left;">Stefanidis Petros</a>
+          <img src="../assets/img/faces/4.png" class="avatar" style="height:40px; width:40px; margin-right:6px; text-align:left;">Stefanidis Petros</a>
       </div>
       <ul class="nav">
         <li class="nav-item active" >
@@ -40,7 +40,7 @@
         <div class="navbar-wrapper">
           <a class="navbar-brand" href="#pablo">Teams</a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" id="sidebarCollapse" (click)="toggleNavbar()">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon icon-bar"></span>
           <span class="navbar-toggler-icon icon-bar"></span>
@@ -61,17 +61,7 @@
               <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">notifications</i>
                 <span class="notification ">5</span>
-                <p class="d-lg-none d-md-block">
-                  Some Actions
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                <a class="dropdown-item" href="#">Another Notification</a>
-                <a class="dropdown-item" href="#">Another One</a>
-              </div>
+                </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#pablo">

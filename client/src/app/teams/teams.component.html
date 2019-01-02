@@ -2,10 +2,13 @@
   <div class="container-fluid">
     <div class="row">
       <div *ngFor="let team of teams">
+        <div class="offset-1">
           <div class="card  text-center card-stats">
             <a href="deliverable.html"><span></span></a>
             <div class="card-header card-header-warning card-header-icon">
-              <div class="card-icon team_card" style="background-image: url('../../assets/img/inagros.png');width:80px;height:80px;background-color:white;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;"></div>
+              <div class="card-icon " style="width:80px;height:80px;background-color:white;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
+                <!-- <img class="team_img" src="../../assets/img/{{ team.id }}.png" alt="inagros" height="140" width="140"> -->
+              </div>
               <a [routerLink]="['/teams/', team.id]"><h3 class="team_name"><b>{{ team.name | uppercase}}</b></h3></a>
             </div>
             <div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
@@ -32,6 +35,7 @@
               <div class="stats">MATURITY LEVEL: {{ team.maturity_level }}</div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>

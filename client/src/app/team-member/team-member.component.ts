@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamMember } from '../teamMember';
-import { TEAMMEMBERS } from '../mock-teamMembers';
 
 @Component({
   selector: 'app-team-member',
