@@ -10,32 +10,30 @@
         <a href="" class="user-text" >
           <img src="../assets/img/faces/4.png" class="avatar" style="height:40px; width:40px; margin-right:6px; text-align:left;">Stefanidis Petros</a>
       </div>
-      <ul class="nav">
-        <li class="nav-item active" >
+      <ul class="nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" >
           <a class="nav-link" routerLink="/dashboard">
             <i class="material-icons">group</i>
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/teams">
             <i class="material-icons">group</i>
             <p>Teams</p>
           </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="">
-            <i class="material-icons">event</i>
-            <p>Calendar</p>
-          </a>
-        </li>
       </ul>
+      <div class="logo">
+        <a routerLink="/deliverables" class="user-text" style="font-weight:500;">Deliverables</a>
+      </div>
+      <app-deliverable></app-deliverable>
     </div>
   </div>
 
   <div class="main-panel">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+    <!-- <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
           <a class="navbar-brand" href="#pablo">Teams</a>
@@ -74,10 +72,10 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
     <!-- End Navbar -->
 
-  <router-outlet></router-outlet>
+  <router-outlet ></router-outlet>
   <!-- <app-messages></app-messages> -->
   </div>
   </div>

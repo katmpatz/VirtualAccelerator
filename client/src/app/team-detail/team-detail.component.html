@@ -20,6 +20,9 @@
                 <h6 *ngIf="!team.coorporate_existance"><strong>Corporate Existance:</strong> NO </h6>
                 <h6><strong>Website:</strong> {{ team.website }}</h6>
 
+                <label>title: </label>
+                <input [(ngModel)]="team.name" placeholder="{{ team.name }}">
+                <button (click)="save()">Save</button>
 
               </div>
               <div class="vl"></div><!--Vertical line-->

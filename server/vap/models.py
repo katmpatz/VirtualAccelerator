@@ -19,14 +19,14 @@ class Coach(User):
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to = 'static/img/', blank=True)
+    # photo = models.ImageField(upload_to = 'static/img/', blank=True)
     pipeline = models.CharField(max_length=100)
-    research_stream = models.BooleanField(default=False)
+    # research_stream = models.BooleanField(default=False)
     maturity_level = models.IntegerField()
     date_of_entry = models.DateField()
     website = models.CharField(max_length=100, blank=True)
-    coorporate_existance = models.BooleanField(default=False)
-    active = models.BooleanField(default=True)
+    # coorporate_existance = models.BooleanField(default=False)
+    # active = models.BooleanField(default=True)
     coaches = models.ManyToManyField(Coach)
     tag_line = models.CharField(max_length=100, blank=True)
     #description = models.TextField(default="")
@@ -42,12 +42,14 @@ class TeamMember(User):
 class Deliverable(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="")
+    release_date = models.DateField(blank=True, default="2000-01-01")
+    pipeline = models.CharField(max_length=100, default="", blank=True)
 
     def __str__(self):
         return self.title
 
 class Milestone(models.Model):
-    deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE)
+    deliverable = models.ForeignKey(Deliverable, related_name='milestones',on_delete=models.CASCADE)
     num = models.IntegerField()
     title = models.CharField(max_length=200, default="")
 
@@ -55,9 +57,9 @@ class Milestone(models.Model):
         return "%d.%s" % (self.num, self.title)
 
 class Question(models.Model):
-    milestone = models.ForeignKey(Milestone, on_delete=models.CASCADE)
+    milestone = models.ForeignKey(Milestone,related_name='questions', on_delete=models.CASCADE)
     num = models.IntegerField()
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=500)
     #instructions = models.TextField(default="")
 
     def __str__(self):
@@ -66,15 +68,15 @@ class Question(models.Model):
 class TeamDeliverable(models.Model):
     deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    deadline = models.DateField()
-    delivery_day = models.DateField()
+    deadline = models.DateField(null=True, blank=True)
+    delivery_day = models.DateField(null=True, blank=True)
     status = models.BooleanField()
 
     def __str__(self):
         return "%s %s" % (self.deliverable, self.team)
 
 class Answer(models.Model):
-    team_deliverable = models.ForeignKey(TeamDeliverable, on_delete=models.CASCADE)
+    team_deliverable = models.ForeignKey(TeamDeliverable, related_name='answers', on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField(default="")
     date = models.DateField()
@@ -83,7 +85,7 @@ class Answer(models.Model):
         return "%s %s %s" % (self.team_deliverable, self.question, self.text)
 
 class Comment(models.Model):
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer,related_name='comments', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(default="")
     date = models.DateField()
@@ -92,7 +94,7 @@ class Comment(models.Model):
         return "%s %s %s" % (self.answer, self.user, self.text)
 
 class CommentAnswer(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, related_name='comment_answers',on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(default="")
     date = models.DateField()

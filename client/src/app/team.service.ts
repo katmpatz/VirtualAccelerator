@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs'
+import {Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,9 +8,16 @@ import {MessageService} from './message.service';
 
 import { Team } from './team';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class TeamService {
 
   private teamsUrl = 'api/teams'
@@ -30,7 +37,7 @@ export class TeamService {
     );
   }
 
-  /** GET book by id. Will 404 if id not found */
+  /** GET team by id. Will 404 if id not found */
   getTeam(id: number): Observable<Team> {
     const url = `${this.teamsUrl}/${id}`;
     return this.http.get<Team>(url).pipe(
@@ -38,6 +45,49 @@ export class TeamService {
       catchError(this.handleError<Team>(`getTeam id=${id}`))
     );
   }
+
+  /** PUT: update the team on the server */
+updateTeam (team: Team): Observable<any> {
+  const url = `${this.teamsUrl}/${team.id}`;
+  return this.http.put(url, team, httpOptions).pipe(
+    tap(_ => this.log(`updated team id=${team.id}`)),
+    catchError(this.handleError<any>('updateTeam'))
+  );
+}
+
+/** POST: add a new team to the server */
+addTeam (team: Team): Observable<Team> {
+  let url = `api/teams`;
+  return this.http.post<Team>(url, team, httpOptions).pipe(
+    tap((team: Team) => this.log(`added team w/ id=${team.id}`)),
+    catchError(this.handleError<Team>('addTeam'))
+  );
+}
+
+/** DELETE: delete the team from the server */
+deleteTeam(team: Team | number): Observable<Team> {
+  const id = typeof team === 'number' ? team : team.id;
+  const url = `${this.teamsUrl}/${id}`;
+
+  return this.http.delete<Team>(url, httpOptions).pipe(
+    tap(_ => this.log(`deleted team id=${id}`)),
+    catchError(this.handleError<Team>('deleteTeam'))
+  );
+}
+
+/* GET teams whose title contains search term */
+searchTeams(term: string): Observable<Team[]> {
+  if (!term.trim()) {
+    // if not search term, return empty team array.
+    return of([]);
+  }
+  return this.http.get<Team[]>(`api/teams/?name=${term}`).pipe(
+    tap(_ => this.log(`found teams matching "${term}"`)),
+    catchError(this.handleError<Team[]>('searchTeams', []))
+  );
+}
+
+
 
   /**
  * Handle Http operation that failed.

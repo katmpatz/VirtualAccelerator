@@ -8,7 +8,7 @@ import { TeamMember } from '../teamMember';
 })
 export class TeamMemberComponent implements OnInit {
 
-  teamMembers = TEAMMEMBERS;
+  // teamMembers = TEAMMEMBERS;
   selectedTeamMember : TeamMember;
 
   constructor() { }

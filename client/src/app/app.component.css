@@ -317,8 +317,9 @@
                 position: absolute;
                 right: 6px; }
               .sidebar .nav li > a:hover, .sidebar .nav li > a:focus {
-                background-color: transparent;
-                outline: none; }
+                background-color: #9c27b0;
+                box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+                color: #fff !important;}
               .sidebar .nav li:first-child > a {
                 margin: 0 15px; }
               .sidebar .nav li.active > [data-toggle="collapse"] i {

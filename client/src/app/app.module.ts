@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule }    from '@angular/common/http';
+import {DatePipe} from '@angular/common';
 
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +14,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { DeliverableComponent } from './deliverable/deliverable.component';
+import { DeliverableDetailsComponent } from './deliverable-details/deliverable-details.component';
+import { EditTeamComponent } from './edit-team/edit-team.component';
+import { TeamSearchComponent } from './team-search/team-search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     TeamDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    DeliverableComponent,
+    DeliverableDetailsComponent,
+    EditTeamComponent,
+    TeamSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +40,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

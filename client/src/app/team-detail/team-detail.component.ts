@@ -32,6 +32,11 @@ export class TeamDetailComponent implements OnInit {
       .subscribe(team => this.team = team);
   }
 
+  save(): void {
+  this.teamService.updateTeam(this.team)
+    .subscribe(() => this.goBack());
+  }
+
   goBack(): void {
     this.location.back();
   }
