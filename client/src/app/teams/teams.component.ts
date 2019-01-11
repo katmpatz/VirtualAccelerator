@@ -57,7 +57,7 @@ export class TeamsComponent implements OnInit {
   // }
 
    add(idStr: String, name: String, pipeline: String, maturity_levelStr: string, dateStr: string): void {
-      let id = +idStr;
+      // let id = +idStr;
       name = name.trim();
       pipeline = pipeline.trim();
       let maturity_level = +maturity_levelStr;

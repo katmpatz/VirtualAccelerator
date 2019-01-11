@@ -14,17 +14,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link"
-             routerLink="/dashboard"
-             href="#">Dashboard
-            <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link"
-             routerLink="/teams"
-             href="#">Books</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
           <app-team-search></app-team-search>
         </li>
       </ul>
@@ -33,23 +22,7 @@
     <div>
 
 
-      <div>
-  <label>Team ID:</label> <input #teamId />
-  <label>Team name:</label> <input #teamName />
-  <label>Pipeline:</label> <input #teamPipeline />
-  <label>maturity level:</label> <input #teamMaturityLevel />
-  <label>Date:</label> <input type="date" #teamDateOfEntry />
-  <!-- (click) passes input values to add() and then clears input -->
-  <button (click)="add(teamId.value, teamName.value, teamPipeline.value, teamMaturityLevel.value, teamDateOfEntry.value );
-                   teamId.value='';
-                   teamName.value='';
-                   teamPipeline.value='';
-                   teamMaturityLevel.value='';
-                   teamDateOfEntry.value='';
-                   teamId.value=''">
-    Add
-  </button>
-</div>
+
 <!--
       teammembers: Array<TeamMember>;
 
@@ -65,7 +38,7 @@
             <input type="text"
                    class="form-control"
                    id="name"
-                   [(ngModel)]="team.name"
+                 [(ngModel)]="team.name"
                    name="name"
                    required>
           </div>
@@ -200,6 +173,23 @@
           <!-- </div> -->
         </div>
       </div>
+    </div>
+    <div>
+      <br>
+      <h3>Add new team</h3><br>
+      <label>Team name:</label> <input class="form-control col-4" #teamName />
+      <label>Pipeline:</label> <input class="form-control col-4" #teamPipeline />
+      <label>maturity level:</label> <input class="form-control col-4" #teamMaturityLevel />
+      <label>Date:</label> <input type="date" class="form-control col-4" #teamDateOfEntry />
+      <!-- (click) passes input values to add() and then clears input -->
+      <button type="button" class="btn" (click)="add(teamName.value, teamPipeline.value, teamMaturityLevel.value, teamDateOfEntry.value );
+                       teamName.value='';
+                       teamPipeline.value='';
+                       teamMaturityLevel.value='';
+                       teamDateOfEntry.value='';
+                       teamName.value=''">
+        Add
+      </button>
     </div>
   </div>
 </div>
