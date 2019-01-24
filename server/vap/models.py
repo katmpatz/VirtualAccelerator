@@ -5,8 +5,8 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to = 'static/img/', blank=True)
-    linkedin = models.CharField(max_length=100, blank=True)
+    # photo = models.ImageField(upload_to = 'static/img/', blank=True)
+    # linkedin = models.CharField(max_length=100, blank=True)
     #field = models.CharField(max_length=100)
 
     def __str__(self):
@@ -23,7 +23,7 @@ class Team(models.Model):
     pipeline = models.CharField(max_length=100)
     # research_stream = models.BooleanField(default=False)
     maturity_level = models.IntegerField()
-    date_of_entry = models.DateField()
+    date_of_entry = models.DateField(auto_now=True)
     website = models.CharField(max_length=100, blank=True)
     # coorporate_existance = models.BooleanField(default=False)
     # active = models.BooleanField(default=True)
@@ -35,14 +35,14 @@ class Team(models.Model):
         return self.name
 
 class TeamMember(User):
-    team = models.ForeignKey(Team, related_name='teammembers', on_delete=models.CASCADE)
-    role = models.CharField(max_length=100, blank=True)
-    field = models.CharField(max_length=100, blank=True)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100, default="", blank=True)
+    field = models.CharField(max_length=100, default="", blank=True)
 
 class Deliverable(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="")
-    release_date = models.DateField(blank=True, default="2000-01-01")
+    release_date = models.DateField(auto_now=True)
     pipeline = models.CharField(max_length=100, default="", blank=True)
 
     def __str__(self):

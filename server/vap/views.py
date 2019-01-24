@@ -41,14 +41,15 @@ class TeamMemberList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = TeamMember.objects.all()
-        name = self.request.query_params.get('name', None)
-        if name is not None:
-            queryset = queryset.filter(name__contains=name)
+        team_id = self.kwargs.get('team_id', None)
+        if team_id is not None:
+            queryset = queryset.filter(team=team_id)
         return queryset
 
 class TeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
+
 
 class CoachList(generics.ListCreateAPIView):
     serializer_class = CoachSerializer
