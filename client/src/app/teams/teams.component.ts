@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Team } from '../team';
 import {TeamService} from '../team.service';
-import {DatePipe} from '@angular/common';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,21 +12,16 @@ import {DatePipe} from '@angular/common';
 })
 export class TeamsComponent implements OnInit {
   teams : Team[];
-
-  // team: Team;
+  closeResult: string;
 
   constructor(
     private route: ActivatedRoute,
     private teamService: TeamService,
-    private datePipe: DatePipe
+    private modalService: NgbModal,
   ) { }
 
    ngOnInit() {
      this.getTeams();
-     // this.team = this.newTeam();
-     // return this.teamService.getTeams()
-     //  .subscribe(teams => this.teams = teams);
-
    }
 
    getTeams(): void {
@@ -34,37 +29,13 @@ export class TeamsComponent implements OnInit {
       .subscribe(teams => this.teams = teams);
    }
 
-  //  newTeam() : Team {
-  //   var team = new Team();
-  //   team.name = '';
-  //   // team.photo = '';
-  //   team.pipeline = '';
-  //   team.website = '';
-  //   team.tag_line = '';
-  //   team.teammembers.name = '';
-  //   team.date_of_entry = new Date();
-  //   return team;
-  // }
-  //
-  // onSubmit() : void {
-  //   this.teamService.addTeam(this.team)
-  //     .subscribe(team => {
-  //       if (team) {
-  //         this.teams.unshift(team);
-  //         this.team = this.newTeam();
-  //       }
-  //     });
-  // }
-
-   add(idStr: String, name: String, pipeline: String, maturity_levelStr: string, dateStr: string): void {
+   add(name: String, pipeline: String, maturity_levelStr: string): void {
       // let id = +idStr;
       name = name.trim();
       pipeline = pipeline.trim();
       let maturity_level = +maturity_levelStr;
-      let date = new Date(dateStr);
-      let date_of_entry = this.datePipe.transform(date,"yyyy-MM-dd");
       if (!name || !pipeline || !maturity_level) { return; }
-      this.teamService.addTeam({name, pipeline, maturity_level, date_of_entry } as Team)
+      this.teamService.addTeam({name, pipeline, maturity_level} as Team)
         .subscribe(team => {
           // If the operation has failed, TeamService's handleError()
           // will have given an empty result; so we add to the
@@ -79,5 +50,23 @@ export class TeamsComponent implements OnInit {
       this.teams = this.teams.filter(h => h !== team);
       this.teamService.deleteTeam(team).subscribe();
     }
+
+    open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
 }

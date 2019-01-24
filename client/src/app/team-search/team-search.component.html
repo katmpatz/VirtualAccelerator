@@ -4,7 +4,7 @@
     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
   </ng-template>
 
-  <label for="search-box">Team search:</label>
+
   <input id="search-box"
          type="text"
          class="form-control"
@@ -13,7 +13,8 @@
          [(ngModel)]="model"
          [ngbTypeahead]="search"
          [resultTemplate]="rt"
-         [inputFormatter]="formatter"/>
+         [inputFormatter]="formatter"
+         placeholder="Search.."/>
 
   <span *ngIf="searching">searching...</span>
   <div class="alert alert-warning" *ngIf="searchFailed">

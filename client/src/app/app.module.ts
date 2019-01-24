@@ -18,6 +18,10 @@ import { DeliverableComponent } from './deliverable/deliverable.component';
 import { DeliverableDetailsComponent } from './deliverable-details/deliverable-details.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
+import { TeamMemberService } from './team-member.service';
+import { TeamService } from './team.service';
+import { DeliverableService } from './deliverable.service';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,7 @@ import { TeamSearchComponent } from './team-search/team-search.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, TeamMemberService, TeamService, DeliverableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

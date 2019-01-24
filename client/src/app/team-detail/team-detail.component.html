@@ -1,3 +1,5 @@
+
+<button (click)="goBack()" type="button" class="btn btn-outline-primary"> Back </button>
 <div *ngIf="team" class="content">
   <div class="container-fluid">
     <div class="row">
@@ -14,10 +16,10 @@
                 <h6><strong>Pipeline:</strong> {{ team.pipeline }}</h6>
                 <h6><strong>Maturity level:</strong> {{ team.maturity_level }}</h6>
                 <h6><strong>Date of entry:</strong> {{team.date_of_entry | date: 'dd/MM/yyyy'}}</h6>
-                <h6 *ngIf="team.research_stream"><strong>Research Stream:</strong> YES </h6>
+                <!-- <h6 *ngIf="team.research_stream"><strong>Research Stream:</strong> YES </h6>
                 <h6 *ngIf="!team.research_stream"><strong>Research Stream:</strong> NO </h6>
                 <h6 *ngIf="team.coorporate_existance"><strong>Corporate Existance:</strong> YES </h6>
-                <h6 *ngIf="!team.coorporate_existance"><strong>Corporate Existance:</strong> NO </h6>
+                <h6 *ngIf="!team.coorporate_existance"><strong>Corporate Existance:</strong> NO </h6> -->
                 <h6><strong>Website:</strong> {{ team.website }}</h6>
 
                 <label>title: </label>
@@ -29,24 +31,7 @@
 
                 <div class="col-lg-7" style="margin-top:20px;">
                   <!--TEAM MEMBERS-->
-                  <!-- <app-team-member></app-team-member> -->
-                  <div class="team_members">
-                    <div *ngFor="let teamMember of team.teammembers"
-                    [class.selected]="teamMember === selectedTeamMember"
-                    (click)="onSelect(teamMember)">
-                    <div class="row">
-                      <div class="col-lg-3 avatar_position">
-                        <img src="../../assets/img/faces/{{ teamMember.id }}.png" class="avatar">
-                      </div>
-                      <div class="col-lg-9">
-                        <h6><strong>Name:</strong> {{ teamMember.name }}</h6>
-                        <h6><strong>Email:</strong> {{ teamMember.email }}</h6>
-                        <h6><strong>Phone:</strong> {{ teamMember.phone }}</h6>
-                      </div><!-- /col-sm-5 -->
-                    </div><!-- /row -->
-                    <hr>
-                    </div>
-                  </div>
+                  <app-team-member></app-team-member>
 
                 </div>
               </div>
@@ -56,5 +41,3 @@
       </div>
     </div>
   </div>
-
-<button (click)="goBack()"> Go Back </button>

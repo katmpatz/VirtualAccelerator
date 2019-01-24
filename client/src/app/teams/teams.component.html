@@ -1,4 +1,4 @@
-<div class="teams">
+<div class="teams_component">
   <div class="container-fluid">
   <nav class="navbar navbar-expand-lg">
     <button class="navbar-toggler"
@@ -10,142 +10,31 @@
             aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <button  type="button" class="btn btn-outline-primary" (click)="open(content)"> Add Team </button>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item" routerLinkActive="active">
           <app-team-search></app-team-search>
         </li>
       </ul>
     </div>
   </nav>
-    <div>
-
-
-
-<!--
-      teammembers: Array<TeamMember>;
-
-
-      <h3>Add Team</h3>
-
-    <div class="row justify-content-start">
-      <div class="col-4">
-        <form (ngSubmit)="onSubmit()" #TeamForm="ngForm">
-
-          <div class="form-group">
-            <label for="text">Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="name"
-                 [(ngModel)]="team.name"
-                   name="name"
-                   required>
-          </div>
-         <div class="form-group">
-            <label for="text">Photo</label>
-            <input type="text"
-                   class="form-control"
-                   id="photo"
-                   [(ngModel)]="team.photo"
-                   name="photo">
-          </div>
-          <div class="form-group">
-            <label for="text">Pipeline</label>
-            <input type="text"
-                   class="form-control"
-                   id="pipeline"
-                   [(ngModel)]="team.pipeline"
-                   name="pipeline"
-                   required>
-          </div>
-          <div class="form-group">
-            <label for="text">Website</label>
-            <input type="text"
-                   class="form-control"
-                   id="website"
-                   [(ngModel)]="team.website"
-                   name="website">
-          </div>
-          <div class="form-group">
-            <label for="text">Tagline</label>
-            <input type="text"
-                   class="form-control"
-                   id="tag_line"
-                   [(ngModel)]="team.tag_line"
-                   name="tag_line">
-          </div>
-          <div class="form-group">
-            <label for="number">maturity_level</label>
-            <input type="number"
-                   class="form-control"
-                   id="maturity_level"
-                   [(ngModel)]="team.maturity_level"
-                   name="maturity_level">
-          </div>
-          <div class="form-group">
-            <label for="text">Team Member</label>
-            <input type="text"
-                   class="form-control"
-                   id="teammembers"
-                   [(ngModel)]="team.teammembers"
-                   name="teammembers">
-          </div>
-          <!-- <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="teamCoorporate_existance" [value]="true" [(ngModel)]="team.coorporate_existance">
-            </label>
-            Coorporate Existance
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="teamActive" [value]="true" [(ngModel)]="team.active">
-            </label>
-            Active
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-          </div>
-          <div class="form-group form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="research_stream" [value]="true" [(ngModel)]="team.research_stream">
-              Research Stream
-            </label>
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-          </div>
-          <div class="form-group row">
-            <label for="date-input" class="col-2 col-form-label">Date</label>
-            <div class="col-10">
-              <input class="form-control" type="date" id="date_of_entry"
-                 [(ngModel)]="team.date_of_entry"
-                 name="date_of_entry">
-            </div>
-          </div>
-
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-
-        </form>
-      </div>
-    </div> -->
-
+  <div class="teams">
     <div class="row">
       <div *ngFor="let team of teams" class="col-lg-4 col-md-6 col-sm-12">
         <!-- <div class="offset-1"> -->
           <div class="card  text-center card-stats">
             <a href="deliverable.html"><span></span></a>
-            <div class="card-header card-header-warning card-header-icon">
-              <div class="card-icon " style="width:80px;height:80px;background-color:white;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;">
-                <!-- <img class="team_img" src="../../assets/img/{{ team.id }}.png" alt="inagros" height="140" width="140"> -->
+            <div class="card-header card-header-icon">
+              <div class="team_card_icon">
+                <!-- style="width:80px;height:80px;background-color:white;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;" -->
+                <img class="team_card_img" src="../../assets/img/{{ team.id }}.png" alt="Card image cap">
               </div>
-              <a [routerLink]="['/teams/', team.id]"><h3 class="team_name"><b>{{ team.name | uppercase}}</b></h3></a>
-              <!-- <button class="delete" title="delete team"
-            (click)="delete(team)">x</button> -->
+              <div class = "row justify-content-between">
+                <a [routerLink]="['/teams/', team.id]"><h3 class="team_name"><b>{{ team.name | uppercase}}</b></h3></a>
+                <button class="delete" title="delete team" type="button" class="btn btn-link"
+                (click)="delete(team)">x</button>
+              </div>
             </div>
             <div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
               <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
@@ -174,23 +63,41 @@
         </div>
       </div>
     </div>
-    <div>
+    <!-- <div>
       <br>
       <h3>Add new team</h3><br>
       <label>Team name:</label> <input class="form-control col-4" #teamName />
       <label>Pipeline:</label> <input class="form-control col-4" #teamPipeline />
       <label>maturity level:</label> <input class="form-control col-4" #teamMaturityLevel />
-      <label>Date:</label> <input type="date" class="form-control col-4" #teamDateOfEntry />
-      <!-- (click) passes input values to add() and then clears input -->
-      <button type="button" class="btn" (click)="add(teamName.value, teamPipeline.value, teamMaturityLevel.value, teamDateOfEntry.value );
+
+      <button type="button" class="btn" (click)="add(teamName.value, teamPipeline.value, teamMaturityLevel.value );
                        teamName.value='';
                        teamPipeline.value='';
                        teamMaturityLevel.value='';
-                       teamDateOfEntry.value='';
                        teamName.value=''">
         Add
       </button>
-    </div>
+    </div> -->
   </div>
 </div>
-<!-- <app-team-detail [team]="selectedTeam"></app-team-detail> -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add new team</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <input class="form-control col-8" #teamName placeholder="Team name" />
+    <input class="form-control col-8" #teamPipeline placeholder="Pipeline" />
+    <input type="number" class="form-control col-8" #teamMaturityLevel placeholder="Maturity level"/>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"(click)="add(teamName.value, teamPipeline.value, teamMaturityLevel.value );
+                     teamName.value='';
+                     teamPipeline.value='';
+                     teamMaturityLevel.value='';
+                     teamName.value=''">Add</button>
+  </div>
+</ng-template>
