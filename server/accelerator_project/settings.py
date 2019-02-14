@@ -126,6 +126,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Media files
+MEDIA_ROOT = "/Users/kmpat/Documents/DMST/VirtualAccelerator/server/vap/media"
+MEDIA_URL = "media/"
+
 try:
     from .site_config import *
 except ImportError as ex:

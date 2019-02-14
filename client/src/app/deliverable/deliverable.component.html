@@ -1,9 +1,18 @@
 
-  <ul>
-    <li *ngFor="let deliverable of deliverables" class="nav-item ">
-      <a class="nav-link" routerLink="/deliverables/{{deliverable.id}}">
-        <!-- <i class="material-icons">group</i> -->
-        <p>{{ deliverable.title }}</p>
-      </a>
-    </li>
-  </ul>
+  <div class="deliverables">
+    <div class="row">
+      <div *ngFor="let deliverable of deliverables" class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card card-nav-tabs">
+          <h4 class="card-header card-header-warning">{{deliverable.title}}</h4>
+          <div class="card-body">
+            <br>
+            <h6><b class="bold">Instructions:</b> {{deliverable.description}}</h6>
+            <br>
+            <!--Deliverable-->
+            <h6><b class="bold">Download file:</b></h6>
+            <button type="button" class="btn btn-outline-primary"  routerLink="{{deliverable.template}}">Download</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,23 @@
+<div class="teamdeliverables">
+      <div class="card">
+        <h4 class="card-header card-header-warning user-text"><b>Deliverables</b></h4>
+        <div class="card-body">
+            <div *ngFor="let teamDeliverable of teamDeliverables">
+              <div class="container">
+              <div>
+                <h6><a [routerLink]="['teamdeliverables/', teamDeliverable.id]" class="bold">
+                  <i *ngIf="teamDeliverable.status" class="material-icons circle-icon del_success" >{{teamDeliverable.deliverable.icon}}</i>
+                  <i *ngIf="!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)" class="material-icons circle-icon del_danger" >{{teamDeliverable.deliverable.icon}}</i>
+                  <i *ngIf="!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)" class="material-icons circle-icon" >{{teamDeliverable.deliverable.icon}}</i>
+                  &nbsp;&nbsp;{{teamDeliverable.deliverable.title}}</a></h6>
+                  <h6 *ngIf="teamDeliverable.status">Submited!</h6>
+                  <h6 *ngIf="!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)">Deadline is passed!</h6>
+                  <h6 *ngIf="!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)">Deadline: {{teamDeliverable.deadline | date: 'dd/MM/yyyy'}}</h6>
+              </div>
+
+              <hr>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

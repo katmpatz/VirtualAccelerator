@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule }    from '@angular/common/http';
-import {DatePipe} from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common'
 
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,8 @@ import { TeamSearchComponent } from './team-search/team-search.component';
 import { TeamMemberService } from './team-member.service';
 import { TeamService } from './team.service';
 import { DeliverableService } from './deliverable.service';
+import { TeamdeliverableComponent } from './teamdeliverable/teamdeliverable.component';
+import { TeamdeliverableDetailComponent } from './teamdeliverable-detail/teamdeliverable-detail.component';
 
 
 @NgModule({
@@ -35,14 +37,17 @@ import { DeliverableService } from './deliverable.service';
     DeliverableComponent,
     DeliverableDetailsComponent,
     EditTeamComponent,
-    TeamSearchComponent
+    TeamSearchComponent,
+    TeamdeliverableComponent,
+    TeamdeliverableDetailComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
   ],
   providers: [DatePipe, TeamMemberService, TeamService, DeliverableService],
   bootstrap: [AppComponent]

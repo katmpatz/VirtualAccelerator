@@ -40,5 +40,4 @@ export class TeamDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
 }

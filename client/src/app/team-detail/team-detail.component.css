@@ -24,6 +24,16 @@ color:rgb(127, 140, 141);
 border-left: 1px solid #dee2e6;
 height: 85%;
 position: absolute;
-left: 33%;
+left: 42%;
 top: 33px;
+}
+
+#back{
+  margin-top:20px;
+  margin-left:20px;
+  padding-left:20px;
+}
+
+.coaches :last-child > hr {
+  display: none;
 }

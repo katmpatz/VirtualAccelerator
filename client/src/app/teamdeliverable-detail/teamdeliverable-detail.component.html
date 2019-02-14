@@ -1,0 +1,59 @@
+<button (click)="goBack()" type="button" class="btn btn-outline-primary" id="back"><i class="material-icons">keyboard_arrow_left</i>Back </button>
+<div *ngIf="teamdeliverable" class="content" id="teamdeliverable">
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="card" id="del_card">
+        <h4 class="card-header card-header-warning">{{teamdeliverable.deliverable.title}}</h4>
+        <div class="card-body">
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <h6><b class="bold">Pipeline:</b> {{teamdeliverable.deliverable.pipeline}}</h6>
+
+              <h6><b class="bold">Instructions:</b> {{teamdeliverable.deliverable.description}}</h6>
+              <br>
+              <!--Deliverable-->
+              <h6><b class="bold">Download file:</b></h6>
+              <button type="button" class="btn btn-outline-primary"  routerLink="{{teamdeliverable.deliverable.template}}">Download</button>
+              <!-- <a href="{{teamdeliverable.deliverable.template}}">Download</a> -->
+            </div>
+            <div class="vl"></div><!--Vertical line-->
+            <div class="col-6">
+              <!-- <p>isEmptyObject(teamdeliverable.deadline)</p> -->
+              <div *ngIf="!isEmptyObject(teamdeliverable.deadline)"><h6><b class="bold">Deadline:</b> {{teamdeliverable.deadline}}</h6></div>
+              <div *ngIf="isEmptyObject(teamdeliverable.deadline)"><h6><b class="bold">Deadline:</b> Aknown </h6></div>
+              <div *ngIf="teamdeliverable.status">
+                <h6><b class="bold">Release date:</b> {{teamdeliverable.delivery_day}}</h6>
+                <h6><b class="bold">File:</b></h6>
+              </div>
+              <div *ngIf="!teamdeliverable.status">
+                <h6><b class="bold">Release date:</b> Nothing has been submited yet</h6>
+                <h6><b class="bold">File:</b></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Comments -->
+    <h3 class="text-center">Comments:</h3>
+      <div class="row justify-content-md-center">
+      <div class="col-lg-1 col-md-2 col-sm-4 avatar_position">
+      <img src="../assets/img/faces/4.png" class="avatar">
+      </div>
+
+      <div class="col-lg-10 col-md-9 col-sm-7">
+        <div class="card">
+          <div class="card-header" style="color: #333; background-color: #f5f5f5;">
+              <b>Stefanidis Petros</b> <span class="text-muted">commented 5 days ago</span>
+
+          </div>
+          <div class="card-body">
+            Excellent work!
+
+          </div>
+        </div>
+      </div><!-- /col-sm-5 -->
+      </div><!-- /row -->
+  </div>
+</div>

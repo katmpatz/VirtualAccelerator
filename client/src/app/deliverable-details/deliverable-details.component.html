@@ -7,31 +7,9 @@
         <h6><b class="bold">Instructions:</b> {{deliverable.description}}</h6>
         <br>
         <!--Deliverable-->
-        <div>
-
-          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-            <ngb-panel *ngFor="let milestone of deliverable.milestones"
-            [class.selected]="milestone === selectedMilestone"
-            (click)="onSelect(milestone)">
-              <ng-template ngbPanelTitle>
-                <span><b>{{milestone.num}}.</b> {{milestone.title}}</span>
-              </ng-template>
-              <ng-template ngbPanelContent>
-                <div *ngFor="let question of milestone.questions"
-                [class.selected]="question === selectedQuestion"
-                (click)="onSelect(question)">
-                  <div>
-                    <h4><b class="bold">
-                      {{milestone.num}}.{{question.num}} {{question.title}}
-                    </b></h4>
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-
-
-        </div>
+        <h6><b class="bold">Download file:</b></h6>
+        <button type="button" class="btn btn-outline-primary"  routerLink="{{deliverable.template}}">Download</button>
+        <a href="{{deliverable.template}}">Download</a>
       </div>
     </div>
   </div>

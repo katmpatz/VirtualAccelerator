@@ -4,14 +4,13 @@ from .models import TeamMember
 from .models import Coach
 from .models import Deliverable
 from .models import TeamDeliverable
-from .models import Milestone
-from .models import Question
-from .models import Answer
+# from .models import Milestone
+# from .models import Question
+# from .models import Answer
 from .models import Comment
-from .models import CommentAnswer
 
-from .serializers import TeamSerializer, TeamMemberSerializer, CoachSerializer
-from .serializers import DeliverableSerializer, MilestoneSerializer, QuestionSerializer, TeamDeliverableSerializer, AnswerSerializer, CommentSerializer, CommentAnswerSerializer
+from .serializers import TeamSerializer, TeamMemberSerializer, CoachSerializer, DeliverableSerializer, TeamDeliverableSerializer, CommentSerializer
+# from .serializers import MilestoneSerializer, QuestionSerializer, AnswerSerializer
 from rest_framework import generics
 
 from django.contrib.staticfiles import views
@@ -65,48 +64,6 @@ class CoachDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
 
-class DeliverableList(generics.ListCreateAPIView):
-    serializer_class = DeliverableSerializer
-
-    def get_queryset(self):
-        queryset = Deliverable.objects.all()
-        title = self.request.query_params.get('title', None)
-        if title is not None:
-            queryset = queryset.filter(title__contains=title)
-        return queryset
-
-class DeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Deliverable.objects.all()
-    serializer_class = DeliverableSerializer
-
-class MilestoneList(generics.ListCreateAPIView):
-    serializer_class = MilestoneSerializer
-
-    def get_queryset(self):
-        queryset = Milestone.objects.all()
-        title = self.request.query_params.get('title', None)
-        if title is not None:
-            queryset = queryset.filter(title__contains=title)
-        return queryset
-
-class MilestoneDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Milestone.objects.all()
-    serializer_class = MilestoneSerializer
-
-class QuestionList(generics.ListCreateAPIView):
-    serializer_class = QuestionSerializer
-
-    def get_queryset(self):
-        queryset = Question.objects.all()
-        title = self.request.query_params.get('title', None)
-        if title is not None:
-            queryset = queryset.filter(title__contains=title)
-        return queryset
-
-class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
 class TeamDeliverableList(generics.ListCreateAPIView):
     serializer_class = TeamDeliverableSerializer
 
@@ -121,19 +78,62 @@ class TeamDeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamDeliverable.objects.all()
     serializer_class = TeamDeliverableSerializer
 
-class AnswerList(generics.ListCreateAPIView):
-    serializer_class = AnswerSerializer
+class DeliverableList(generics.ListCreateAPIView):
+    serializer_class = DeliverableSerializer
 
     def get_queryset(self):
-        queryset = Answer.objects.all()
-        question_id = self.kwargs.get('question_id', None)
-        if question_id is not None:
-            queryset = queryset.filter(question=question_id)
+        queryset = Deliverable.objects.all()
+        title = self.request.query_params.get('title', None)
+        if title is not None:
+            queryset = queryset.filter(title__contains=name)
         return queryset
 
-class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Answer.objects.all()
-    serializer_class = AnswerSerializer
+class DeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Deliverable.objects.all()
+    serializer_class = DeliverableSerializer
+
+# class MilestoneList(generics.ListCreateAPIView):
+#     serializer_class = MilestoneSerializer
+#
+#     def get_queryset(self):
+#         queryset = Milestone.objects.all()
+#         deliverable_id = self.kwargs.get('deliverable_id', None)
+#         if deliverable_id is not None:
+#             queryset = queryset.filter(deliverable=deliverable_id)
+#         return queryset
+#
+# class MilestoneDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Milestone.objects.all()
+#     serializer_class = MilestoneSerializer
+#
+# class QuestionList(generics.ListCreateAPIView):
+#     serializer_class = QuestionSerializer
+#
+#     def get_queryset(self):
+#         queryset = Question.objects.all()
+#         milestone_id = self.kwards.get('milestone_id')
+#         if milestone_id is not None:
+#             queryset = queryset.filter(milestone=milestone_id)
+#         return queryset
+#
+# class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Question.objects.all()
+#     serializer_class = QuestionSerializer
+#
+#
+# class AnswerList(generics.ListCreateAPIView):
+#     serializer_class = AnswerSerializer
+#
+#     def get_queryset(self):
+#         queryset = Answer.objects.all()
+#         question_id = self.kwargs.get('question_id', None)
+#         if question_id is not None:
+#             queryset = queryset.filter(question=question_id)
+#         return queryset
+#
+# class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Answer.objects.all()
+#     serializer_class = AnswerSerializer
 
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
@@ -149,19 +149,6 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-class CommentAnswerList(generics.ListCreateAPIView):
-    serializer_class = CommentAnswerSerializer
-
-    def get_queryset(self):
-        queryset = CommentAnswer.objects.all()
-        comment_id = self.kwargs.get('comment_id', None)
-        if comment_id is not None:
-            queryset = queryset.filter(comment=comment_id)
-        return queryset
-
-class CommentAnswerDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = CommentAnswer.objects.all()
-    serializer_class = CommentAnswerSerializer
 
 
 # def index(request):

@@ -1,4 +1,5 @@
 import { TeamMember } from './teamMember';
+import { Coach } from './coach';
 
 export class Team {
   id: number;
@@ -12,5 +13,6 @@ export class Team {
   coorporate_existance: boolean;
   active: boolean;
   tag_line: string;
+  coaches: Array<Coach>;
   teammembers: Array<TeamMember>;
 }
