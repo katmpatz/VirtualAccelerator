@@ -1,0 +1,15 @@
+
+<div class=" row justify-content-center" style="margin-top:15px; margin-bottom:15px;">
+  <div *ngFor="let teamDeliverable of teamDeliverables">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+      <a  [routerLink]="['team/teamdeliverables/', teamDeliverable.id]">
+        <i *ngIf="teamDeliverable.status" class="material-icons circle-icon del_success" >{{teamDeliverable.deliverable.icon}}</i>
+        <i *ngIf="!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)" class="material-icons circle-icon del_danger" >{{teamDeliverable.deliverable.icon}}</i>
+        <i *ngIf="!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)" class="material-icons circle-icon" >{{teamDeliverable.deliverable.icon}}</i>
+      </a>
+    </div>
+  </div>
+  <div *ngIf="!teamDeliverables?.length" style="padding-top: 5px; padding-bottom:9px;">
+    <h6>No dealiverables!</h6>
+  </div>
+</div>

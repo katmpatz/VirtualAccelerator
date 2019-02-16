@@ -5,7 +5,7 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
-    # photo = models.ImageField(upload_to = 'static/img/', blank=True)
+    photo = models.ImageField(upload_to = 'static/img/', blank=True)
     # linkedin = models.CharField(max_length=100, blank=True)
     #field = models.CharField(max_length=100)
 
@@ -21,15 +21,13 @@ class Team(models.Model):
     name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to = 'img/', blank=True)
     pipeline = models.CharField(max_length=100)
-    # research_stream = models.BooleanField(default=False)
+    research_stream = models.BooleanField(default=False)
     maturity_level = models.IntegerField()
     date_of_entry = models.DateField(auto_now=True)
     website = models.CharField(max_length=100, blank=True)
-    # coorporate_existance = models.BooleanField(default=False)
-    # active = models.BooleanField(default=True)
+    coorporate_existance = models.BooleanField(default=False)
     coaches = models.ManyToManyField(Coach)
     tag_line = models.CharField(max_length=100, blank=True)
-    #description = models.TextField(default="")
 
     def __str__(self):
         return self.name

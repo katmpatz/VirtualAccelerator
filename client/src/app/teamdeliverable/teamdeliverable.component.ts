@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DatePipe, CommonModule } from '@angular/common';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { TeamDeliverable } from '../teamdeliverable';
 import { Deliverable } from '../deliverable';
 import { TeamdeliverableService } from '../teamdeliverable.service';
+import {DeliverableService} from '../deliverable.service';
 
 @Component({
   selector: 'app-teamdeliverable',
@@ -15,32 +17,98 @@ export class TeamdeliverableComponent implements OnInit {
   today: number = Date.now();
   teamDeliverables: TeamDeliverable[];
   teamDeliverable: TeamDeliverable;
+  deliverables : Deliverable[];
+  valids : Deliverable[];
 
 
   constructor(
     private route: ActivatedRoute,
     private datePipe: DatePipe,
     private teamDeliverableService: TeamdeliverableService,
+    private deliverableService: DeliverableService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
     const teamId = +this.route.snapshot.paramMap.get('id');
-    return this.teamDeliverableService.getTeamDeliverables(teamId)
-      .subscribe(teamDeliverables => this.teamDeliverables = teamDeliverables);
+    this.getDeliverables();
+    this.teamDeliverable = this.newTeamDeliverable(teamId);
+    this.getTeamDeliverables(teamId);
   }
 
   deliverable_color(deadline: Date): boolean {
     if(!deadline) {
       return true;
     }
-    console.log(deadline);
-    console.log(this.datePipe.transform(this.today, 'yyyy-MM-dd'));
-    console.log(deadline < this.datePipe.transform(this.today, 'yyyy-MM-dd'));
-    if (deadline > this.datePipe.transform(this.today, 'yyyy-MM-dd')) {
+    if (this.datePipe.transform(deadline, 'yyyy-MM-dd') > this.datePipe.transform(this.today, 'yyyy-MM-dd')) {
       return true;
     } else {
       return false;
     }
   }
+
+  getTeamDeliverables(teamId): void {
+    this.teamDeliverableService.getTeamDeliverables(teamId)
+      .subscribe(teamDeliverables => this.teamDeliverables = teamDeliverables);
+  }
+
+  getDeliverables(): void {
+    this.deliverableService.getDeliverables()
+     .subscribe(deliverables => this.deliverables = deliverables);
+  }
+
+  newTeamDeliverable(teamId: number) : TeamDeliverable {
+    var teamDeliverable = new TeamDeliverable();
+    teamDeliverable.deliverable = '';
+    teamDeliverable.team = teamId;
+    teamDeliverable.deadline = '';
+    return teamDeliverable;
+  }
+
+  onSubmit() : void {
+    this.teamDeliverableService.addTeamDeliverable(this.teamDeliverable)
+      .subscribe(teamDeliverable => {
+        if (teamDeliverable) {
+          this.teamDeliverables.unshift(teamDeliverable);
+          this.teamDeliverable = this.newTeamDeliverable(teamDeliverable.team);
+        }
+      });
+  }
+
+  // isValid(deliverable): boolean {
+  //   for (let teamDel of teamDeliverables) {
+  //     if (deliverable.id == teamDel.deliverable) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }
+  //
+  // validDeliverables(deliverables: Deliverable[], teamDeliverables: TeamDeliverable[]) : Deliverable[] {
+  //   let valids = this.deliverables.filter(isValid);
+  //   console.log(valids);
+  //   return valids;
+  // }
+
+
+  // Modal method
+    open(content) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+
+  // Modal method
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
 
 }

@@ -15,7 +15,7 @@ export class TeamsComponent implements OnInit {
   teams : Team[];
   closeResult: string;
   url: string;
-
+  team : Team;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +25,7 @@ export class TeamsComponent implements OnInit {
 
    ngOnInit() {
      this.getTeams();
+     this.team = this.newTeam();
    }
 
    getTeams(): void {
@@ -32,34 +33,38 @@ export class TeamsComponent implements OnInit {
       .subscribe(teams => this.teams = teams);
    }
 
-   // handleFileInput(files: FileList) {
-   //   this.fileToUpload = files.item(0);
-   // }
 
-   add(name: String, pipeline: String, maturity_levelStr: string): void {
-      // let id = +idStr;
-      name = name.trim();
-      pipeline = pipeline.trim();
-      let maturity_level = +maturity_levelStr;
-      // photo = this.fileToUpload;
-      if (!name || !pipeline || !maturity_level) { return; }
-      this.teamService.addTeam({name, pipeline, maturity_level} as Team)
-        .subscribe(team => {
-          // If the operation has failed, TeamService's handleError()
-          // will have given an empty result; so we add to the
-          // teams array only if a non-empty result has been produced.
-          if (team) {
-            this.teams.push(team);
-          }
-        });
-    }
+    newTeam() : Team {
+    var team = new Team();
+    team.name = '';
+    team.website = '';
+    team.pipeline = '';
+    team.maturity_level = null;
+    team.tag_line = '';
+    team.research_stream = false;
+    team.coorporate_existance = false;
+    team.date_of_entry = new Date();
+    return team;
+  }
+
+  onSubmit() : void {
+    this.teamService.addTeam(this.team)
+      .subscribe(team => {
+        if (team) {
+          this.teams.unshift(team);
+          this.team = this.newTeam();
+        }
+      });
+  }
 
     delete(team: Team): void {
       this.teams = this.teams.filter(h => h !== team);
       this.teamService.deleteTeam(team).subscribe();
     }
 
-    open(content) {
+
+// Modal method
+  open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -67,6 +72,7 @@ export class TeamsComponent implements OnInit {
     });
   }
 
+// Modal method
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -78,12 +84,12 @@ export class TeamsComponent implements OnInit {
   }
 
 
- //image preview
+ //image pteam
   public imagePath;
   imgURL: any;
   public message: string;
 
-  preview(files) {
+  pteam(files) {
     if (files.length === 0)
       return;
 

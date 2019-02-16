@@ -23,6 +23,7 @@ import { TeamService } from './team.service';
 import { DeliverableService } from './deliverable.service';
 import { TeamdeliverableComponent } from './teamdeliverable/teamdeliverable.component';
 import { TeamdeliverableDetailComponent } from './teamdeliverable-detail/teamdeliverable-detail.component';
+import { TeamdelComponent } from './teamdel/teamdel.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { TeamdeliverableDetailComponent } from './teamdeliverable-detail/teamdel
     TeamSearchComponent,
     TeamdeliverableComponent,
     TeamdeliverableDetailComponent,
+    TeamdelComponent,
   ],
   imports: [
     BrowserModule,

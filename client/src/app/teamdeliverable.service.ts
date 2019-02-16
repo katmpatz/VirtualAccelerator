@@ -50,6 +50,15 @@ export class TeamdeliverableService {
     );
   }
 
+  /** PUT: update the team on the server */
+  updateTeamDeliverable (teamdeliverable: TeamDeliverable): Observable<any> {
+    const url = `api/teams/${teamdeliverable.team}/teamdeliverables/${teamdeliverable.id}`;
+    return this.http.put(url, teamdeliverable, httpOptions).pipe(
+      tap(_ => this.log(`updated teamdeliverable id=${teamdeliverable.id}`)),
+      catchError(this.handleError<any>('updateTeamDeliverable'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

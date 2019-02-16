@@ -54,3 +54,16 @@ text-align: center;
 vertical-align: middle;
 padding: 10px;
 }
+
+.check-input {
+  margin: 0;
+  left: 0;
+  right: 5px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+}
+
+.team-label {
+  text-align:left;
+}

@@ -2,44 +2,81 @@
   <div *ngFor="let teamMember of teamMembers">
     <div class="row">
       <div class="col-lg-3 avatar_position">
-        <img src="../../assets/img/faces/{{ teamMember.id }}.png" class="avatar">
+        <img *ngIf="teamMember?.photo" src="../../assets/img/faces/{{ teamMember.id }}.png" class="avatar">
+        <img *ngIf="!teamMember?.photo" src="../../assets/img/user.png" class="avatar">
       </div>
       <div class="col-lg-9">
         <h6><strong>Name:</strong> {{ teamMember.name }}</h6>
         <h6><strong>Email:</strong> {{ teamMember.email }}</h6>
         <h6><strong>Phone:</strong> {{ teamMember.phone }}</h6>
       </div><!-- /col-sm-5 -->
+
+      <a (click)="edit(teamMember)">
+        <strong>Name:</strong>
+        <span *ngIf="teamMember!==editTeamMember">{{teamMember.name}}</span>
+        <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.name"
+          (blur)="update()" (keyup.enter)="update()">
+          <strong>Name:</strong>
+          <span *ngIf="teamMember!==editTeamMember">{{teamMember.email}}</span>
+          <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.email"
+            (blur)="update()" (keyup.enter)="update()">
+            <strong>Name:</strong>
+            <span *ngIf="teamMember!==editTeamMember">{{teamMember.phone}}</span>
+            <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.phone"
+              (blur)="update()" (keyup.enter)="update()">
+      </a>
+
+
+
+
     </div><!-- /row -->
     <hr>
   </div>
-  <!-- <div class="row justify-content-start">
-    <div class="col-4">
-      <form (ngSubmit)="onSubmit()" #teamMemberForm="ngForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text"
-                 class="form-control"
-                 id="name"
-                 [(ngModel)]="teamMember.name"
-                 name="name"
-                 required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input class="form-control"
-                    id="email"
-                    [(ngModel)]="teamMember.email"
-                    name="email">
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input class="form-control"
-                    id="phone"
-                    [(ngModel)]="teamMember.phone"
-                    name="phone">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  </div> -->
+  <div *ngIf="!teamMembers?.length" class="text-center">
+    <h6>This team hasn't got any member yet.</h6>
+  </div>
+  <div class="text-center">
+    <button  type="button" class="btn btn-outline-primary" (click)="open(content)"> Add new Member </button>
+  </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add new team</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row justify-content-start">
+      <div class="col-6">
+        <form (ngSubmit)="onSubmit()" #teamMemberForm="ngForm">
+          <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   [(ngModel)]="teamMember.name"
+                   name="name"
+                   placeholder="Full name"
+                   required>
+          </div>
+          <div class="form-group">
+            <input class="form-control"
+                      id="email"
+                      [(ngModel)]="teamMember.email"
+                      name="email"
+                      placeholder="someone@something.com">
+          </div>
+          <div class="form-group">
+            <input class="form-control"
+                      id="phone"
+                      [(ngModel)]="teamMember.phone"
+                      name="phone"
+                      placeholder="Phone">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

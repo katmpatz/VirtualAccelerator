@@ -24,6 +24,20 @@ export class TeamDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTeam();
+    this.team = this.updateTeam();
+  }
+
+  updateTeam() : Team {
+    var team = new Team();
+    team.name = '';
+    team.website = '';
+    team.pipeline = '';
+    team.maturity_level = null;
+    team.tag_line = '';
+    team.research_stream = false;
+    team.coorporate_existance = false;
+    team.date_of_entry = new Date();
+    return team;
   }
 
   getTeam(): void {
@@ -32,9 +46,14 @@ export class TeamDetailComponent implements OnInit {
       .subscribe(team => this.team = team);
   }
 
-  save(): void {
+  onSubmit(): void {
+  console.log(this.team);
   this.teamService.updateTeam(this.team)
-    .subscribe(() => this.goBack());
+    .subscribe(team => {
+      if (team) {
+        this.team = this.updateTeam();
+      }
+    });
   }
 
   goBack(): void {

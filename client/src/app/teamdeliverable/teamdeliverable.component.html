@@ -1,5 +1,5 @@
 <div class="teamdeliverables">
-      <div class="card">
+      <div class="card card-nav-tabs">
         <h4 class="card-header card-header-warning user-text"><b>Deliverables</b></h4>
         <div class="card-body">
             <div *ngFor="let teamDeliverable of teamDeliverables">
@@ -18,6 +18,47 @@
               <hr>
             </div>
             </div>
+            <div *ngIf="!teamDeliverables?.length"  class="text-center">
+              <h6>This team hasn't got any member yet.</h6>
+            </div>
+
+            <div class="text-center">
+              <button  type="button" class="btn btn-outline-primary" (click)="open(content)"> Add new Deliverable </button>
+            </div>
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add new deliverable</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <form (ngSubmit)="onSubmit()" #teamDeliverableForm="ngForm">
+          <div class="form-group">
+            <label for="deliverable">Select deliverable</label>
+            <select class="form-control" type="number" [(ngModel)]="teamDeliverable.deliverable" name="deliverable" id="deliverable">
+              <option *ngFor="let deliverable of deliverables" [ngValue]="deliverable.id"  selected>{{deliverable.title}}</option>
+            </select>
+          </div>
+          <div class="form-group row">
+            <label for="deadline">Deadline:</label>&nbsp;&nbsp;
+            <input id="deadline"
+                    type="date"
+                    [(ngModel)]="teamDeliverable.deadline"
+                    name="deadline">
+          </div>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

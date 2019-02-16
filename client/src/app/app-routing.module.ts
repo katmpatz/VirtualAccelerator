@@ -16,6 +16,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'teams/:id', component: TeamDetailComponent },
   {path: 'teams/:id/teammembers', component: TeamMemberComponent },
+  {path: 'teams/:id/teammembers/:id', component: TeamMemberComponent },
   {path: 'teams/:id/teamdeliverables', component: TeamdeliverableComponent },
   {path: 'teams/:id/teamdeliverables/:id', component: TeamdeliverableDetailComponent },
   {path: 'deliverables', component: DeliverableComponent },
