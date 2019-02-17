@@ -14,7 +14,8 @@ import {DeliverableService} from '../deliverable.service';
   styleUrls: ['./teamdeliverable.component.css'],
 })
 export class TeamdeliverableComponent implements OnInit {
-  today: Date = Date.now();
+  today: number = Date.now();
+  date: Date;
   teamDeliverables: TeamDeliverable[];
   teamDeliverable: TeamDeliverable;
   deliverables : Deliverable[];
@@ -31,6 +32,7 @@ export class TeamdeliverableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.date = new Date(this.today);
     const teamId = +this.route.snapshot.paramMap.get('id');
     this.getDeliverables();
     this.teamDeliverable = this.newTeamDeliverable(teamId);
@@ -41,7 +43,7 @@ export class TeamdeliverableComponent implements OnInit {
     if(!deadline) {
       return true;
     }
-    if (this.datePipe.transform(deadline, 'yyyy-MM-dd') > this.datePipe.transform(this.today, 'yyyy-MM-dd')) {
+    if (this.datePipe.transform(deadline, 'yyyy-MM-dd') > this.datePipe.transform(this.date, 'yyyy-MM-dd')) {
       return true;
     } else {
       return false;

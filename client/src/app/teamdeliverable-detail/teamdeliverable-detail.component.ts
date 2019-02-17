@@ -14,7 +14,8 @@ import { TeamDeliverable } from '../teamdeliverable';
   styleUrls: ['./teamdeliverable-detail.component.css']
 })
 export class TeamdeliverableDetailComponent implements OnInit {
-    today: Date = Date.now();
+    today: number = Date.now();
+    date: Date;
     teamdeliverable: TeamDeliverable;
     files: any[];
 
@@ -26,6 +27,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.date = new Date(this.today);
     this.getTeamdeliverable();
   }
 
@@ -53,7 +55,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
     if(!deadline) {
       return true;
     }
-    if (this.datePipe.transform(deadline, 'yyyy-MM-dd') > this.datePipe.transform(this.today, 'yyyy-MM-dd')) {
+    if (this.datePipe.transform(deadline, 'yyyy-MM-dd') > this.datePipe.transform(this.date, 'yyyy-MM-dd')) {
       return true;
     } else {
       return false;
@@ -70,7 +72,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
    teamdeliverable.deliverable = this.teamdeliverable.deliverable;
    teamdeliverable.team = this.teamdeliverable.team;
    teamdeliverable.deadline = this.teamdeliverable.deadline;
-   teamdeliverable.delivery_day = this.today;
+   teamdeliverable.delivery_day = this.date;
    teamdeliverable.status = true;
    teamdeliverable.file = '';
    return teamdeliverable;
