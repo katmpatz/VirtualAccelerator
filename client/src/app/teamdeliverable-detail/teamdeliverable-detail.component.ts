@@ -14,7 +14,7 @@ import { TeamDeliverable } from '../teamdeliverable';
   styleUrls: ['./teamdeliverable-detail.component.css']
 })
 export class TeamdeliverableDetailComponent implements OnInit {
-    today: number = Date.now();
+    today: Date = Date.now();
     teamdeliverable: TeamDeliverable;
     files: any[];
 
@@ -67,7 +67,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
 
   updateTeamDeliverable(teamdeliverableId: number) : TeamDeliverable {
    var teamdeliverable = new TeamDeliverable();
-   teamdeliverable.deliverable = this.teamdeliverable.deliverable.id;
+   teamdeliverable.deliverable = this.teamdeliverable.deliverable;
    teamdeliverable.team = this.teamdeliverable.team;
    teamdeliverable.deadline = this.teamdeliverable.deadline;
    teamdeliverable.delivery_day = this.today;
@@ -77,7 +77,6 @@ export class TeamdeliverableDetailComponent implements OnInit {
  }
 
   onSubmit() : void {
-    console.log(this.teamdeliverable.deliverable.id);
     this.teamdeliverableService.updateTeamDeliverable(this.teamdeliverable)
       .subscribe(() => this.clear());
   }

@@ -8,7 +8,6 @@ import { MessageService } from './message.service';
 
 import { TeamMember } from './teamMember';
 
-import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -48,8 +47,8 @@ export class TeamMemberService {
     );
   }
 
-  /** PUT: update the team on the server */
-  updateTeamMember (teamMember: TeamMember, teamId: number): Observable<TeamMember> {
+  /** PUT: update the team member on the server */
+  updateTeamMember (teamMember: TeamMember): Observable<TeamMember> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
     let url = `api/teams/${teamMember.team}/teammembers/${teamMember.id}`;
     return this.http.put<TeamMember>(url, teamMember, httpOptions)
@@ -58,6 +57,14 @@ export class TeamMemberService {
       );
   }
 
+  /** DELETE: delete the team from the server */
+  deleteTeamMember(teamMember: TeamMember): Observable<TeamMember> {
+    const url = `api/teams/${teamMember.team}/teammembers/${teamMember.id}`;;
+    return this.http.delete<TeamMember>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted teamMember id=${teamMember.id}`)),
+      catchError(this.handleError<TeamMember>('deleteTeamMember'))
+    );
+  }
 
   /**
    * Handle Http operation that failed.

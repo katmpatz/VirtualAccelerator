@@ -14,11 +14,12 @@ import {DeliverableService} from '../deliverable.service';
   styleUrls: ['./teamdeliverable.component.css'],
 })
 export class TeamdeliverableComponent implements OnInit {
-  today: number = Date.now();
+  today: Date = Date.now();
   teamDeliverables: TeamDeliverable[];
   teamDeliverable: TeamDeliverable;
   deliverables : Deliverable[];
   valids : Deliverable[];
+  closeResult: string;
 
 
   constructor(
@@ -59,9 +60,9 @@ export class TeamdeliverableComponent implements OnInit {
 
   newTeamDeliverable(teamId: number) : TeamDeliverable {
     var teamDeliverable = new TeamDeliverable();
-    teamDeliverable.deliverable = '';
+    teamDeliverable.deliverable = null;
     teamDeliverable.team = teamId;
-    teamDeliverable.deadline = '';
+    teamDeliverable.deadline = null;
     return teamDeliverable;
   }
 

@@ -14,10 +14,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class TeamMemberComponent implements OnInit {
 
   teamMembers: TeamMember[];
-  team: number
+  team: number;
   teamMember: TeamMember;
   editTeamMember: TeamMember; // the hero currently being edited
-
+  closeResult: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,28 +55,6 @@ export class TeamMemberComponent implements OnInit {
       });
   }
 
-  // updateTeamMember(teamId: number) : TeamMember {
-  //   var teamMember = new TeamMember();
-  //   teamMember.id = this.teamMember.id;
-  //   teamMember.name = '';
-  //   teamMember.team = teamId;
-  //   teamMember.email = this.teamMember.email;
-  //   teamMember.phone = this.teamMember.phone;
-  //   teamMember.role = '';
-  //   teamMember.field = '';
-  //   return teamMember;
-  // }
-  //
-  // onSubmitUpdate(): void {
-  //   console.log(this.teamMember)
-  //   this.teamMemberService.updateTeamMember(this.teamMember)
-  //     .subscribe(teamMember => {
-  //       if (teamMember) {
-  //         this.teamMember = this.updateTeamMember();
-  //       }
-  //     });
-  // }
-
   edit(teamMember) {
     console.log(teamMember);
     teamMember.team = +this.route.snapshot.paramMap.get('id');
@@ -87,7 +65,7 @@ export class TeamMemberComponent implements OnInit {
   update() {
     if (this.editTeamMember) {
       console.log(this.editTeamMember);
-      this.teamMemberService.updateTeamMember(this.editTeamMember, this.team)
+      this.teamMemberService.updateTeamMember(this.editTeamMember)
         .subscribe(teamMember => {
           // replace the teamMember in the teamMembers list with update from server
           const ix = teamMember ? this.teamMembers.findIndex(h => h.id === teamMember.id) : -1;
@@ -97,6 +75,10 @@ export class TeamMemberComponent implements OnInit {
     }
   }
 
+  delete(teamMember: TeamMember): void {
+    this.teamMembers = this.teamMembers.filter(h => h !== teamMember);
+    this.teamMemberService.deleteTeamMember(teamMember).subscribe();
+  }
 
 
   // Modal method

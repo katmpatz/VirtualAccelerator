@@ -5,30 +5,30 @@
         <img *ngIf="teamMember?.photo" src="../../assets/img/faces/{{ teamMember.id }}.png" class="avatar">
         <img *ngIf="!teamMember?.photo" src="../../assets/img/user.png" class="avatar">
       </div>
-      <div class="col-lg-9">
-        <h6><strong>Name:</strong> {{ teamMember.name }}</h6>
-        <h6><strong>Email:</strong> {{ teamMember.email }}</h6>
-        <h6><strong>Phone:</strong> {{ teamMember.phone }}</h6>
-      </div><!-- /col-sm-5 -->
-
-      <a (click)="edit(teamMember)">
-        <strong>Name:</strong>
-        <span *ngIf="teamMember!==editTeamMember">{{teamMember.name}}</span>
-        <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.name"
-          (blur)="update()" (keyup.enter)="update()">
-          <strong>Name:</strong>
-          <span *ngIf="teamMember!==editTeamMember">{{teamMember.email}}</span>
-          <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.email"
-            (blur)="update()" (keyup.enter)="update()">
+      <div class="col-lg-9 row">
+        <div class ="col-lg-9">
+          <h6>
             <strong>Name:</strong>
+            <span *ngIf="teamMember!==editTeamMember">{{teamMember.name}}</span>
+            <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.name" class="form-control">
+          </h6>
+          <h6>
+              <strong>Email:</strong>
+              <span *ngIf="teamMember!==editTeamMember">{{teamMember.email}}</span>
+              <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.email" class="form-control">
+          </h6>
+          <h6>
+            <strong>Phone:</strong>
             <span *ngIf="teamMember!==editTeamMember">{{teamMember.phone}}</span>
-            <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.phone"
-              (blur)="update()" (keyup.enter)="update()">
-      </a>
-
-
-
-
+            <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.phone" class="form-control">
+          </h6>
+        </div>
+        <div class="col-lg-3 row">
+          <button *ngIf="teamMember===editTeamMember" title="Save team member"(click)="update()" class="btn btn-circle" style="background-color:#00cc99;"><i class="material-icons circle-icon">done</i></button>
+          <button *ngIf="teamMember!==editTeamMember" title="Edit team member" (click)="edit(teamMember)" class="btn btn-link"><i class="material-icons circle-icon">edit</i></button>
+          <button *ngIf="teamMember!==editTeamMember" title="Delete team member" (click)="delete(teamMember)" class="btn btn-link" style="color:#ff0066;"><i class="material-icons circle-icon">clear</i></button>
+        </div>
+      </div>
     </div><!-- /row -->
     <hr>
   </div>
@@ -42,14 +42,14 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add new team</h4>
+    <h4 class="modal-title" id="modal-basic-title">Add new team member</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <div class="row justify-content-start">
-      <div class="col-6">
+    <div class="row justify-content-center">
+      <div class="col-10">
         <form (ngSubmit)="onSubmit()" #teamMemberForm="ngForm">
           <div class="form-group">
             <input type="text"
@@ -74,7 +74,9 @@
                       name="phone"
                       placeholder="Phone">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </form>
       </div>
     </div>
