@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Team } from '../team';
 import { TeamService } from '../team.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,8 @@ export class DashboardComponent implements OnInit {
 
   teams: Team[] = [];
 
-  constructor(private teamService: TeamService) { }
+  constructor(private teamService: TeamService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.getTeams();

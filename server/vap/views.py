@@ -1,19 +1,13 @@
 #from django.shortcuts import render, get_object_or_404
-from .models import Team
-from .models import TeamMember
-from .models import Coach
-from .models import Deliverable
-from .models import TeamDeliverable
-# from .models import Milestone
-# from .models import Question
-# from .models import Answer
-from .models import Comment
-
+from .models import Team, TeamMember, Coach, Deliverable, TeamDeliverable, Comment
 from .serializers import TeamSerializer, TeamMemberSerializer, CoachSerializer, DeliverableSerializer, TeamDeliverableSerializer, CommentSerializer
-# from .serializers import MilestoneSerializer, QuestionSerializer, AnswerSerializer
+
 from rest_framework import generics
 
 from django.contrib.staticfiles import views
+
+from rest_framework import permissions
+
 
 def index(request, path=''):
     if (path.endswith('.js')):
@@ -23,6 +17,7 @@ def index(request, path=''):
 
 class TeamList(generics.ListCreateAPIView):
     serializer_class = TeamSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Team.objects.all()
@@ -34,9 +29,12 @@ class TeamList(generics.ListCreateAPIView):
 class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 class TeamMemberList(generics.ListCreateAPIView):
     serializer_class = TeamMemberSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = TeamMember.objects.all()
@@ -48,10 +46,12 @@ class TeamMemberList(generics.ListCreateAPIView):
 class TeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class CoachList(generics.ListCreateAPIView):
     serializer_class = CoachSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Coach.objects.all()
@@ -63,9 +63,12 @@ class CoachList(generics.ListCreateAPIView):
 class CoachDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 class TeamDeliverableList(generics.ListCreateAPIView):
     serializer_class = TeamDeliverableSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = TeamDeliverable.objects.all()
@@ -77,9 +80,12 @@ class TeamDeliverableList(generics.ListCreateAPIView):
 class TeamDeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamDeliverable.objects.all()
     serializer_class = TeamDeliverableSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 class DeliverableList(generics.ListCreateAPIView):
     serializer_class = DeliverableSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Deliverable.objects.all()
@@ -91,52 +97,12 @@ class DeliverableList(generics.ListCreateAPIView):
 class DeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Deliverable.objects.all()
     serializer_class = DeliverableSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-# class MilestoneList(generics.ListCreateAPIView):
-#     serializer_class = MilestoneSerializer
-#
-#     def get_queryset(self):
-#         queryset = Milestone.objects.all()
-#         deliverable_id = self.kwargs.get('deliverable_id', None)
-#         if deliverable_id is not None:
-#             queryset = queryset.filter(deliverable=deliverable_id)
-#         return queryset
-#
-# class MilestoneDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Milestone.objects.all()
-#     serializer_class = MilestoneSerializer
-#
-# class QuestionList(generics.ListCreateAPIView):
-#     serializer_class = QuestionSerializer
-#
-#     def get_queryset(self):
-#         queryset = Question.objects.all()
-#         milestone_id = self.kwards.get('milestone_id')
-#         if milestone_id is not None:
-#             queryset = queryset.filter(milestone=milestone_id)
-#         return queryset
-#
-# class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Question.objects.all()
-#     serializer_class = QuestionSerializer
-#
-#
-# class AnswerList(generics.ListCreateAPIView):
-#     serializer_class = AnswerSerializer
-#
-#     def get_queryset(self):
-#         queryset = Answer.objects.all()
-#         question_id = self.kwargs.get('question_id', None)
-#         if question_id is not None:
-#             queryset = queryset.filter(question=question_id)
-#         return queryset
-#
-# class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Answer.objects.all()
-#     serializer_class = AnswerSerializer
 
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Comment.objects.all()
@@ -148,31 +114,4 @@ class CommentList(generics.ListCreateAPIView):
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-
-
-
-# def index(request):
-#     available_teams = Team.objects.all()
-#     available_deliverables = Deliverable.objects.all()
-#     context = {'available_teams': available_teams, 'available_deliverables': available_deliverables}
-#     return render(request, 'vap/index.html', context)
-#
-# def team(request, team_id):
-#     team = get_object_or_404(Team, pk=team_id)
-#     return render(request, 'vap/team.html', {'team': team})
-#
-# def teamMember(request, teamMember_id):
-#     teamMember = get_object_or_404(TeamMember, pk=teamMember_id)
-#     return render(request, 'vap/teamMember.html', {'teamMember': teamMember})
-#
-# def coach(request, coach_id):
-#     coach = get_object_or_404(Coach, pk=coach_id)
-#     return render(request, 'vap/coach.html', {'coach': coach})
-#
-# def deliverable(request, deliverable_id):
-#     deliverable = get_object_or_404(Deliverable, pk=deliverable_id)
-#     return render(request, 'vap/deliverable.html', {'deliverable': deliverable})
-#
-# def teamDeliverable(request, teamDeliverable_id):
-#     teamdeliverable = get_object_or_404(TeamDeliverable, pk=teamDeliverable_id)
-#     return render(request, 'vap/teamdeliverable.html', {'teamdeliverable': teamdeliverable})
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

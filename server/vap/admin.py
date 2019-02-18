@@ -4,7 +4,7 @@ from .models import User, Coach, Team, TeamMember, Deliverable, TeamDeliverable,
 
 class UserAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['name', 'email','phone','photo', 'linkedin']}),
+        (None, {'fields': ['name', 'email','phone','photo']}),
     ]
     list_display = ('name', 'email')
 

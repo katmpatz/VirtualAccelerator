@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Team } from '../team';
 import {TeamService} from '../team.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class TeamsComponent implements OnInit {
     private route: ActivatedRoute,
     private teamService: TeamService,
     private modalService: NgbModal,
+    private auth: AuthService
   ) { }
 
    ngOnInit() {

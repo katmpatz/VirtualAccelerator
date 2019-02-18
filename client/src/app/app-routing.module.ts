@@ -9,9 +9,10 @@ import { DeliverableComponent } from './deliverable/deliverable.component';
 import { DeliverableDetailsComponent } from './deliverable-details/deliverable-details.component';
 import { TeamdeliverableComponent } from './teamdeliverable/teamdeliverable.component';
 import { TeamdeliverableDetailComponent } from './teamdeliverable-detail/teamdeliverable-detail.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: '/teams', pathMatch: 'full'},
   {path: 'teams', component: TeamsComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'teams/:id', component: TeamDetailComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'teams/:id/teamdeliverables/:id', component: TeamdeliverableDetailComponent },
   {path: 'deliverables', component: DeliverableComponent },
   {path: 'deliverables/:id', component: DeliverableDetailsComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 

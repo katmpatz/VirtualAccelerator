@@ -1,5 +1,5 @@
 
-<div class=container>
+<div class=container *ngIf="auth.isLoggedIn">
   <h3>Top Teams</h3>
   <div class="row">
     <a *ngFor="let team of teams" class="col-sm"

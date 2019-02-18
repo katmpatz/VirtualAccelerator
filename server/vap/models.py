@@ -6,6 +6,7 @@ class User(models.Model):
     email = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
     photo = models.ImageField(upload_to = 'static/img/', blank=True)
+    
     # linkedin = models.CharField(max_length=100, blank=True)
     #field = models.CharField(max_length=100)
 

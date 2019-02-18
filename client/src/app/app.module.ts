@@ -5,6 +5,8 @@ import { DatePipe, CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './token.interceptor';
 
 import { AppComponent } from './app.component';
 import { TeamsComponent } from './teams/teams.component';
@@ -23,7 +25,10 @@ import { TeamService } from './team.service';
 import { DeliverableService } from './deliverable.service';
 import { TeamdeliverableComponent } from './teamdeliverable/teamdeliverable.component';
 import { TeamdeliverableDetailComponent } from './teamdeliverable-detail/teamdeliverable-detail.component';
+import { TeamdeliverableService } from './teamdeliverable.service';
 import { TeamdelComponent } from './teamdel/teamdel.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -42,6 +47,7 @@ import { TeamdelComponent } from './teamdel/teamdel.component';
     TeamdeliverableComponent,
     TeamdeliverableDetailComponent,
     TeamdelComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,11 @@ import { TeamdelComponent } from './teamdel/teamdel.component';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [DatePipe, TeamMemberService, TeamService, DeliverableService],
+  providers: [DatePipe, TeamMemberService, TeamService, DeliverableService, TeamdeliverableService, AuthService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
