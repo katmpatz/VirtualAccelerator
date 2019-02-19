@@ -39,10 +39,8 @@ export class TeamMemberService {
   /** POST: add a new teamMember to the server */
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     let url = `api/teams/${teamMember.team}/teammembers`;
-    console.log(teamMember.name)
-    console.log(teamMember.team)
     return this.http.post<TeamMember>(url, teamMember, httpOptions).pipe(
-      tap((teamMember: TeamMember) => this.log(`added teamMember w/ id=${teamMember.id}`)),
+      tap((teamMember: TeamMember) => this.log(`added teamMember w/ id=${teamMember.user}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))
     );
   }
@@ -50,7 +48,7 @@ export class TeamMemberService {
   /** PUT: update the team member on the server */
   updateTeamMember (teamMember: TeamMember): Observable<TeamMember> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
-    let url = `api/teams/${teamMember.team}/teammembers/${teamMember.id}`;
+    let url = `api/teams/${teamMember.team}/teammembers/${teamMember.user}`;
     return this.http.put<TeamMember>(url, teamMember, httpOptions)
       .pipe(
         catchError(this.handleError('updateTeamMember', teamMember))
@@ -59,9 +57,9 @@ export class TeamMemberService {
 
   /** DELETE: delete the team from the server */
   deleteTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    const url = `api/teams/${teamMember.team}/teammembers/${teamMember.id}`;;
+    const url = `api/teams/${teamMember.team}/teammembers/${teamMember.user}`;;
     return this.http.delete<TeamMember>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted teamMember id=${teamMember.id}`)),
+      tap(_ => this.log(`deleted teamMember id=${teamMember.user}`)),
       catchError(this.handleError<TeamMember>('deleteTeamMember'))
     );
   }

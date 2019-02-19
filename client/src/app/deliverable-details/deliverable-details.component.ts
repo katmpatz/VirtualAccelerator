@@ -25,7 +25,7 @@ export class DeliverableDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getDeliverable();
   }
-  
+
 
   getDeliverable(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -36,5 +36,7 @@ export class DeliverableDetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+
 
 }

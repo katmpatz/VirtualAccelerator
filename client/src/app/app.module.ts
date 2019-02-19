@@ -29,6 +29,8 @@ import { TeamdeliverableService } from './teamdeliverable.service';
 import { TeamdelComponent } from './teamdel/teamdel.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { UserComponent } from './user/user.component';
+import { UserService } from './user.service';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { AuthService } from './auth.service';
     TeamdeliverableDetailComponent,
     TeamdelComponent,
     LoginComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { AuthService } from './auth.service';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [DatePipe, TeamMemberService, TeamService, DeliverableService, TeamdeliverableService, AuthService, {
+  providers: [DatePipe, TeamMemberService, TeamService, DeliverableService, TeamdeliverableService, UserService, AuthService, {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,

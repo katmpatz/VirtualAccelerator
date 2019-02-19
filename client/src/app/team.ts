@@ -1,5 +1,3 @@
-import { TeamMember } from './teamMember';
-import { Coach } from './coach';
 
 export class Team {
   id: number;
@@ -11,6 +9,5 @@ export class Team {
   tag_line: string;
   research_stream: boolean;
   coorporate_existance: boolean;
-  coaches: Array<Coach>;
   photo: string;
 }

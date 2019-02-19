@@ -18,7 +18,8 @@ export class TokenInterceptor implements HttpInterceptor {
             next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token = localStorage.getItem('vap-jwt-access-token');
-    if (token) {
+    const refresh_token = localStorage.getItem('vap-jwt-refresh-token');
+    if (token || refresh_token) {
       const authReq = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`

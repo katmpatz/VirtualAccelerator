@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DatePipe, CommonModule } from '@angular/common';
 
+import { DeliverableService }  from '../deliverable.service';
 import { TeamDeliverable } from '../teamdeliverable';
 import { Deliverable } from '../deliverable';
 import { TeamdeliverableService } from '../teamdeliverable.service';
@@ -18,18 +19,27 @@ export class TeamdelComponent implements OnInit {
   today: number = Date.now();
   teamDeliverables: TeamDeliverable[];
   teamDeliverable: TeamDeliverable;
-
+  deliverable: Deliverable;
 
   constructor(
     private route: ActivatedRoute,
     private datePipe: DatePipe,
     private teamDeliverableService: TeamdeliverableService,
+    private deliverableService: DeliverableService,
   ) { }
 
   ngOnInit() {
     const teamId = this.team;
-    return this.teamDeliverableService.getTeamDeliverables(teamId)
-      .subscribe(teamDeliverables => this.teamDeliverables = teamDeliverables);
+    this.teamDeliverableService.getTeamDeliverables(teamId)
+      // .subscribe(teamDeliverables => {
+      //   for(let teamdel of teamDeliverables) {
+      //     this.getDeliverable(teamdel.deliverable)
+      // }});
+  }
+
+  getDeliverable(id: number) {
+    return this.deliverableService.getDeliverable(id)
+      .subscribe(deliverable => this.deliverable = deliverable);
   }
 
   deliverable_color(deadline: Date): boolean {
@@ -43,4 +53,14 @@ export class TeamdelComponent implements OnInit {
     }
   }
 
-  }
+  // deliverableIcon(id:number): string {
+  //   var delIcon = '';
+  //   console.log(id);
+  //   this.deliverableService.getDeliverable(id)
+  //     .subscribe(deliverable => {delIcon = deliverable.icon;});
+  //   console.log("icon")
+  //   console.log(delIcon)
+  //   // return delIcon;
+  // }
+
+}

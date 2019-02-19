@@ -1,22 +1,28 @@
 from django.db import models
 from PIL import Image
+from django.contrib.auth.models import User as vap_user
 
 class User(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20)
+    user = models.OneToOneField(vap_user, on_delete = models.CASCADE, primary_key = True, related_name='profile')
+    name = models.CharField(max_length=100, default="")
+    email = models.CharField(max_length=100, default="", blank=True)
+    phone = models.CharField(max_length=20, default="", blank=True)
     photo = models.ImageField(upload_to = 'static/img/', blank=True)
-    
-    # linkedin = models.CharField(max_length=100, blank=True)
-    #field = models.CharField(max_length=100)
+    is_coach = models.BooleanField(default=False)
+    is_team_member = models.BooleanField(default=False)
 
     def __str__(self):
-        return "%s" % (self.name)
+        return self.name
+
 
 class Coach(User):
     job_title = models.CharField(max_length=100, blank=True)
     organization = models.CharField(max_length=100, blank=True)
     field = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -27,16 +33,20 @@ class Team(models.Model):
     date_of_entry = models.DateField(auto_now=True)
     website = models.CharField(max_length=100, blank=True)
     coorporate_existance = models.BooleanField(default=False)
-    coaches = models.ManyToManyField(Coach)
     tag_line = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.name
 
+
 class TeamMember(User):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     role = models.CharField(max_length=100, default="", blank=True)
     field = models.CharField(max_length=100, default="", blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Deliverable(models.Model):
     title = models.CharField(max_length=100)
@@ -49,42 +59,16 @@ class Deliverable(models.Model):
     def __str__(self):
         return self.title
 
-# class Milestone(models.Model):
-#     deliverable = models.ForeignKey(Deliverable, related_name='milestones',on_delete=models.CASCADE)
-#     num = models.IntegerField()
-#     title = models.CharField(max_length=200, default="")
-#
-#     def __str__(self):
-#         return "%d.%s" % (self.num, self.title)
-#
-# class Question(models.Model):
-#     milestone = models.ForeignKey(Milestone,related_name='questions', on_delete=models.CASCADE)
-#     num = models.IntegerField()
-#     title = models.CharField(max_length=500)
-#     #instructions = models.TextField(default="")
-#
-#     def __str__(self):
-#         return "%s %d. %s" % (self.milestone, self.num, self.title)
-
 class TeamDeliverable(models.Model):
-    deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE)
+    deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE, related_name='deliverable')
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     deadline = models.DateField(null=True, blank=True)
     delivery_day = models.DateField(null=True, blank=True)
     status = models.BooleanField(default=False)
-    file = models.FileField(upload_to = 'media/deliverables/teams', blank=True)
+    file = models.FileField(upload_to = 'teamdeliverables/', blank=True)
 
     def __str__(self):
         return "%s %s" % (self.deliverable, self.team)
-
-# class Answer(models.Model):
-#     team_deliverable = models.ForeignKey(TeamDeliverable, related_name='answers', on_delete=models.CASCADE)
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-#     text = models.TextField(default="")
-#     date = models.DateField()
-#
-#     def __str__(self):
-#         return "%s %s %s" % (self.team_deliverable, self.question, self.text)
 
 class Comment(models.Model):
     teamdeliverable = models.ForeignKey(TeamDeliverable,related_name='comments', on_delete=models.CASCADE, default=1)

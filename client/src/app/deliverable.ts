@@ -8,5 +8,6 @@ export class Deliverable {
   template: string;
   release_date: Date;
   pipeline:string;
+  icon:string;
   // milestones: Array<Milestone>;
 }

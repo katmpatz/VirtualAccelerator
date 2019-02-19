@@ -10,9 +10,12 @@ import { DeliverableDetailsComponent } from './deliverable-details/deliverable-d
 import { TeamdeliverableComponent } from './teamdeliverable/teamdeliverable.component';
 import { TeamdeliverableDetailComponent } from './teamdeliverable-detail/teamdeliverable-detail.component';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/teams', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'users', component: UserComponent},
+  {path: 'users/:username', component: UserComponent },
   {path: 'teams', component: TeamsComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'teams/:id', component: TeamDetailComponent },

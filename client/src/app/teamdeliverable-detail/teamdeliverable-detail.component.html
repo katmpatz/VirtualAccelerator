@@ -3,14 +3,14 @@
   <div class="container-fluid">
     <div class="row justify-content-md-center">
       <div class="card card-nav-tabs" id="del_card">
-        <h4 class="card-header card-header-warning">{{teamdeliverable.deliverable.title}}</h4>
+        <h4 class="card-header card-header-warning">{{deliverable.title}}</h4>
         <div class="card-body">
           <br>
           <div class="row">
             <div class="col-6">
-              <h6><b class="bold">Pipeline:</b> {{teamdeliverable.deliverable.pipeline}}</h6>
+              <h6><b class="bold">Pipeline:</b> {{deliverable.pipeline}}</h6>
 
-              <h6><b class="bold">Instructions:</b> {{teamdeliverable.deliverable.description}}</h6>
+              <h6><b class="bold">Instructions:</b> {{deliverable.description}}</h6>
               <br>
             </div>
             <div class="vl"></div><!--Vertical line-->
@@ -22,7 +22,7 @@
               <div *ngIf="isEmptyObject(teamdeliverable.deadline)"><h6><b class="bold">Deadline:</b> Aknown </h6></div>
               <div *ngIf="teamdeliverable.status">
                 <h6><b class="bold">Release date:</b> {{teamdeliverable.delivery_day}}</h6>
-                <h6><b class="bold">File:</b> {{teamdeliverable.file}}</h6>
+                <h6><b class="bold">File:</b> <a href="{{teamdeliverable.file}}">Get file</a></h6>
               </div>
               <div *ngIf="!teamdeliverable.status">
                 <h6><b class="bold">Release date:</b> Nothing has been submited yet</h6>
@@ -34,8 +34,7 @@
           <div class="row text-center">
             <div class="col-6">
               <h6><b class="bold">Download file:</b></h6>
-              <button type="button" class="btn btn-outline-primary"  routerLink="{{teamdeliverable.deliverable.template}}">Download</button>
-              <!-- <a href="{{teamdeliverable.deliverable.template}}">Download</a> -->
+              <a href="{{deliverable.template}}" type="button" class="btn btn-outline-primary">Download</a>
             </div>
             <div class="vl"></div><!--Vertical line-->
             <div class="col-6">

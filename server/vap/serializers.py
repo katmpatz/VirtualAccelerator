@@ -1,5 +1,27 @@
 from rest_framework import serializers
-from .models import Team, Coach, TeamMember, Deliverable, TeamDeliverable, Comment
+from .models import User, Team, Coach, TeamMember, Deliverable, TeamDeliverable, Comment
+from django.contrib.auth.models import User as vap_user
+
+
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('user', 'name', 'email', 'phone', 'photo', 'is_coach', 'is_team_member')
+
+    # For post
+    # def to_representation(self, instance):
+    #     self.fields['user'] =  UserSerializer(read_only=True)
+    #     return super(CustomUserSerializer, self).to_representation(instance)
+
+class UserSerializer(serializers.ModelSerializer):
+
+    profile =  CustomUserSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = vap_user
+        fields = ('id','username', 'password', 'profile')
+        lookup_field='username'
 
 
 class CoachSerializer(serializers.ModelSerializer):
@@ -30,22 +52,23 @@ class TeamSerializer(serializers.ModelSerializer):
         depth = 1
 
 class TeamDeliverableSerializer(serializers.ModelSerializer):
+    # deliverable = DeliverableSerializer(many=False, read_only=True)
 
     class Meta:
         model = TeamDeliverable
         fields = ('id', 'deliverable', 'team', 'deadline', 'delivery_day', 'status', 'file' )
 
     # For post
-    def to_representation(self, instance):
-        self.fields['deliverable'] =  DeliverableSerializer(read_only=True)
-        return super(TeamDeliverableSerializer, self).to_representation(instance)
+    # def to_representation(self, instance):
+    #     self.fields['deliverable'] =  DeliverableSerializer(read_only=True)
+    #     return super(TeamDeliverableSerializer, self).to_representation(instance)
 
 
 class TeamMemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamMember
-        fields = ('id', 'team', 'name', 'email', 'phone', 'field', 'role' )
+        fields = ('user', 'team', 'name', 'email', 'phone', 'field', 'role' )
 
     # For post
     def to_representation(self, instance):

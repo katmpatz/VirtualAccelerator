@@ -68,7 +68,7 @@ export class TeamMemberComponent implements OnInit {
       this.teamMemberService.updateTeamMember(this.editTeamMember)
         .subscribe(teamMember => {
           // replace the teamMember in the teamMembers list with update from server
-          const ix = teamMember ? this.teamMembers.findIndex(h => h.id === teamMember.id) : -1;
+          const ix = teamMember ? this.teamMembers.findIndex(h => h.user === teamMember.user) : -1;
           if (ix > -1) { this.teamMembers[ix] = teamMember; }
         });
       this.editTeamMember = undefined;

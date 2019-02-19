@@ -23,12 +23,14 @@ export class LoginComponent {
     this.auth.login(username, password)
       .subscribe(res => {
         if (res) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/users/', username]);
+          ;
         }
     });
   }
 
   logout() {
     this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { UserService } from './user.service';
 
 class Credentials {
   constructor(public username: string, public password: string) {
@@ -23,7 +24,7 @@ export class AuthService {
 
   isLoggedIn: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   login(username, password) : Observable<boolean> {
     const authUrl = `api/token/`;
@@ -39,6 +40,9 @@ export class AuthService {
               localStorage.setItem('vap-jwt-refresh-token',
                                    results['refresh']);
             }
+            this.userService.getUser(username).subscribe(user => localStorage.setItem('user', JSON.stringify(user)));
+            console.log(localStorage.getItem(JSON.parse('user')));
+
             return true;
           } else {
             return false;
@@ -54,7 +58,9 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
     localStorage.removeItem('vap-jwt-access-token');
+    localStorage.removeItem('user');
     localStorage.removeItem('vap-jwt-refresh-token');
+
   }
 
 }

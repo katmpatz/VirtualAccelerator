@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
+import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import {MessageService} from './message.service';
 
 import { Team } from './team';
 
@@ -48,7 +46,7 @@ export class TeamService {
 
   /** PUT: update the team on the server */
 updateTeam (team: Team): Observable<any> {
-  const url = `${this.teamsUrl}/${team.id}`; 
+  const url = `${this.teamsUrl}/${team.id}`;
   return this.http.put(url, team, httpOptions).pipe(
     tap(_ => this.log(`updated team id=${team.id}`)),
     catchError(this.handleError<any>('updateTeam'))

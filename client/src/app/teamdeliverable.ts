@@ -5,5 +5,5 @@ export class TeamDeliverable {
   deadline:Date;
   delivery_day: Date;
   status: boolean;
-  file: string;
+  file: string | any;
 }

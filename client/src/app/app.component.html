@@ -9,16 +9,17 @@
       <a href="" class="simple-text logo-normal" style="font-family: 'Lobster', cursive;"><img src="../assets/img/startup.svg" onerror="this.onerror=null; this.src='startup.png'" style="height:30px; width:30px;">Accelerator</a>
     </div>
     <div class="sidebar-wrapper">
-      <div class="logo">
-        <a href="" class="user-text" style="font-weight:500;">COACH</a>
+      <!-- <div class="logo">
+        <a *ngIf="userdata.profile.is_coach" href="" class="user-text" style="font-weight:500;">COACH</a>
+        <a *ngIf="userdata.profile.is_team_member" href="" class="user-text" style="font-weight:500;">TEAM</a>
         <a href="" class="user-text" >
-          <img src="../assets/img/faces/4.png" class="avatar" style="height:40px; width:40px; margin-right:6px; text-align:left;">Stefanidis Petros</a>
-      </div>
+        <img src="../assets/img/user.png" class="avatar" style="height:40px; width:40px; margin-right:6px; text-align:left;">{{userdata.profile.name}}</a>
+      </div> -->
       <ul class="nav mr-auto">
-        <li class="nav-item" routerLinkActive="active" >
-          <a class="nav-link" routerLink="/dashboard">
-            <i class="material-icons">group</i>
-            <p>Dashboard</p>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/users">
+            <i class="material-icons">assignment_ind</i>
+            <p>Profile</p>
           </a>
         </li>
         <li class="nav-item" routerLinkActive="active">
@@ -33,12 +34,7 @@
             <p>Deliverables</p>
           </a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/teamdeliverables">
-            <i class="material-icons">assignment_ind</i>
-            <p>TeamDeliverables</p>
-          </a>
-        </li>
+
         <li class="nav-item" routerLinkActive="active">
           <app-login></app-login>
         </li>

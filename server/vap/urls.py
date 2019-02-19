@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 app_name = 'vap'
 
 urlpatterns = [
+    re_path('^users/?$', views.UserList.as_view()),
+    re_path(r'^users/(?P<username>\w+)/?$', views.UserDetail.as_view()),
     re_path('^teams/?$', views.TeamList.as_view()),
     re_path(r'^teams/(?P<pk>\d+)/?$', views.TeamDetail.as_view()),
     re_path(r'^teams/(?P<team_id>[0-9]+)/teammembers/?$',views.TeamMemberList.as_view()),
@@ -16,4 +18,4 @@ urlpatterns = [
     re_path(r'^coaches/(?P<pk>\d+)/?$', views.CoachDetail.as_view()),
     re_path(r'^deliverables/?$', views.DeliverableList.as_view()),
     re_path(r'^deliverables/(?P<pk>\d+)/?$', views.DeliverableDetail.as_view()),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static("/media/", document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,5 @@
 export class TeamMember {
-  id: number;
+  user: number;
   name: string;
   photo: string;
   email: string;
