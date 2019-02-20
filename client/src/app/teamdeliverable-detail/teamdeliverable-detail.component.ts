@@ -4,9 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DatePipe, CommonModule } from '@angular/common';
 import { TeamdeliverableService }  from '../teamdeliverable.service';
-import { DeliverableService }  from '../deliverable.service';
+
 import { TeamDeliverable } from '../teamdeliverable';
-import { Deliverable } from '../deliverable';
 
 
 @Component({
@@ -18,15 +17,12 @@ export class TeamdeliverableDetailComponent implements OnInit {
     today: number = Date.now();
     date: Date;
     teamdeliverable: TeamDeliverable;
-    deliverable: Deliverable;
-    deliverable_id: number = null;
     files: any[];
     file: any;
 
   constructor(
     private route: ActivatedRoute,
     private teamdeliverableService: TeamdeliverableService,
-    private deliverableService: DeliverableService,
     private location: Location,
     private datePipe: DatePipe,
   ) { }
@@ -40,13 +36,13 @@ export class TeamdeliverableDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     const team_id = +this.route.parent.snapshot.paramMap.get('id');
     this.teamdeliverableService.getTeamdeliverable(id, team_id)
-      .subscribe(teamdeliverable => {this.teamdeliverable = teamdeliverable; this.deliverable_id = teamdeliverable.deliverable; this.getDeliverable(teamdeliverable.deliverable);});
+      .subscribe(teamdeliverable => this.teamdeliverable = teamdeliverable);
   }
 
-  getDeliverable(id: number) {
-    this.deliverableService.getDeliverable(id)
-      .subscribe(deliverable => this.deliverable = deliverable);
-  }
+  // save(): void {
+  // this.teamdeliverableService.updateTeamdeliverable(this.teamdeliverable)
+  //   .subscribe(() => this.goBack());
+  // }
 
   goBack(): void {
     this.location.back();
@@ -85,7 +81,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
 
   updateTeamDeliverable(teamdeliverableId: number) : TeamDeliverable {
    var teamdeliverable = new TeamDeliverable();
-   teamdeliverable.deliverable = this.deliverable.id;
+   teamdeliverable.deliverable = this.teamdeliverable.deliverable;
    teamdeliverable.team = this.teamdeliverable.team;
    teamdeliverable.deadline = this.teamdeliverable.deadline;
    teamdeliverable.delivery_day = this.date;

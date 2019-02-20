@@ -4,6 +4,7 @@ import { User } from '../user';
 import { Profile } from '../profile';
 import { TeamMember } from '../teamMember';
 import { Coach } from '../coach';
+import {TeamMemberService} from '../team-member.service';
 import {UserService} from '../user.service';
 import { AuthService } from '../auth.service';
 
@@ -28,6 +29,7 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
+    private teamMemberService: TeamMemberService,
     private auth: AuthService
   ) { }
 
@@ -36,8 +38,17 @@ export class UserComponent implements OnInit {
      this.user = JSON.parse(localStorage.getItem('user'));
      this.id = this.user.id;
      this.profile = this.user.profile;
-     this.is_team_member = this.user.profile.is_team_member
-     console.log(this.is_team_member);
+     this.is_team_member = this.user.profile.is_team_member;
+     console.log(this.user.profile.is_team_member)
+     if(this.user.profile.is_team_member) {
+       this.getTeamMemberDetails(this.user.id);
+        console.log("is_team_member")
+     }
+   }
+
+   getTeamMemberDetails(userId: number): void{
+     this.teamMemberService.getTeamMember(userId)
+       .subscribe(teamMember => this.teamMember = teamMember);
    }
 
 

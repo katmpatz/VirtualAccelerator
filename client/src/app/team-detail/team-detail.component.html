@@ -12,7 +12,7 @@
             <!--Team Information-->
             <div class="row">
               <div class="col-lg-4 text-center">
-                <img *ngIf="team.photo" class="team_img" src="../../assets/img/{{ team.id }}.png" alt="{{team.name}}" height="140" width="140">
+                <img *ngIf="team.photo" class="team_img" src="{{team.photo}}" alt="{{team.name}}" height="140" width="140">
                 <img *ngIf="!team.photo" class="team_img" src="../../assets/img/default.jpg" alt="{{team.name}}" height="140" width="140"><br>
                 <h6 *ngIf="team.website"><strong>Website:</strong> {{team.website}}</h6>
                 <h6><strong>Pipeline:</strong> {{ team.pipeline }}</h6>

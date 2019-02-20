@@ -18,4 +18,6 @@ urlpatterns = [
     re_path(r'^coaches/(?P<pk>\d+)/?$', views.CoachDetail.as_view()),
     re_path(r'^deliverables/?$', views.DeliverableList.as_view()),
     re_path(r'^deliverables/(?P<pk>\d+)/?$', views.DeliverableDetail.as_view()),
+    re_path(r'^teammembers/?$',views.TeamMemberList.as_view()),
+    re_path(r'^teammembers/(?P<pk>\d+)/?$',views.TeamMemberDetail.as_view()),
 ]+ static("/media/", document_root=settings.MEDIA_ROOT)

@@ -59,18 +59,18 @@ class TeamDeliverableSerializer(serializers.ModelSerializer):
         fields = ('id', 'deliverable', 'team', 'deadline', 'delivery_day', 'status', 'file' )
 
     # For post
-    # def to_representation(self, instance):
-    #     self.fields['deliverable'] =  DeliverableSerializer(read_only=True)
-    #     return super(TeamDeliverableSerializer, self).to_representation(instance)
+    def to_representation(self, instance):
+        self.fields['deliverable'] =  DeliverableSerializer(read_only=False)
+        return super(TeamDeliverableSerializer, self).to_representation(instance)
 
 
 class TeamMemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamMember
-        fields = ('user', 'team', 'name', 'email', 'phone', 'field', 'role' )
+        fields = ('user', 'team', 'name', 'email', 'phone', 'photo', 'field', 'role' )
 
     # For post
     def to_representation(self, instance):
-        self.fields['team'] =  TeamSerializer(read_only=True)
+        self.fields['team'] =  TeamSerializer(read_only=False)
         return super(TeamMemberSerializer, self).to_representation(instance)

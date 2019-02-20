@@ -62,7 +62,26 @@ class TeamMemberList(generics.ListCreateAPIView):
             queryset = queryset.filter(team=team_id)
         return queryset
 
+
 class TeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TeamMember.objects.all()
+    serializer_class = TeamMemberSerializer
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class AllTeamMemberList(generics.ListCreateAPIView):
+    serializer_class = TeamMemberSerializer
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
+        queryset = TeamMember.objects.all()
+        user = self.request.query_params.get('user', None)
+        if user is not None:
+            queryset = queryset.filter(user=user)
+        return queryset
+
+
+class AllTeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
     #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

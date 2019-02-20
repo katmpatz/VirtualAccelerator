@@ -7,6 +7,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
+import { mergeMap } from 'rxjs/operators';
 
 import { AppComponent } from './app.component';
 import { TeamsComponent } from './teams/teams.component';

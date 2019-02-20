@@ -21,7 +21,7 @@ export class TeamdeliverableComponent implements OnInit {
   deliverables : Deliverable[];
   valids : Deliverable[];
   closeResult: string;
-  deliverable: Deliverable;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -58,11 +58,6 @@ export class TeamdeliverableComponent implements OnInit {
   getDeliverables(): void {
     this.deliverableService.getDeliverables()
      .subscribe(deliverables => this.deliverables = deliverables);
-  }
-
-  getDeliverable(id: number) {
-    this.deliverableService.getDeliverable(id)
-      .subscribe(deliverable => this.deliverable = deliverable);
   }
 
   newTeamDeliverable(teamId: number) : TeamDeliverable {

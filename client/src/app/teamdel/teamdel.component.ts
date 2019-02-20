@@ -17,9 +17,8 @@ export class TeamdelComponent implements OnInit {
   team: number;
 
   today: number = Date.now();
-  teamDeliverables: TeamDeliverable[];
+  teamDeliverables: TeamDeliverable[];z
   teamDeliverable: TeamDeliverable;
-  deliverable: Deliverable;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,16 +30,9 @@ export class TeamdelComponent implements OnInit {
   ngOnInit() {
     const teamId = this.team;
     this.teamDeliverableService.getTeamDeliverables(teamId)
-      // .subscribe(teamDeliverables => {
-      //   for(let teamdel of teamDeliverables) {
-      //     this.getDeliverable(teamdel.deliverable)
-      // }});
+      .subscribe(teamDeliverables => this.teamDeliverables = teamDeliverables);
   }
 
-  getDeliverable(id: number) {
-    return this.deliverableService.getDeliverable(id)
-      .subscribe(deliverable => this.deliverable = deliverable);
-  }
 
   deliverable_color(deadline: Date): boolean {
     if(!deadline) {
@@ -52,15 +44,5 @@ export class TeamdelComponent implements OnInit {
       return false;
     }
   }
-
-  // deliverableIcon(id:number): string {
-  //   var delIcon = '';
-  //   console.log(id);
-  //   this.deliverableService.getDeliverable(id)
-  //     .subscribe(deliverable => {delIcon = deliverable.icon;});
-  //   console.log("icon")
-  //   console.log(delIcon)
-  //   // return delIcon;
-  // }
 
 }

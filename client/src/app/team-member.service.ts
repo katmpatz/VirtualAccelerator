@@ -26,6 +26,15 @@ export class TeamMemberService {
     private messageService: MessageService
   ) { }
 
+  /** GET teammember by id. Will 404 if id not found */
+  getTeamMember(id: number): Observable<TeamMember> {
+    const url = `api/teammembers/${id}`;
+    return this.http.get<TeamMember>(url).pipe(
+      tap(_ => this.log(`fetched teammember id=${id}`)),
+      catchError(this.handleError<TeamMember>(`getTeamMember id=${id}`))
+    );
+  }
+
   /** GET teamMembers from the server */
   getTeamMembers(teamId: number): Observable<TeamMember[]> {
     let url = `api/teams/${teamId}/teammembers`;
@@ -47,7 +56,7 @@ export class TeamMemberService {
 
   /** PUT: update the team member on the server */
   updateTeamMember (teamMember: TeamMember): Observable<TeamMember> {
-    httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
+    console.log(teamMember.team);
     let url = `api/teams/${teamMember.team}/teammembers/${teamMember.user}`;
     return this.http.put<TeamMember>(url, teamMember, httpOptions)
       .pipe(

@@ -2,7 +2,7 @@
   <div *ngFor="let teamMember of teamMembers">
     <div class="row">
       <div class="col-lg-3 avatar_position">
-        <img *ngIf="teamMember?.photo" src="../../assets/img/faces/{{ teamMember.user }}.png" class="avatar">
+        <img *ngIf="teamMember?.photo" src="{{teamMember.photo}}" class="avatar">
         <img *ngIf="!teamMember?.photo" src="../../assets/img/user.png" class="avatar">
       </div>
       <div class="col-lg-9 row">

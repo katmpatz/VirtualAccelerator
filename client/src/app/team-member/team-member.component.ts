@@ -37,7 +37,7 @@ export class TeamMemberComponent implements OnInit {
     var teamMember = new TeamMember();
     teamMember.name = '';
     teamMember.team = teamId;
-    // teamMember.photo = `../../assets/img/faces/${teamId}.png`;
+    teamMember.photo = '';
     teamMember.email = '';
     teamMember.phone = '';
     teamMember.role = '';
