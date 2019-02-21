@@ -22,9 +22,11 @@ export class LoginComponent {
   login(username, password) {
     this.auth.login(username, password)
       .subscribe(res => {
+        console.log(res);
         if (res) {
-          this.router.navigate(['/users/', username]);
-          ;
+          location.reload();
+          this.router.navigate(['/users', username]);
+
         }
     });
   }

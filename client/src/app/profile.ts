@@ -3,7 +3,7 @@ export class Profile {
   name: string;
   email: string;
   phone: string;
-  photo: string;
+  // photo: string;
   is_coach: boolean;
   is_team_member:boolean;
 }

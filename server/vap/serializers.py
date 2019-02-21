@@ -7,7 +7,7 @@ from django.contrib.auth.models import User as vap_user
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('user', 'name', 'email', 'phone', 'photo', 'is_coach', 'is_team_member')
+        fields = ('user', 'name', 'email', 'phone', 'is_coach', 'is_team_member')
 
     # For post
     # def to_representation(self, instance):
@@ -34,8 +34,13 @@ class CoachSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
-        depth = 1
+        fields = ('id', 'teamdeliverable', 'coach', 'text', 'date')
+
+    # For post
+    def to_representation(self, instance):
+        self.fields['coach'] =  CoachSerializer(read_only=False)
+        return super(CommentSerializer, self).to_representation(instance)
+
 
 
 class DeliverableSerializer(serializers.ModelSerializer):
@@ -68,7 +73,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamMember
-        fields = ('user', 'team', 'name', 'email', 'phone', 'photo', 'field', 'role' )
+        fields = ('user', 'team', 'name', 'email', 'phone', 'field', 'role' )
 
     # For post
     def to_representation(self, instance):

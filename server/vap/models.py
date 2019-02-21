@@ -7,7 +7,7 @@ class User(models.Model):
     name = models.CharField(max_length=100, default="")
     email = models.CharField(max_length=100, default="", blank=True)
     phone = models.CharField(max_length=20, default="", blank=True)
-    photo = models.ImageField(upload_to = 'static/img/', blank=True)
+    # photo = models.ImageField(upload_to = 'static/img/', blank=True)
     is_coach = models.BooleanField(default=False)
     is_team_member = models.BooleanField(default=False)
 
@@ -71,10 +71,10 @@ class TeamDeliverable(models.Model):
         return "%s %s" % (self.deliverable, self.team)
 
 class Comment(models.Model):
-    teamdeliverable = models.ForeignKey(TeamDeliverable,related_name='comments', on_delete=models.CASCADE, default=1)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    teamdeliverable = models.ForeignKey(TeamDeliverable, related_name='comments', on_delete=models.CASCADE, default=1)
+    coach = models.ForeignKey(Coach, on_delete=models.CASCADE)
     text = models.TextField(default="")
-    date = models.DateField()
+    date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return "%s %s %s" % (self.teamdeliverable, self.user, self.text)
+        return "%s %s %s" % (self.teamdeliverable, self.coach, self.text)

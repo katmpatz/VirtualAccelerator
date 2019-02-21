@@ -5,8 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { map, catchError } from 'rxjs/operators';
-// import 'rxjs/add/operator/do';
-// import 'rxjs/add/operator/catch';
+
 
 import {
   HttpRequest,
@@ -26,20 +25,13 @@ export class TokenInterceptor implements HttpInterceptor {
             next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token = localStorage.getItem('vap-jwt-access-token');
-    // const refresh_token = localStorage.getItem('vap-jwt-refresh-token');
     if (token) {
       const authReq = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
         }
       });
-      // return next.handle(authReq);
     }
-    // else {
-    //   return next.handle(req);
-    // }
-//   }
-// }
 
 
     return <any>next.handle(req).pipe(catchError(err => {
@@ -70,7 +62,6 @@ export class TokenInterceptor implements HttpInterceptor {
         ));
         }
       }
-      // return Observable.throw(err);
     }));
   }
 }

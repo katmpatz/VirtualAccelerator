@@ -32,6 +32,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { UserComponent } from './user/user.component';
 import { UserService } from './user.service';
+import { TeamCardComponent } from './team-card/team-card.component';
+import { DeliverablesTeamComponent } from './deliverables-team/deliverables-team.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -52,6 +55,9 @@ import { UserService } from './user.service';
     TeamdelComponent,
     LoginComponent,
     UserComponent,
+    TeamCardComponent,
+    DeliverablesTeamComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

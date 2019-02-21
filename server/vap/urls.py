@@ -14,6 +14,8 @@ urlpatterns = [
     re_path(r'^teams/(?P<team_id>[0-9]+)/teammembers/(?P<pk>\d+)/?$',views.TeamMemberDetail.as_view()),
     re_path(r'^teams/(?P<team_id>[0-9]+)/teamdeliverables/?$',views.TeamDeliverableList.as_view()),
     re_path(r'^teams/(?P<team_id>[0-9]+)/teamdeliverables/(?P<pk>\d+)/?$',views.TeamDeliverableDetail.as_view()),
+    re_path(r'^teams/(?P<team_id>[0-9]+)/teamdeliverables/(?P<teamdeliverable_id>[0-9]+)/comments/?$',views.CommentList.as_view()),
+    re_path(r'^teams/(?P<team_id>[0-9]+)/teamdeliverables/(?P<teamdeliverable_id>[0-9]+)/comments/(?P<pk>\d+)/?$',views.CommentDetail.as_view()),
     re_path('^coaches/?$', views.CoachList.as_view()),
     re_path(r'^coaches/(?P<pk>\d+)/?$', views.CoachDetail.as_view()),
     re_path(r'^deliverables/?$', views.DeliverableList.as_view()),

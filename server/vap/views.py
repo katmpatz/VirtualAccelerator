@@ -144,9 +144,9 @@ class CommentList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = Comment.objects.all()
-        answer_id = self.kwargs.get('answer_id', None)
-        if answer_id is not None:
-            queryset = queryset.filter(answer=answer_id)
+        teamdeliverable_id = self.kwargs.get('teamdeliverable_id', None)
+        if teamdeliverable_id is not None:
+            queryset = queryset.filter(teamdeliverable=teamdeliverable_id)
         return queryset
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):

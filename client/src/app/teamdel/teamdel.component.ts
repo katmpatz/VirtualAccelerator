@@ -17,7 +17,7 @@ export class TeamdelComponent implements OnInit {
   team: number;
 
   today: number = Date.now();
-  teamDeliverables: TeamDeliverable[];z
+  teamDeliverables: TeamDeliverable[];
   teamDeliverable: TeamDeliverable;
 
   constructor(

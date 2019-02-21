@@ -41,14 +41,16 @@ export class AuthService {
                                    results['refresh']);
             }
             this.userService.getUser(username).subscribe(user => localStorage.setItem('user', JSON.stringify(user)));
-            console.log(localStorage.getItem(JSON.parse('user')));
+            console.log("Return true");
 
             return true;
           } else {
+            console.log("Return false");
             return false;
           }
         }),
         catchError(error => {
+          console.log("Return false catchError");
           console.log(`Login service: ${error}`);
           return of(false);
         })
@@ -56,11 +58,10 @@ export class AuthService {
   }
 
   logout(): void {
-    this.isLoggedIn = false;
-    localStorage.removeItem('vap-jwt-access-token');
     localStorage.removeItem('user');
+    localStorage.removeItem('vap-jwt-access-token');
     localStorage.removeItem('vap-jwt-refresh-token');
-
+    this.isLoggedIn = false;
   }
 
 }

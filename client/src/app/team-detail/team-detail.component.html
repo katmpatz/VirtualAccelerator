@@ -4,43 +4,13 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8">
-        <div class="card card-nav-tabs">
-          <h4 class="card-header card-header-primary user-text click" style="font-weight:500;">
-            <b class="">{{ team.name | uppercase }}</b>
-          </h4>
-          <div class="card-body">
-            <!--Team Information-->
-            <div class="row">
-              <div class="col-lg-4 text-center">
-                <img *ngIf="team.photo" class="team_img" src="{{team.photo}}" alt="{{team.name}}" height="140" width="140">
-                <img *ngIf="!team.photo" class="team_img" src="../../assets/img/default.jpg" alt="{{team.name}}" height="140" width="140"><br>
-                <h6 *ngIf="team.website"><strong>Website:</strong> {{team.website}}</h6>
-                <h6><strong>Pipeline:</strong> {{ team.pipeline }}</h6>
-                <h6><strong>Maturity level:</strong> {{ team.maturity_level }}</h6>
-                <h6><strong>Date of entry:</strong> {{team.date_of_entry | date: 'dd/MM/yyyy'}}</h6>
-                <h6 *ngIf="team.research_stream"><strong>Research stream:</strong> Yes </h6>
-                <h6 *ngIf="!team.research_stream"><strong>Research stream:</strong> No </h6>
-                <h6 *ngIf="team.coorporate_existance"><strong>Coorporate existance:</strong> Yes </h6>
-                <h6 *ngIf="!team.coorporate_existance"><strong>Coorporate existance:</strong> No </h6>
-                <h6 *ngIf="team.tag_line"><strong>Tagline:</strong> {{team.tag_line}}</h6>
-
-              </div>
-              <div class="vl"></div><!--Vertical line-->
-
-                <div class="col-lg-8" style="margin-top:20px;">
-                  <!--TEAM MEMBERS-->
-                  <h5 class="text-center"><strong>TEAM MEMBERS</strong></h5>
-                  <app-team-member></app-team-member>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <app-teamdeliverable></app-teamdeliverable>
-        </div>
+        <app-team-card [team]="team"></app-team-card>
       </div>
-  </div>
+      <div class="col-lg-4">
+        <app-teamdeliverable></app-teamdeliverable>
+      </div>
+    </div>
+</div>
 
 
   <!-- <form (ngSubmit)="onSubmit()" #teamForm="ngForm">

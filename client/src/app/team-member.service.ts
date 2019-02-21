@@ -56,7 +56,6 @@ export class TeamMemberService {
 
   /** PUT: update the team member on the server */
   updateTeamMember (teamMember: TeamMember): Observable<TeamMember> {
-    console.log(teamMember.team);
     let url = `api/teams/${teamMember.team}/teammembers/${teamMember.user}`;
     return this.http.put<TeamMember>(url, teamMember, httpOptions)
       .pipe(
