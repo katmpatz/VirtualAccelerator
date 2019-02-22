@@ -111,8 +111,8 @@ REST_FRAMEWORK = {
 }
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1200),
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=600),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=1),
 }
 
 
@@ -134,6 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Media files
 MEDIA_ROOT = "/Users/kmpat/Documents/DMST/VirtualAccelerator/server/vap/media"

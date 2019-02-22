@@ -3,41 +3,14 @@
   <div class="container-fluid">
     <div class="row justify-content-md-center">
       <div class="card card-nav-tabs" id="del_card">
-        <h4 class="card-header card-header-warning">{{teamdeliverable.deliverable.title}}</h4>
-        <div class="card-body">
+        <h4 class="card-header card-header-warning user-text click" style="font-weight:500;">
+          <b class="">{{ teamdeliverable.deliverable.title | uppercase}}</b>
+        </h4>
+        <div class="card-body row">
+          <div class="col-6">
           <br>
-          <div class="row">
-            <div class="col-6">
-              <h6><b class="bold">Pipeline:</b> {{teamdeliverable.deliverable.pipeline}}</h6>
-
-              <h6><b class="bold">Instructions:</b> {{teamdeliverable.deliverable.description}}</h6>
-              <br>
-            </div>
-            <div class="vl"></div><!--Vertical line-->
-            <div class="col-6">
-              <!-- <p>isEmptyObject(teamdeliverable.deadline)</p> -->
-              <div *ngIf="!isEmptyObject(teamdeliverable.deadline)"><h6><b class="bold">Deadline:</b> {{teamdeliverable.deadline  | date: 'dd/MM/yyyy'}} &nbsp;&nbsp;
-                <b *ngIf="!deadline_status(teamdeliverable.deadline)" style="color:#ff0066">Deadline is passed!</b></h6>
-              </div>
-              <div *ngIf="isEmptyObject(teamdeliverable.deadline)"><h6><b class="bold">Deadline:</b> Aknown </h6></div>
-              <div *ngIf="teamdeliverable.status">
-                <h6><b class="bold">Release date:</b> {{teamdeliverable.delivery_day}}</h6>
-                <h6><b class="bold">File:</b> <a href="{{teamdeliverable.file}}">{{teamdeliverable.file.name}}</a></h6>
-              </div>
-              <div *ngIf="!teamdeliverable.status">
-                <h6><b class="bold">Release date:</b> Nothing has been submited yet</h6>
-                <h6><b class="bold">File:</b> Nothing has been submited yet</h6>
-              </div>
-              <br>
-            </div>
-          </div>
-          <div class="row text-center">
-            <div class="col-6">
-              <h6><b class="bold">Download file:</b></h6>
-              <a href="{{teamdeliverable.deliverable.template}}" type="button" class="btn btn-outline-primary">Download</a>
-            </div>
-            <div class="vl"></div><!--Vertical line-->
-            <div class="col-6">
+          <h6> "{{teamdeliverable.deliverable.description}}"</h6>
+          <div class="text-center">
               <form (ngSubmit)="onSubmit()" #teamdeliverableForm="ngForm">
                 <h6><b class="bold">Upload file:</b></h6>
                 <div>
@@ -53,12 +26,46 @@
                   </div>
                 </div>
               </form>
-            </div>
           </div>
+          <br>
+          <table class="table col-10">
+              <tbody>
+                  <tr>
+                      <td><h6><b class="bold">Template: </b></h6> </td>
+                      <td><a href="{{teamdeliverable.deliverable.template}}">{{teamdeliverable.deliverable.title}}</a></td>
+                  </tr>
+                  <tr>
+                      <td><h6><b class="bold">Deadline: </b></h6> </td>
+                      <td *ngIf="!isEmptyObject(teamdeliverable.deadline)"><h6>{{teamdeliverable.deadline | date: 'dd/MM/yyyy'}}</h6></td>
+                      <td *ngIf="isEmptyObject(teamdeliverable.deadline)"><h6>Aknown</h6></td>
+                  </tr>
+                  <tr>
+                      <td><h6><b class="bold">Status: </b></h6> </td>
+                      <td *ngIf="teamdeliverable.status"><h6>Submited!</h6></td>
+                      <td *ngIf="!deadline_status(teamdeliverable.deadline) && !teamdeliverable.status"><h6 style="color:#ff0066">Deadline is passed!</h6></td>
+                      <td *ngIf="!teamdeliverable.status && deadline_status(teamdeliverable.deadline)"><h6>Nothing has been submited yet</h6></td>
+                  </tr>
+                  <tr>
+                      <td><h6><b class="bold">Release Date: </b></h6> </td>
+                      <td *ngIf="teamdeliverable.status"><h6>{{teamdeliverable.delivery_day}}</h6></td>
+                      <td *ngIf="!teamdeliverable.status"><h6>Nothing has been submited yet</h6></td>
+                  </tr>
+                  <tr>
+                      <td><h6><b class="bold">File: </b></h6> </td>
+                      <td *ngIf="teamdeliverable.status"><a href="{{teamdeliverable.file}}">{{teamdeliverable.file.name}}</a></td>
+                      <td *ngIf="!teamdeliverable.status"><h6>Nothing has been submited yet</h6></td>
+                  </tr>
+              </tbody>
+          </table>
+
+        </div>
+        <div class="vl"></div>
+        <div class="col-6">
+        <!-- Comments -->
+        <app-comments [teamId]="teamdeliverable.team"></app-comments>
         </div>
       </div>
     </div>
-    <!-- Comments -->
-    <app-comments [teamId]="teamdeliverable.team"></app-comments>
+    </div>
   </div>
 </div>

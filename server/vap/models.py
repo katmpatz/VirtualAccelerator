@@ -61,11 +61,14 @@ class Deliverable(models.Model):
 
 class TeamDeliverable(models.Model):
     deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE, related_name='deliverable')
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, )
     deadline = models.DateField(null=True, blank=True)
     delivery_day = models.DateField(null=True, blank=True)
     status = models.BooleanField(default=False)
     file = models.FileField(upload_to = 'teamdeliverables/', blank=True)
+
+    class Meta:
+        unique_together = ('deliverable', 'team',)
 
     def __str__(self):
         return "%s %s" % (self.deliverable, self.team)

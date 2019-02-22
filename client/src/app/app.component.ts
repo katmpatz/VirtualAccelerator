@@ -26,8 +26,9 @@ export class AppComponent {
   ngOnInit() {
     if (localStorage.getItem('vap-jwt-access-token') !== null || localStorage.getItem('vap-jwt-refresh-token') !== null) {
       this.auth.isLoggedIn = true;
-      this.userdata = JSON.parse(localStorage.getItem('user'));
-      this.profile = this.userdata.profile;
+      let user = JSON.parse(localStorage.getItem('user'));
+      this.profile = user.profile;
+      this.userdata = user;
     }
     console.log(this.username);
 

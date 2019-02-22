@@ -60,6 +60,15 @@ export class CommentsService {
     );
   }
 
+  /** DELETE: delete the xomment from the server */
+  deleteComment(comment: Comment, teamId: number): Observable<Comment> {
+    const url = `api/teams/${teamId}/teamdeliverables/${comment.teamdeliverable}/comments/${comment.id}`;
+    return this.http.delete<Comment>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted comment id=${comment.id}`)),
+      catchError(this.handleError<Comment>('deleteComment'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
