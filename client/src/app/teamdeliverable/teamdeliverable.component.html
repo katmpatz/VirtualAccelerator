@@ -21,8 +21,7 @@
             <div *ngIf="!teamDeliverables?.length"  class="text-center">
               <h6>This team hasn't got any deliverable yet.</h6>
             </div>
-
-            <div class="text-center">
+            <div class="text-center" *ngIf="teamDeliverables?.length < deliverables?.length">
               <button  type="button" class="btn btn-outline-primary" (click)="open(content)"> Add new Deliverable </button>
             </div>
         </div>
@@ -55,6 +54,7 @@
           </div>
           <br>
           <div class="text-center">
+            <h6 *ngIf="message" style="color:#d81b60;"><strong>{{message}}</strong></h6>
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>

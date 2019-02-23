@@ -47,16 +47,50 @@
               <button *ngIf="teamMember!==editTeamMember" title="Edit team member" (click)="editTeamMemberMethod(teamMember)" class="btn btn-circle" style="background-color:#26c6da;"><i class="material-icons circle-icon">edit</i></button>
             </div>
           </div>
-          <div *ngIf="is_coach">
-            <h6><strong>Organization: </strong>{{coach?.organization}}</h6>
-            <h6><strong>Field: </strong>{{coach?.field}}</h6>
-            <h6><strong>Job Title: </strong>{{coach?.job_title}}</h6>
+          <div *ngIf="is_coach" style="text-align:left;">
+            <h6><strong *ngIf="coach===editCoach">Name: </strong></h6>
+            <h4 class="card-title">
+              <span *ngIf="coach!==editCoach">{{coach?.name}}</span>
+              <input *ngIf="coach===editCoach" [(ngModel)]="coach.name" class="form-control">
+            </h4>
+            <h6>
+              <strong>Email: </strong>
+              <span *ngIf="coach!==editCoach">{{coach?.email}}</span>
+              <input *ngIf="coach===editCoach" [(ngModel)]="coach.email" class="form-control">
+            </h6>
+            <h6>
+              <strong>Phone: </strong>
+              <span *ngIf="coach!==editCoach">{{coach?.phone}}</span>
+              <input *ngIf="coach===editCoach" [(ngModel)]="coach.phone" class="form-control">
+            </h6>
+            <h6>
+              <strong *ngIf="coach===editCoach || coach?.field">Organization: </strong>
+              <span *ngIf="coach!==editCoach">{{coach?.organization}}</span>
+              <input *ngIf="coach===editCoach" [(ngModel)]="coach.organization" class="form-control">
+            </h6>
+            <h6>
+              <strong *ngIf="coach===editCoach || coach?.field">Field: </strong>
+              <span *ngIf="coach!==editCoach && coach?.field">{{coach?.field}}</span>
+              <input *ngIf="coach===editCoach" [(ngModel)]="coach.field" class="form-control">
+            </h6>
+            <h6>
+              <strong *ngIf="coach===editCoach || coach?.job_title">Job Title: </strong>
+              <span *ngIf="coach!==editCoach && coach?.job_title">{{coach?.job_title}}</span>
+              <input *ngIf="coach===editCoach" [(ngModel)]="coach.job_title" class="form-control">
+            </h6>
+            <div style="float: right;">
+              <button *ngIf="coach===editCoach" title="Save coach"(click)="updateCoach()" class="btn btn-circle" style="background-color:#00cc99;"><i class="material-icons circle-icon">done</i></button>
+              <button *ngIf="coach!==editCoach" title="Edit coach" (click)="editCoachMethod(coach)" class="btn btn-circle" style="background-color:#26c6da;"><i class="material-icons circle-icon">edit</i></button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div *ngIf = "is_team_member" class="col-8">
       <app-team-card [team]="teamMember?.team"></app-team-card>
+    </div>
+    <div *ngIf = "is_coach" class="col-8">
+      <app-coach-deliverables></app-coach-deliverables>
     </div>
   </div>
 </div>

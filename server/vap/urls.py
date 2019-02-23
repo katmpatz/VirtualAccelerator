@@ -22,4 +22,6 @@ urlpatterns = [
     re_path(r'^deliverables/(?P<pk>\d+)/?$', views.DeliverableDetail.as_view()),
     re_path(r'^teammembers/?$',views.TeamMemberList.as_view()),
     re_path(r'^teammembers/(?P<pk>\d+)/?$',views.TeamMemberDetail.as_view()),
+    re_path(r'^teamdeliverables/?$',views.AllTeamDeliverableList.as_view()),
+    re_path(r'^teamdeliverables/(?P<pk>\d+)/?$',views.AllTeamDeliverableDetail.as_view()),
 ]+ static("/media/", document_root=settings.MEDIA_ROOT)

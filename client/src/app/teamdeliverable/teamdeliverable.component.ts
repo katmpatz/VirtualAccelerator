@@ -21,6 +21,7 @@ export class TeamdeliverableComponent implements OnInit {
   deliverables : Deliverable[];
   valids : Deliverable[];
   closeResult: string;
+  message: string;
 
 
   constructor(
@@ -74,24 +75,13 @@ export class TeamdeliverableComponent implements OnInit {
         if (teamDeliverable) {
           this.teamDeliverables.unshift(teamDeliverable);
           this.teamDeliverable = this.newTeamDeliverable(teamDeliverable.team);
+          this.message = "";
+        } else {
+          this.message = "This deliverable has been already added.";
         }
       });
   }
 
-  // isValid(deliverable): boolean {
-  //   for (let teamDel of teamDeliverables) {
-  //     if (deliverable.id == teamDel.deliverable) {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // }
-  //
-  // validDeliverables(deliverables: Deliverable[], teamDeliverables: TeamDeliverable[]) : Deliverable[] {
-  //   let valids = this.deliverables.filter(isValid);
-  //   console.log(valids);
-  //   return valids;
-  // }
 
 
   // Modal method

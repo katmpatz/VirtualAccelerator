@@ -50,6 +50,7 @@ export class UserComponent implements OnInit {
        this.getTeamMemberDetails(this.user.id);
      }
      if(this.user.profile.is_coach) {
+       this.coach = this.newCoach();
        this.getCoachDetails(this.user.id);
      }
    }
@@ -64,6 +65,18 @@ export class UserComponent implements OnInit {
      teamMember.role = '';
      teamMember.field = '';
      return teamMember;
+   }
+
+   newCoach() : Coach {
+     var coach = new Coach();
+     coach.name = '';
+     // teamMember.photo = '';
+     coach.email = '';
+     coach.phone = '';
+     coach.organization = '';
+     coach.field = '';
+     coach.job_title = '';
+     return coach;
    }
 
    getTeamMemberDetails(userId: number): void{
@@ -94,9 +107,6 @@ export class UserComponent implements OnInit {
        this.editTeamMember.team = this.editTeamMember.team.id;
        this.teamMemberService.updateTeamMember(this.editTeamMember)
          .subscribe(teamMember => {
-           // replace the teamMember in the teamMembers list with update from server
-           // const ix = teamMember ? this.teamMembers.findIndex(tm => tm.user === teamMember.user) : -1;
-           // if (ix > -1) { this.teamMembers[ix] = teamMember; }
            this.teamMember = teamMember;
            let updatedUser = new User();
            updatedUser.id = teamMember.user;
@@ -122,10 +132,18 @@ export class UserComponent implements OnInit {
      if (this.editCoach) {
        this.coachService.updateCoach(this.editCoach)
          .subscribe(coach => {
-           // replace the teamMember in the teamMembers list with update from server
-           // const ix = coach ? this.teamMembers.findIndex(tm => tm.user === teamMember.user) : -1;
-           // if (ix > -1) { this.teamMembers[ix] = teamMember; }
            this.coach = coach;
+           let updatedUser = new User();
+           updatedUser.id = coach.user;
+           updatedUser.username = this.user.username;
+           updatedUser.password = this.user.password;
+           updatedUser.profile.name = coach.name;
+           updatedUser.profile.email = coach.email;
+           updatedUser.profile.phone = coach.phone;
+           updatedUser.profile.is_team_member = this.is_team_member;
+           updatedUser.profile.is_coach = this.is_coach;
+           localStorage.remove('user');
+           localStorage.setItem('user', JSON.stringify(updatedUser));
          });
        this.editCoach = undefined;
      }

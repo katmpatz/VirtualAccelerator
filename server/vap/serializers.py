@@ -68,6 +68,14 @@ class TeamDeliverableSerializer(serializers.ModelSerializer):
         self.fields['deliverable'] =  DeliverableSerializer(read_only=False)
         return super(TeamDeliverableSerializer, self).to_representation(instance)
 
+class AllTeamDeliverableSerializer(serializers.ModelSerializer):
+    # deliverable = DeliverableSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = TeamDeliverable
+        fields = '__all__'
+        depth = 2
+
 
 class TeamMemberSerializer(serializers.ModelSerializer):
 

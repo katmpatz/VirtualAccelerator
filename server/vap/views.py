@@ -1,6 +1,6 @@
 #from django.shortcuts import render, get_object_or_404
 from .models import User, Team, TeamMember, Coach, Deliverable, TeamDeliverable, Comment
-from .serializers import UserSerializer, CustomUserSerializer, TeamSerializer, TeamMemberSerializer, CoachSerializer, DeliverableSerializer, TeamDeliverableSerializer, CommentSerializer
+from .serializers import UserSerializer, CustomUserSerializer, TeamSerializer, TeamMemberSerializer, CoachSerializer, DeliverableSerializer, TeamDeliverableSerializer, AllTeamDeliverableSerializer, CommentSerializer
 from django.contrib.auth.models import User as vap_user
 
 from rest_framework import generics
@@ -9,16 +9,16 @@ from django.contrib.staticfiles import views
 
 from rest_framework import permissions
 
-
 def index(request, path=''):
     if (path.endswith('.js')):
         return views.serve(request, path)
     else:
         return views.serve(request, 'index.html')
 
+
 class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
-   #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+   # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = vap_user.objects.all()
@@ -112,13 +112,33 @@ class TeamDeliverableList(generics.ListCreateAPIView):
         queryset = TeamDeliverable.objects.all()
         team_id = self.kwargs.get('team_id', None)
         if team_id is not None:
-            queryset = queryset.filter(team=team_id)
+            queryset = queryset.filter(team=team_id).order_by('deadline')
         return queryset
+
 
 class TeamDeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamDeliverable.objects.all()
     serializer_class = TeamDeliverableSerializer
     #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class AllTeamDeliverableList(generics.ListCreateAPIView):
+    serializer_class = AllTeamDeliverableSerializer
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
+        queryset = TeamDeliverable.objects.all()
+        id = self.request.query_params.get('id', None)
+        if id is not None:
+            queryset = queryset.order_by('deadline')
+        return queryset.order_by('deadline')
+
+
+class AllTeamDeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TeamDeliverable.objects.all()
+    serializer_class = AllTeamDeliverableSerializer
+    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 
 class DeliverableList(generics.ListCreateAPIView):
@@ -146,7 +166,7 @@ class CommentList(generics.ListCreateAPIView):
         queryset = Comment.objects.all()
         teamdeliverable_id = self.kwargs.get('teamdeliverable_id', None)
         if teamdeliverable_id is not None:
-            queryset = queryset.filter(teamdeliverable=teamdeliverable_id)
+            queryset = queryset.filter(teamdeliverable=teamdeliverable_id).order_by('-date')
         return queryset
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):

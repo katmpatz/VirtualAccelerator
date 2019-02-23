@@ -32,6 +32,16 @@ export class TeamdeliverableService {
       );
   }
 
+  /** GET teamdeliverables from the server */
+  getAllTeamDeliverables(): Observable<TeamDeliverable[]> {
+    let url = `api/teamdeliverables`;
+    return this.http.get<TeamDeliverable[]>(url)
+      .pipe(
+        tap(teamdeliverables => this.log(`fetched teamdeliverables`)),
+        catchError(this.handleError('getAllTeamDeliverables', []))
+      );
+  }
+
   /** GET teamdeliverable by id. Will 404 if id not found */
   getTeamdeliverable(id: number, team: number): Observable<TeamDeliverable> {
     const url = `api/teams/${team}/teamdeliverables/${id}`;
@@ -42,11 +52,15 @@ export class TeamdeliverableService {
   }
 
   /** POST: add a new teamdeliverable to the server */
-  addTeamDeliverable(teamdeliverable: TeamDeliverable): Observable<TeamDeliverable> {
+  addTeamDeliverable(teamdeliverable: TeamDeliverable): Observable<any> {
     let url = `api/teams/${teamdeliverable.team}/teamdeliverables`;
     return this.http.post<TeamDeliverable>(url, teamdeliverable, httpOptions).pipe(
       tap((teamdeliverable: TeamDeliverable) => this.log(`added teamdeliverable w/ id=${teamdeliverable.id}`)),
-      catchError(this.handleError<TeamDeliverable>('addTeamDeliverable'))
+      catchError(error => {
+        console.log("Return false catchError");
+        console.log(`Login service: ${error}`);
+        return of(false);
+      })
     );
   }
 

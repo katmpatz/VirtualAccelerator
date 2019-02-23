@@ -31,6 +31,10 @@ export class TokenInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${token}`
         }
       });
+      return next.handle(authReq);
+    }
+    else {
+      return next.handle(req);
     }
 
 

@@ -14,6 +14,7 @@ export class LoginComponent {
 
   message: string;
 
+
   constructor(
     private auth: AuthService,
     private router: Router
@@ -22,17 +23,18 @@ export class LoginComponent {
   login(username, password) {
     this.auth.login(username, password)
       .subscribe(res => {
-        console.log(res);
         if (res) {
           location.reload();
           this.router.navigate(['/users', username]);
-
+        } else {
+          this.message = "Wrong username or password."
         }
     });
   }
 
   logout() {
     this.auth.logout();
+    location.reload();
     this.router.navigate(['/login']);
   }
 }

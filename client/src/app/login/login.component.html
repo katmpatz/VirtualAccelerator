@@ -2,7 +2,7 @@
   <span [ngSwitch]="auth.isLoggedIn">
     <span *ngSwitchCase="false">
       <div class="login">
-        <div class="card card-nav-tabs col-4">
+        <div class="card card-nav-tabs col-lg-4 col-md-7 col-sm-10">
           <div class="card-header card-header-rose">
             <strong>Virtual Accelerator</strong>
           </div>
@@ -21,6 +21,7 @@
                        required/>
               </div>
               <div class="text-center">
+              <h6 *ngIf="message" style="color:#d81b60;"><strong>{{message}}</strong></h6>
               <button (click)="login(username.value, password.value)"
                       class="btn btn-outline-primary"
                       type="submit">Sign in</button>

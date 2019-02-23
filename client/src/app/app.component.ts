@@ -11,8 +11,7 @@ import {UserService} from './user.service';
 })
 export class AppComponent {
   title = 'Accelerator';
-  userdata;
-  username = localStorage.getItem('username');
+  userdata = new User();
   id = null;
   profile = new Profile();
   name = '';
@@ -30,7 +29,6 @@ export class AppComponent {
       this.profile = user.profile;
       this.userdata = user;
     }
-    console.log(this.username);
 
   }
 

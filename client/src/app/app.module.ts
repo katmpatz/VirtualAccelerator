@@ -35,6 +35,7 @@ import { UserService } from './user.service';
 import { TeamCardComponent } from './team-card/team-card.component';
 import { DeliverablesTeamComponent } from './deliverables-team/deliverables-team.component';
 import { CommentsComponent } from './comments/comments.component';
+import { CoachDeliverablesComponent } from './coach-deliverables/coach-deliverables.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { CommentsComponent } from './comments/comments.component';
     TeamCardComponent,
     DeliverablesTeamComponent,
     CommentsComponent,
+    CoachDeliverablesComponent,
   ],
   imports: [
     BrowserModule,

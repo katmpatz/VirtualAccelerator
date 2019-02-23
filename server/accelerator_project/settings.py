@@ -108,6 +108,7 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
 
 JWT_AUTH = {
@@ -136,9 +137,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# Media files
-MEDIA_ROOT = "/Users/kmpat/Documents/DMST/VirtualAccelerator/server/vap/media"
+MEDIA_ROOT = "/Users/kmpat/Documents/DMST/VirtualAccelerator/server/media"
 MEDIA_URL = "/api/media/"
+
+# STATIC_URL = '/'
+#
+# from pathlib import Path
+# STATICFILES_DIRS = (
+#     os.path.join(str(Path(BASE_DIR).parents[0]), os.path.join('client', 'dist')),
+# )
+#
+# STATIC_ROOT = os.path.join(BASE_DIR, 'dist')
+#
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_URL = '/media/'
 
 try:
     from .site_config import *

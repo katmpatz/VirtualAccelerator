@@ -9,11 +9,9 @@
       <a href="" class="simple-text logo-normal" style="font-family: 'Lobster', cursive;"><img src="../assets/img/startup.svg" onerror="this.onerror=null; this.src='startup.png'" style="height:30px; width:30px;">Accelerator</a>
     </div>
     <div class="sidebar-wrapper">
-      <div class="logo">
-        <a *ngIf="profile?.is_coach" href="" class="user-text" style="font-weight:500;">COACH</a>
-        <a *ngIf="profile?.is_team_member" href="" class="user-text" style="font-weight:500;">TEAM</a>
-        <a href="" class="user-text" >
-        <img src="../assets/img/user.png" class="avatar" style="height:40px; width:40px; margin-right:6px; text-align:left;">{{profile.name}}</a>
+      <div class="logo row">
+        <a *ngIf="profile?.is_coach"  class="user-text" style="font-weight:500;">COACH: {{userdata.username}}</a>
+        <a *ngIf="profile?.is_team_member" class="user-text" style="font-weight:500;">TEAM MEMBER: {{userdata.username}}</a>
       </div>
       <ul class="nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
