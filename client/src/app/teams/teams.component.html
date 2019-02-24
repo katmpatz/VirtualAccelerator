@@ -35,7 +35,7 @@
                 (click)="delete(team)">x</button>
               </div>
             </div>
-            <app-teamdel [team]="team.id"></app-teamdel> 
+            <app-teamdel [team]="team.id"></app-teamdel>
             <div class="card-footer" style="border-top: 1px solid #eee;">
               <div class="stats">
                 <i class="material-icons">category</i> {{ team.pipeline | uppercase }}
@@ -59,19 +59,6 @@
     </button>
   </div>
   <div class="modal-body">
-    <!-- <input class="form-control col-8" #teamName placeholder="Team name"/>
-    <input class="form-control col-8" #teamWebsite placeholder="Website"/>
-    <input class="form-control col-8" #teamPipeline placeholder="Pipeline" />
-    <input type="number" class="form-control col-8" #teamMaturityLevel placeholder="Maturity level"/>
-    <input type="text" class="form-control col-8" #teamTagline placeholder="Tagline"/>
-    <input type="checkbox" #teamResearch [checked]="teamResearch.checked == 'true'">
-    <input type="checkbox" #teamExistance [checked]="teamExistance.checked == 'true'"> -->
-    <!-- <input type="file"
-       id="file"
-       (change)="handleFileInput($event.target.files)" #teamPhoto> -->
-    <!-- <span style="color:red;" *ngIf="message">{{message}}</span>
-    <input #file type="file" accept='image/*' (change)="onSelectFile($event)" #teamPhoto/>
-    <img [src]="imgURL" height="200" *ngIf="imgURL" > -->
     <div class="row justify-content-center">
       <div class="col-10">
         <form (ngSubmit)="onSubmit()" #teamForm="ngForm">

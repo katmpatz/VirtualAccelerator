@@ -69,7 +69,11 @@ export class TeamdeliverableService {
     const url = `api/teams/${teamdeliverable.team}/teamdeliverables/${teamdeliverable.id}`;
     return this.http.put(url, teamdeliverable, httpOptions).pipe(
       tap(_ => this.log(`updated teamdeliverable id=${teamdeliverable.id}`)),
-      catchError(this.handleError<any>('updateTeamDeliverable'))
+      catchError(error => {
+        console.log("Return false catchError");
+        console.log(`Login service: ${error}`);
+        return of(false);
+      })
     );
   }
 

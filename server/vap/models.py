@@ -63,7 +63,7 @@ class TeamDeliverable(models.Model):
     deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE, related_name='deliverable')
     team = models.ForeignKey(Team, on_delete=models.CASCADE, )
     deadline = models.DateField(null=True, blank=True)
-    delivery_day = models.DateField(null=True, blank=True)
+    delivery_day = models.DateTimeField(null=True, blank=True)
     status = models.BooleanField(default=False)
     file = models.FileField(upload_to = 'teamdeliverables/', blank=True)
 
@@ -81,3 +81,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return "%s %s %s" % (self.teamdeliverable, self.coach, self.text)
+
+# class File(models.Model):
+#   file = models.ImageField(blank=False, null=False)
+#   remark = models.CharField(max_length=20)
+#   timestamp = models.DateTimeField(auto_now_add=True)
+
+class File(models.Model):
+  file = models.FileField(blank=False, null=False)
+  # remark = models.CharField(max_length=20)
+  timestamp = models.DateTimeField(auto_now_add=True)

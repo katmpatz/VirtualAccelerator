@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
           <h6 *ngIf="profile.is_coach" class="card-category text-gray">Coach, {{coach?.organization}} </h6>
-          <h6 *ngIf="is_team_member" class="card-category text-gray">Team Member</h6>
+          <h6 *ngIf="is_team_member" class="card-category text-gray">Team Member, {{teamMember?.team?.name}} </h6>
           <div *ngIf="is_team_member" style="text-align:left;">
             <h6><strong *ngIf="teamMember===editTeamMember">Name: </strong></h6>
             <h4 class="card-title">
@@ -26,11 +26,6 @@
               <strong>Phone: </strong>
               <span *ngIf="teamMember!==editTeamMember">{{teamMember?.phone}}</span>
               <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.phone" class="form-control">
-            </h6>
-            <h6>
-              <strong>Team: </strong>
-              <span *ngIf="teamMember!==editTeamMember">{{teamMember?.team?.name}}</span>
-              <input *ngIf="teamMember===editTeamMember" [(ngModel)]="teamMember.team.name" class="form-control">
             </h6>
             <h6>
               <strong *ngIf="teamMember===editTeamMember || teamMember?.role">Role: </strong>

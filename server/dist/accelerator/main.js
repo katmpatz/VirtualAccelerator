@@ -62,7 +62,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/users', pathMatch: 'full' },
     { path: 'users', component: _user_user_component__WEBPACK_IMPORTED_MODULE_13__["UserComponent"] },
     { path: 'users/:username', component: _user_user_component__WEBPACK_IMPORTED_MODULE_13__["UserComponent"] },
     { path: 'teams', component: _teams_teams_component__WEBPACK_IMPORTED_MODULE_3__["TeamsComponent"] },
@@ -112,7 +112,7 @@ module.exports = "/* navbar style.css */\r\n.nav {\r\n  display: flex;\r\n  flex
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- When login is false -->\n<div *ngIf=\"!auth.isLoggedIn\">\n  <app-login></app-login>\n</div>\n<!-- When log in is true -->\n<div class=\"wrapper\" *ngIf=\"auth.isLoggedIn\">\n  <div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/plan.jpg\" [ngClass]=\"{ 'active': navbarOpen }\">\n    <div class=\"logo\">\n      <a href=\"\" class=\"simple-text logo-normal\" style=\"font-family: 'Lobster', cursive;\"><img src=\"../assets/img/startup.svg\" onerror=\"this.onerror=null; this.src='startup.png'\" style=\"height:30px; width:30px;\">Accelerator</a>\n    </div>\n    <div class=\"sidebar-wrapper\">\n      <div class=\"logo\">\n        <a *ngIf=\"profile?.is_coach\" href=\"\" class=\"user-text\" style=\"font-weight:500;\">COACH</a>\n        <a *ngIf=\"profile?.is_team_member\" href=\"\" class=\"user-text\" style=\"font-weight:500;\">TEAM</a>\n        <a href=\"\" class=\"user-text\" >\n        <img src=\"../assets/img/user.png\" class=\"avatar\" style=\"height:40px; width:40px; margin-right:6px; text-align:left;\">{{profile.name}}</a>\n      </div>\n      <ul class=\"nav mr-auto\">\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/users\">\n            <i class=\"material-icons\">assignment_ind</i>\n            <p>Profile</p>\n          </a>\n        </li>\n        <li *ngIf=\"profile?.is_coach\" class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/teams\">\n            <i class=\"material-icons\">group</i>\n            <p>Teams</p>\n          </a>\n        </li>\n        <li *ngIf=\"profile?.is_team_member\" class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/teamdeliverables\">\n            <i class=\"material-icons\">assignment</i>\n            <p>Deliverables</p>\n          </a>\n        </li>\n        <li *ngIf=\"profile?.is_coach\" class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/deliverables\">\n            <i class=\"material-icons\">assignment</i>\n            <p>Deliverables</p>\n          </a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <app-login></app-login>\n        </li>\n      </ul>\n    </div>\n  </div>\n\n  <div class=\"main-panel\">\n    <router-outlet ></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<!-- When login is false -->\n<div *ngIf=\"!auth.isLoggedIn\">\n  <app-login></app-login>\n</div>\n<!-- When log in is true -->\n<div class=\"wrapper\" *ngIf=\"auth.isLoggedIn\">\n  <div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/plan.jpg\" [ngClass]=\"{ 'active': navbarOpen }\">\n    <div class=\"logo\">\n      <a href=\"\" class=\"simple-text logo-normal\" style=\"font-family: 'Lobster', cursive;\"><img src=\"../assets/img/startup.svg\" onerror=\"this.onerror=null; this.src='startup.png'\" style=\"height:30px; width:30px;\">Accelerator</a>\n    </div>\n    <div class=\"sidebar-wrapper\">\n      <div class=\"logo row\">\n        <a *ngIf=\"profile?.is_coach\"  class=\"user-text\" style=\"font-weight:500;\">COACH: {{userdata.username}}</a>\n        <a *ngIf=\"profile?.is_team_member\" class=\"user-text\" style=\"font-weight:500;\">TEAM MEMBER: {{userdata.username}}</a>\n      </div>\n      <ul class=\"nav mr-auto\">\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/users\">\n            <i class=\"material-icons\">assignment_ind</i>\n            <p>Profile</p>\n          </a>\n        </li>\n        <li *ngIf=\"profile?.is_coach\" class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/teams\">\n            <i class=\"material-icons\">group</i>\n            <p>Teams</p>\n          </a>\n        </li>\n        <li *ngIf=\"profile?.is_team_member\" class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/teamdeliverables\">\n            <i class=\"material-icons\">assignment</i>\n            <p>Deliverables</p>\n          </a>\n        </li>\n        <li *ngIf=\"profile?.is_coach\" class=\"nav-item\" routerLinkActive=\"active\">\n          <a class=\"nav-link\" routerLink=\"/deliverables\">\n            <i class=\"material-icons\">assignment</i>\n            <p>Deliverables</p>\n          </a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <app-login></app-login>\n        </li>\n      </ul>\n    </div>\n  </div>\n\n  <div class=\"main-panel\">\n    <router-outlet ></router-outlet>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -129,8 +129,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
-/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile */ "./src/app/profile.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user */ "./src/app/user.ts");
+/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile */ "./src/app/profile.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+
 
 
 
@@ -141,8 +143,9 @@ var AppComponent = /** @class */ (function () {
         this.auth = auth;
         this.userService = userService;
         this.title = 'Accelerator';
+        this.userdata = new _user__WEBPACK_IMPORTED_MODULE_3__["User"]();
         this.id = null;
-        this.profile = new _profile__WEBPACK_IMPORTED_MODULE_3__["Profile"]();
+        this.profile = new _profile__WEBPACK_IMPORTED_MODULE_4__["Profile"]();
         this.name = '';
         this.email = '';
         this.phone = '';
@@ -161,7 +164,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -214,6 +217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _team_card_team_card_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./team-card/team-card.component */ "./src/app/team-card/team-card.component.ts");
 /* harmony import */ var _deliverables_team_deliverables_team_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./deliverables-team/deliverables-team.component */ "./src/app/deliverables-team/deliverables-team.component.ts");
 /* harmony import */ var _comments_comments_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./comments/comments.component */ "./src/app/comments/comments.component.ts");
+/* harmony import */ var _coach_deliverables_coach_deliverables_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./coach-deliverables/coach-deliverables.component */ "./src/app/coach-deliverables/coach-deliverables.component.ts");
+
 
 
 
@@ -274,6 +279,7 @@ var AppModule = /** @class */ (function () {
                 _team_card_team_card_component__WEBPACK_IMPORTED_MODULE_31__["TeamCardComponent"],
                 _deliverables_team_deliverables_team_component__WEBPACK_IMPORTED_MODULE_32__["DeliverablesTeamComponent"],
                 _comments_comments_component__WEBPACK_IMPORTED_MODULE_33__["CommentsComponent"],
+                _coach_deliverables_coach_deliverables_component__WEBPACK_IMPORTED_MODULE_34__["CoachDeliverablesComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -381,6 +387,92 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/coach-deliverables/coach-deliverables.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/coach-deliverables/coach-deliverables.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "a {\r\ncolor:rgb(127, 140, 141);\r\n}\r\n\r\na:hover {\r\ncolor: #c1e2fc;\r\n}\r\n\r\n.circle-icon {\r\nbackground: grey;\r\ncolor:white;\r\nborder-radius: 50%;\r\ntext-align: center;\r\nvertical-align: middle;\r\npadding: 10px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29hY2gtZGVsaXZlcmFibGVzL2NvYWNoLWRlbGl2ZXJhYmxlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0EseUJBQXlCO0NBQ3hCOztBQUVEO0FBQ0EsZUFBZTtDQUNkOztBQUVEO0FBQ0EsaUJBQWlCO0FBQ2pCLFlBQVk7QUFDWixtQkFBbUI7QUFDbkIsbUJBQW1CO0FBQ25CLHVCQUF1QjtBQUN2QixjQUFjO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9jb2FjaC1kZWxpdmVyYWJsZXMvY29hY2gtZGVsaXZlcmFibGVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhIHtcclxuY29sb3I6cmdiKDEyNywgMTQwLCAxNDEpO1xyXG59XHJcblxyXG5hOmhvdmVyIHtcclxuY29sb3I6ICNjMWUyZmM7XHJcbn1cclxuXHJcbi5jaXJjbGUtaWNvbiB7XHJcbmJhY2tncm91bmQ6IGdyZXk7XHJcbmNvbG9yOndoaXRlO1xyXG5ib3JkZXItcmFkaXVzOiA1MCU7XHJcbnRleHQtYWxpZ246IGNlbnRlcjtcclxudmVydGljYWwtYWxpZ246IG1pZGRsZTtcclxucGFkZGluZzogMTBweDtcclxufVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/coach-deliverables/coach-deliverables.component.html":
+/*!**********************************************************************!*\
+  !*** ./src/app/coach-deliverables/coach-deliverables.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div >\n  <div class=\"card card-nav-tabs\">\n    <h4 class=\"card-header card-header-primary user-text click\" style=\"font-weight:500;\">\n      <b class=\"\">TEAMS'S DELIVERABLES</b>\n    </h4>\n    <div class=\"card-body\">\n      <!--Team Information-->\n      <div class=\"row\">\n        <div class=\"col-lg-12 text-center\">\n          <div >\n            <table class=\"table col-10\">\n                <tbody>\n                    <tr *ngFor = \"let teamDeliverable of teamDeliverables\">\n                        <td><a [routerLink]=\"['../teams/', teamDeliverable.team.id, 'teamdeliverables', teamDeliverable.id]\" class=\"bold\">\n                          <i *ngIf=\"teamDeliverable.status\" class=\"material-icons circle-icon del_success\" >{{teamDeliverable.deliverable.icon}}</i>\n                          <i *ngIf=\"!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)\" class=\"material-icons circle-icon del_danger\" >{{teamDeliverable.deliverable.icon}}</i>\n                          <i *ngIf=\"!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)\" class=\"material-icons circle-icon\" >{{teamDeliverable.deliverable.icon}}</i>\n                          </a></td>\n                        <td><a [routerLink]=\"['../teams/', teamDeliverable.team.id, 'teamdeliverables', teamDeliverable.id]\" class=\"bold\">\n                          <h6>{{teamDeliverable.deliverable.title}}</h6></a></td>\n                        <td> <a [routerLink]=\"['../teams/', teamDeliverable.team.id]\"><h6>{{teamDeliverable.team.name}}</h6></a></td>\n                        <td><h6>{{teamDeliverable.deadline | date: 'dd/MM/yyyy'}}</h6></td>\n                    </tr>\n                </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/coach-deliverables/coach-deliverables.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/coach-deliverables/coach-deliverables.component.ts ***!
+  \********************************************************************/
+/*! exports provided: CoachDeliverablesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoachDeliverablesComponent", function() { return CoachDeliverablesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _teamdeliverable_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../teamdeliverable.service */ "./src/app/teamdeliverable.service.ts");
+
+
+
+
+
+var CoachDeliverablesComponent = /** @class */ (function () {
+    function CoachDeliverablesComponent(route, datePipe, teamDeliverableService) {
+        this.route = route;
+        this.datePipe = datePipe;
+        this.teamDeliverableService = teamDeliverableService;
+        this.today = Date.now();
+    }
+    CoachDeliverablesComponent.prototype.ngOnInit = function () {
+        this.date = new Date(this.today);
+        this.getAllTeamDeliverables();
+    };
+    CoachDeliverablesComponent.prototype.deliverable_color = function (deadline) {
+        if (!deadline) {
+            return true;
+        }
+        if (this.datePipe.transform(deadline, 'yyyy-MM-dd') > this.datePipe.transform(this.date, 'yyyy-MM-dd')) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    CoachDeliverablesComponent.prototype.getAllTeamDeliverables = function () {
+        var _this = this;
+        this.teamDeliverableService.getAllTeamDeliverables()
+            .subscribe(function (teamDeliverables) { return _this.teamDeliverables = teamDeliverables.slice(5, 15); });
+    };
+    CoachDeliverablesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-coach-deliverables',
+            template: __webpack_require__(/*! ./coach-deliverables.component.html */ "./src/app/coach-deliverables/coach-deliverables.component.html"),
+            styles: [__webpack_require__(/*! ./coach-deliverables.component.css */ "./src/app/coach-deliverables/coach-deliverables.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_3__["DatePipe"],
+            _teamdeliverable_service__WEBPACK_IMPORTED_MODULE_4__["TeamdeliverableService"]])
+    ], CoachDeliverablesComponent);
+    return CoachDeliverablesComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/coach.service.ts":
 /*!**********************************!*\
   !*** ./src/app/coach.service.ts ***!
@@ -453,6 +545,26 @@ var CoachService = /** @class */ (function () {
             _message_service__WEBPACK_IMPORTED_MODULE_5__["MessageService"]])
     ], CoachService);
     return CoachService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/coach.ts":
+/*!**************************!*\
+  !*** ./src/app/coach.ts ***!
+  \**************************/
+/*! exports provided: Coach */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Coach", function() { return Coach; });
+var Coach = /** @class */ (function () {
+    function Coach() {
+    }
+    return Coach;
 }());
 
 
@@ -1208,7 +1320,7 @@ module.exports = ".login{\r\n  display: flex;\r\n  flex-direction: column;\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <span [ngSwitch]=\"auth.isLoggedIn\">\n    <span *ngSwitchCase=\"false\">\n      <div class=\"login\">\n        <div class=\"card card-nav-tabs col-4\">\n          <div class=\"card-header card-header-rose\">\n            <strong>Virtual Accelerator</strong>\n          </div>\n          <div class=\"card-body\">\n            <form class=\"form-signin\">\n              <div class=\"form-group\">\n                <label for=\"username\">Username</label>\n                <input #username\n                       type=\"text\" id=\"username\" class=\"form-control\"\n                       autofocus required/>\n              </div>\n              <div class=\"form-group\">\n                <label for=\"password\">Password</label>\n                <input #password\n                       type=\"password\" id=\"password\" class=\"form-control\"\n                       required/>\n              </div>\n              <div class=\"text-center\">\n              <button (click)=\"login(username.value, password.value)\"\n                      class=\"btn btn-outline-primary\"\n                      type=\"submit\">Sign in</button>\n              </div>\n            </form>\n        </div>\n        <div class=\"card-footer text-muted\">\n          <small>Username and password are provided by ACEin. If you forgot your username or password you have to contact us.</small>\n        </div>\n      </div>\n    </div>\n    </span>\n    <span *ngSwitchCase=\"true\">\n      <form class=\"form-signin\">\n        <button (click)=\"logout()\" type = \"button\"\n                class=\"btn btn-outline-primary btn-block\">Logout</button>\n      </form>\n    </span>\n  </span>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <span [ngSwitch]=\"auth.isLoggedIn\">\n    <span *ngSwitchCase=\"false\">\n      <div class=\"login\">\n        <div class=\"card card-nav-tabs col-lg-4 col-md-7 col-sm-10\">\n          <div class=\"card-header card-header-rose\">\n            <strong>Virtual Accelerator</strong>\n          </div>\n          <div class=\"card-body\">\n            <form class=\"form-signin\">\n              <div class=\"form-group\">\n                <label for=\"username\">Username</label>\n                <input #username\n                       type=\"text\" id=\"username\" class=\"form-control\"\n                       autofocus required/>\n              </div>\n              <div class=\"form-group\">\n                <label for=\"password\">Password</label>\n                <input #password\n                       type=\"password\" id=\"password\" class=\"form-control\"\n                       required/>\n              </div>\n              <div class=\"text-center\">\n              <h6 *ngIf=\"message\" style=\"color:#d81b60;\"><strong>{{message}}</strong></h6>\n              <button (click)=\"login(username.value, password.value)\"\n                      class=\"btn btn-outline-primary\"\n                      type=\"submit\">Sign in</button>\n              </div>\n            </form>\n        </div>\n        <div class=\"card-footer text-muted\">\n          <small>Username and password are provided by ACEin. If you forgot your username or password you have to contact us.</small>\n        </div>\n      </div>\n    </div>\n    </span>\n    <span *ngSwitchCase=\"true\">\n      <form class=\"form-signin\">\n        <button (click)=\"logout()\" type = \"button\"\n                class=\"btn btn-outline-primary btn-block\">Logout</button>\n      </form>\n    </span>\n  </span>\n</div>\n"
 
 /***/ }),
 
@@ -1239,10 +1351,12 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this.auth.login(username, password)
             .subscribe(function (res) {
-            console.log(res);
             if (res) {
                 location.reload();
                 _this.router.navigate(['/users', username]);
+            }
+            else {
+                _this.message = "Wrong username or password.";
             }
         });
     };
@@ -2362,6 +2476,13 @@ var TeamdeliverableService = /** @class */ (function () {
         return this.http.get(url)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (teamdeliverables) { return _this.log("fetched teamdeliverables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('getTeamDeliverables', [])));
     };
+    /** GET teamdeliverables from the server */
+    TeamdeliverableService.prototype.getAllTeamDeliverables = function () {
+        var _this = this;
+        var url = "api/teamdeliverables";
+        return this.http.get(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (teamdeliverables) { return _this.log("fetched teamdeliverables"); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('getAllTeamDeliverables', [])));
+    };
     /** GET teamdeliverable by id. Will 404 if id not found */
     TeamdeliverableService.prototype.getTeamdeliverable = function (id, team) {
         var _this = this;
@@ -2372,7 +2493,11 @@ var TeamdeliverableService = /** @class */ (function () {
     TeamdeliverableService.prototype.addTeamDeliverable = function (teamdeliverable) {
         var _this = this;
         var url = "api/teams/" + teamdeliverable.team + "/teamdeliverables";
-        return this.http.post(url, teamdeliverable, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (teamdeliverable) { return _this.log("added teamdeliverable w/ id=" + teamdeliverable.id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('addTeamDeliverable')));
+        return this.http.post(url, teamdeliverable, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (teamdeliverable) { return _this.log("added teamdeliverable w/ id=" + teamdeliverable.id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            console.log("Return false catchError");
+            console.log("Login service: " + error);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(false);
+        }));
     };
     /** PUT: update the team on the server */
     TeamdeliverableService.prototype.updateTeamDeliverable = function (teamdeliverable) {
@@ -2451,7 +2576,7 @@ module.exports = "a {\r\ncolor:rgb(127, 140, 141);\r\n}\r\n\r\na:hover {\r\ncolo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"teamdeliverables\">\n      <div class=\"card card-nav-tabs\">\n        <h4 class=\"card-header card-header-warning user-text\"><b>Deliverables</b></h4>\n        <div class=\"card-body\">\n            <div *ngFor=\"let teamDeliverable of teamDeliverables\">\n              <div class=\"container\">\n              <div>\n                <h6><a [routerLink]=\"['teamdeliverables/', teamDeliverable.id]\" class=\"bold\">\n                  <i *ngIf=\"teamDeliverable.status\" class=\"material-icons circle-icon del_success\" >{{teamDeliverable.deliverable.icon}}</i>\n                  <i *ngIf=\"!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)\" class=\"material-icons circle-icon del_danger\" >{{teamDeliverable.deliverable.icon}}</i>\n                  <i *ngIf=\"!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)\" class=\"material-icons circle-icon\" >{{teamDeliverable.deliverable.icon}}</i>\n                  &nbsp;&nbsp;{{teamDeliverable.deliverable.title}}</a></h6>\n                  <h6 *ngIf=\"teamDeliverable.status\">Submited!</h6>\n                  <h6 *ngIf=\"!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)\">Deadline is passed!</h6>\n                  <h6 *ngIf=\"!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)\">Deadline: {{teamDeliverable.deadline | date: 'dd/MM/yyyy'}}</h6>\n              </div>\n\n              <hr>\n            </div>\n            </div>\n            <div *ngIf=\"!teamDeliverables?.length\"  class=\"text-center\">\n              <h6>This team hasn't got any deliverable yet.</h6>\n            </div>\n\n            <div class=\"text-center\">\n              <button  type=\"button\" class=\"btn btn-outline-primary\" (click)=\"open(content)\"> Add new Deliverable </button>\n            </div>\n        </div>\n    </div>\n</div>\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Add new deliverable</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-10\">\n        <form (ngSubmit)=\"onSubmit()\" #teamDeliverableForm=\"ngForm\">\n          <div class=\"form-group\">\n            <label for=\"deliverable\">Select deliverable</label>\n            <select class=\"form-control\" type=\"number\" [(ngModel)]=\"teamDeliverable.deliverable\" name=\"deliverable\" id=\"deliverable\">\n              <option *ngFor=\"let deliverable of deliverables\" [ngValue]=\"deliverable.id\"  selected>{{deliverable.title}}</option>\n            </select>\n          </div>\n          <div class=\"form-group row\">\n            <label for=\"deadline\">Deadline:</label>&nbsp;&nbsp;\n            <input id=\"deadline\"\n                    type=\"date\"\n                    [(ngModel)]=\"teamDeliverable.deadline\"\n                    name=\"deadline\">\n          </div>\n          <br>\n          <div class=\"text-center\">\n            <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</ng-template>\n"
+module.exports = "<div class=\"teamdeliverables\">\n      <div class=\"card card-nav-tabs\">\n        <h4 class=\"card-header card-header-warning user-text\"><b>Deliverables</b></h4>\n        <div class=\"card-body\">\n            <div *ngFor=\"let teamDeliverable of teamDeliverables\">\n              <div class=\"container\">\n              <div>\n                <h6><a [routerLink]=\"['teamdeliverables/', teamDeliverable.id]\" class=\"bold\">\n                  <i *ngIf=\"teamDeliverable.status\" class=\"material-icons circle-icon del_success\" >{{teamDeliverable.deliverable.icon}}</i>\n                  <i *ngIf=\"!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)\" class=\"material-icons circle-icon del_danger\" >{{teamDeliverable.deliverable.icon}}</i>\n                  <i *ngIf=\"!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)\" class=\"material-icons circle-icon\" >{{teamDeliverable.deliverable.icon}}</i>\n                  &nbsp;&nbsp;{{teamDeliverable.deliverable.title}}</a></h6>\n                  <h6 *ngIf=\"teamDeliverable.status\">Submited!</h6>\n                  <h6 *ngIf=\"!teamDeliverable.status && !deliverable_color(teamDeliverable.deadline)\">Deadline is passed!</h6>\n                  <h6 *ngIf=\"!teamDeliverable.status && deliverable_color(teamDeliverable.deadline)\">Deadline: {{teamDeliverable.deadline | date: 'dd/MM/yyyy'}}</h6>\n              </div>\n\n              <hr>\n            </div>\n            </div>\n            <div *ngIf=\"!teamDeliverables?.length\"  class=\"text-center\">\n              <h6>This team hasn't got any deliverable yet.</h6>\n            </div>\n            <div class=\"text-center\" *ngIf=\"teamDeliverables?.length < deliverables?.length\">\n              <button  type=\"button\" class=\"btn btn-outline-primary\" (click)=\"open(content)\"> Add new Deliverable </button>\n            </div>\n        </div>\n    </div>\n</div>\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Add new deliverable</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-10\">\n        <form (ngSubmit)=\"onSubmit()\" #teamDeliverableForm=\"ngForm\">\n          <div class=\"form-group\">\n            <label for=\"deliverable\">Select deliverable</label>\n            <select class=\"form-control\" type=\"number\" [(ngModel)]=\"teamDeliverable.deliverable\" name=\"deliverable\" id=\"deliverable\">\n              <option *ngFor=\"let deliverable of deliverables\" [ngValue]=\"deliverable.id\"  selected>{{deliverable.title}}</option>\n            </select>\n          </div>\n          <div class=\"form-group row\">\n            <label for=\"deadline\">Deadline:</label>&nbsp;&nbsp;\n            <input id=\"deadline\"\n                    type=\"date\"\n                    [(ngModel)]=\"teamDeliverable.deadline\"\n                    name=\"deadline\">\n          </div>\n          <br>\n          <div class=\"text-center\">\n            <h6 *ngIf=\"message\" style=\"color:#d81b60;\"><strong>{{message}}</strong></h6>\n            <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -2532,23 +2657,13 @@ var TeamdeliverableComponent = /** @class */ (function () {
             if (teamDeliverable) {
                 _this.teamDeliverables.unshift(teamDeliverable);
                 _this.teamDeliverable = _this.newTeamDeliverable(teamDeliverable.team);
+                _this.message = "";
+            }
+            else {
+                _this.message = "This deliverable has been already added.";
             }
         });
     };
-    // isValid(deliverable): boolean {
-    //   for (let teamDel of teamDeliverables) {
-    //     if (deliverable.id == teamDel.deliverable) {
-    //       return false;
-    //     }
-    //   }
-    //   return true;
-    // }
-    //
-    // validDeliverables(deliverables: Deliverable[], teamDeliverables: TeamDeliverable[]) : Deliverable[] {
-    //   let valids = this.deliverables.filter(isValid);
-    //   console.log(valids);
-    //   return valids;
-    // }
     // Modal method
     TeamdeliverableComponent.prototype.open = function (content) {
         var _this = this;
@@ -2750,6 +2865,10 @@ var TokenInterceptor = /** @class */ (function () {
                     Authorization: "Bearer " + token
                 }
             });
+            return next.handle(authReq);
+        }
+        else {
+            return next.handle(req);
         }
         return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
             console.log(err);
@@ -2919,7 +3038,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid content\">\n  <div class=\"row justify-content-center\" style=\"margin-top:100px;\">\n    <div class=\"col-3\">\n      <div class=\"card card-profile\">\n        <div class=\"card-avatar\">\n          <a href=\"#pablo\">\n            <img *ngIf=\"!teamMember?.photo\" class=\"img\" src=\"{{profile.photo}}\" />\n            <img *ngIf=\"!teamMember?.photo\" src=\"../../assets/img/user.png\"/>\n          </a>\n        </div>\n        <div class=\"card-body\">\n          <h6 *ngIf=\"profile.is_coach\" class=\"card-category text-gray\">Coach, {{coach?.organization}} </h6>\n          <h6 *ngIf=\"is_team_member\" class=\"card-category text-gray\">Team Member</h6>\n          <div *ngIf=\"is_team_member\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"teamMember===editTeamMember\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.email}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.phone}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Team: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.team?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.team.name\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.role\">Role: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.role\">{{teamMember?.role}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.role\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.field\">Field: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.field\">{{teamMember?.field}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.field\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"teamMember===editTeamMember\" title=\"Save team member\"(click)=\"updateTeamMember()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"teamMember!==editTeamMember\" title=\"Edit team member\" (click)=\"editTeamMemberMethod(teamMember)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n          <div *ngIf=\"is_coach\">\n            <h6><strong>Organization: </strong>{{coach?.organization}}</h6>\n            <h6><strong>Field: </strong>{{coach?.field}}</h6>\n            <h6><strong>Job Title: </strong>{{coach?.job_title}}</h6>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div *ngIf = \"is_team_member\" class=\"col-8\">\n      <app-team-card [team]=\"teamMember?.team\"></app-team-card>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid content\">\n  <div class=\"row justify-content-center\" style=\"margin-top:100px;\">\n    <div class=\"col-3\">\n      <div class=\"card card-profile\">\n        <div class=\"card-avatar\">\n          <a href=\"#pablo\">\n            <img *ngIf=\"!teamMember?.photo\" class=\"img\" src=\"{{profile.photo}}\" />\n            <img *ngIf=\"!teamMember?.photo\" src=\"../../assets/img/user.png\"/>\n          </a>\n        </div>\n        <div class=\"card-body\">\n          <h6 *ngIf=\"profile.is_coach\" class=\"card-category text-gray\">Coach, {{coach?.organization}} </h6>\n          <h6 *ngIf=\"is_team_member\" class=\"card-category text-gray\">Team Member</h6>\n          <div *ngIf=\"is_team_member\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"teamMember===editTeamMember\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.email}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.phone}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Team: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.team?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.team.name\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.role\">Role: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.role\">{{teamMember?.role}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.role\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.field\">Field: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.field\">{{teamMember?.field}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.field\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"teamMember===editTeamMember\" title=\"Save team member\"(click)=\"updateTeamMember()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"teamMember!==editTeamMember\" title=\"Edit team member\" (click)=\"editTeamMemberMethod(teamMember)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n          <div *ngIf=\"is_coach\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"coach===editCoach\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"coach!==editCoach\">{{coach?.name}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.email}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.phone}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.field\">Organization: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.organization}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.organization\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.field\">Field: </strong>\n              <span *ngIf=\"coach!==editCoach && coach?.field\">{{coach?.field}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.field\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.job_title\">Job Title: </strong>\n              <span *ngIf=\"coach!==editCoach && coach?.job_title\">{{coach?.job_title}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.job_title\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"coach===editCoach\" title=\"Save coach\"(click)=\"updateCoach()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"coach!==editCoach\" title=\"Edit coach\" (click)=\"editCoachMethod(coach)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div *ngIf = \"is_team_member\" class=\"col-8\">\n      <app-team-card [team]=\"teamMember?.team\"></app-team-card>\n    </div>\n    <div *ngIf = \"is_coach\" class=\"col-8\">\n      <app-coach-deliverables></app-coach-deliverables>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2939,10 +3058,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
 /* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../profile */ "./src/app/profile.ts");
 /* harmony import */ var _teamMember__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../teamMember */ "./src/app/teamMember.ts");
-/* harmony import */ var _team_member_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../team-member.service */ "./src/app/team-member.service.ts");
-/* harmony import */ var _coach_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../coach.service */ "./src/app/coach.service.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _coach__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../coach */ "./src/app/coach.ts");
+/* harmony import */ var _team_member_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../team-member.service */ "./src/app/team-member.service.ts");
+/* harmony import */ var _coach_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../coach.service */ "./src/app/coach.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+
 
 
 
@@ -2977,6 +3098,7 @@ var UserComponent = /** @class */ (function () {
             this.getTeamMemberDetails(this.user.id);
         }
         if (this.user.profile.is_coach) {
+            this.coach = this.newCoach();
             this.getCoachDetails(this.user.id);
         }
     };
@@ -2990,6 +3112,17 @@ var UserComponent = /** @class */ (function () {
         teamMember.role = '';
         teamMember.field = '';
         return teamMember;
+    };
+    UserComponent.prototype.newCoach = function () {
+        var coach = new _coach__WEBPACK_IMPORTED_MODULE_6__["Coach"]();
+        coach.name = '';
+        // teamMember.photo = '';
+        coach.email = '';
+        coach.phone = '';
+        coach.organization = '';
+        coach.field = '';
+        coach.job_title = '';
+        return coach;
     };
     UserComponent.prototype.getTeamMemberDetails = function (userId) {
         var _this = this;
@@ -3017,9 +3150,6 @@ var UserComponent = /** @class */ (function () {
             this.editTeamMember.team = this.editTeamMember.team.id;
             this.teamMemberService.updateTeamMember(this.editTeamMember)
                 .subscribe(function (teamMember) {
-                // replace the teamMember in the teamMembers list with update from server
-                // const ix = teamMember ? this.teamMembers.findIndex(tm => tm.user === teamMember.user) : -1;
-                // if (ix > -1) { this.teamMembers[ix] = teamMember; }
                 _this.teamMember = teamMember;
                 var updatedUser = new _user__WEBPACK_IMPORTED_MODULE_3__["User"]();
                 updatedUser.id = teamMember.user;
@@ -3044,10 +3174,18 @@ var UserComponent = /** @class */ (function () {
         if (this.editCoach) {
             this.coachService.updateCoach(this.editCoach)
                 .subscribe(function (coach) {
-                // replace the teamMember in the teamMembers list with update from server
-                // const ix = coach ? this.teamMembers.findIndex(tm => tm.user === teamMember.user) : -1;
-                // if (ix > -1) { this.teamMembers[ix] = teamMember; }
                 _this.coach = coach;
+                var updatedUser = new _user__WEBPACK_IMPORTED_MODULE_3__["User"]();
+                updatedUser.id = coach.user;
+                updatedUser.username = _this.user.username;
+                updatedUser.password = _this.user.password;
+                updatedUser.profile.name = coach.name;
+                updatedUser.profile.email = coach.email;
+                updatedUser.profile.phone = coach.phone;
+                updatedUser.profile.is_team_member = _this.is_team_member;
+                updatedUser.profile.is_coach = _this.is_coach;
+                localStorage.remove('user');
+                localStorage.setItem('user', JSON.stringify(updatedUser));
             });
             this.editCoach = undefined;
         }
@@ -3059,10 +3197,10 @@ var UserComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./user.component.css */ "./src/app/user/user.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"],
-            _team_member_service__WEBPACK_IMPORTED_MODULE_6__["TeamMemberService"],
-            _coach_service__WEBPACK_IMPORTED_MODULE_7__["CoachService"],
-            _auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"]])
+            _user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"],
+            _team_member_service__WEBPACK_IMPORTED_MODULE_7__["TeamMemberService"],
+            _coach_service__WEBPACK_IMPORTED_MODULE_8__["CoachService"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"]])
     ], UserComponent);
     return UserComponent;
 }());

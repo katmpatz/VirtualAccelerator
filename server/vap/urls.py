@@ -2,6 +2,7 @@ from django.urls import re_path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.urlpatterns import format_suffix_patterns
 
 app_name = 'vap'
 
@@ -24,4 +25,12 @@ urlpatterns = [
     re_path(r'^teammembers/(?P<pk>\d+)/?$',views.TeamMemberDetail.as_view()),
     re_path(r'^teamdeliverables/?$',views.AllTeamDeliverableList.as_view()),
     re_path(r'^teamdeliverables/(?P<pk>\d+)/?$',views.AllTeamDeliverableDetail.as_view()),
+    # re_path(r'^upload/?$', views.FileView.as_view()),
+    # re_path(r'^images/$', views.ImageList.as_view()),
+    # re_path(r'^images/(?P<pk>[0-9]+)/$', views.ImageDetail.as_view()),
+    # re_path(r'^images/create/$', views.ImageCreate.as_view()),
 ]+ static("/media/", document_root=settings.MEDIA_ROOT)
+
+# Adding this lets you use filename extensions on URLs to provide an endpoint for a given media type.
+# For example you can get endpoint data in json representation or html static file
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'html'])

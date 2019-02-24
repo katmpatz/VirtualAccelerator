@@ -19,15 +19,25 @@ export class TeamdeliverableDetailComponent implements OnInit {
     teamdeliverable: TeamDeliverable;
     files: any[];
     file: any;
+    user = JSON.parse(localStorage.getItem('user'));
+    profile = this.user.profile;
+    is_coach: boolean;
+    is_team_member: boolean;
+    message: string;
 
   constructor(
     private route: ActivatedRoute,
     private teamdeliverableService: TeamdeliverableService,
     private location: Location,
     private datePipe: DatePipe,
+    // private uploadFileService: UploadFileService,
   ) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.profile = this.user.profile;
+    this.is_team_member = this.user.profile.is_team_member;
+    this.is_coach = this.user.profile.is_coach;
     this.date = new Date(this.today);
     this.getTeamdeliverable();
   }
@@ -38,11 +48,6 @@ export class TeamdeliverableDetailComponent implements OnInit {
     this.teamdeliverableService.getTeamdeliverable(id, team_id)
       .subscribe(teamdeliverable => this.teamdeliverable = teamdeliverable);
   }
-
-  // save(): void {
-  // this.teamdeliverableService.updateTeamdeliverable(this.teamdeliverable)
-  //   .subscribe(() => this.goBack());
-  // }
 
   goBack(): void {
     this.location.back();
@@ -63,42 +68,52 @@ export class TeamdeliverableDetailComponent implements OnInit {
     }
   }
 
-  onFileChange(event){
-    this.files = event.target.files;
-    // let reader = new FileReader();
-    // if(event.target.files && event.target.files.length > 0) {
-    //   let file = event.target.files[0];
-    //   reader.readAsDataURL(file);
-    //   reader.onload = () => {
-    //     this.form.get('fileUpload').setValue({
-    //       filename: file.name,
-    //       filetype: file.type,
-    //       value: reader.result.split(',')[1]
-    //     })
-    //   };
-    // }
+
+  handleInputChange(e) {
+    this.files = e.target.files;
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
   }
 
-  updateTeamDeliverable(teamdeliverableId: number) : TeamDeliverable {
-   var teamdeliverable = new TeamDeliverable();
-   teamdeliverable.deliverable = this.teamdeliverable.deliverable;
-   teamdeliverable.team = this.teamdeliverable.team;
-   teamdeliverable.deadline = this.teamdeliverable.deadline;
-   teamdeliverable.delivery_day = this.date;
-   teamdeliverable.status = true;
-   teamdeliverable.file = '';
-   return teamdeliverable;
- }
-
-  onSubmit() : void {
-    this.teamdeliverableService.updateTeamDeliverable(this.teamdeliverable)
-      .subscribe( teamdel => this.teamdeliverable = teamdel);
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.file = reader.result;
+    console.log(this.file)
   }
 
-  clear() {
-    this.files = [];
-    this.ngOnInit();
-  }
+    save(): void {
+      let validFile = true;
+      let delivId = this.teamdeliverable.deliverable.id;
+      this.teamdeliverable.deliverable = delivId;
+      this.teamdeliverable.file = this.file
+      this.teamdeliverable.status = true;
+      this.teamdeliverable.delivery_day = new Date(this.today);
+      this.teamdeliverableService.updateTeamDeliverable(this.teamdeliverable)
+        .subscribe( teamdel => {
+          if (teamdel) {
+            this.teamdeliverable = teamdel;
+            this.message = "Submited!";
+          } else {
+            validFile = false;
+            this.message = "You have to submit a PDF file.";
+          }
+        });
+      if (!validFile) {
+        this.teamdeliverable.file = null
+        this.teamdeliverable.status = false;
+        this.teamdeliverable.delivery_day = null;
+      }
+      this.clear();
+    }
+
+    clear() {
+      this.files = [];
+      this.ngOnInit();
+    }
+
+
 
 
 }
