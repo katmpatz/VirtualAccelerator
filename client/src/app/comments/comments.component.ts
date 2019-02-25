@@ -29,9 +29,9 @@ export class CommentsComponent implements OnInit {
   comments: Comment[];
   comment: Comment;
   teamdeliverable= +this.route.snapshot.paramMap.get('id');
-  user = JSON.parse(localStorage.getItem('user'));
-  profile = this.user.profile;
-  photo = this.user.profile.photo;
+  user = new User();
+  profile = new Profile();
+  photo: string;
   coach: Coach;
   is_coach: boolean;
   is_team_member: boolean;
@@ -50,10 +50,10 @@ export class CommentsComponent implements OnInit {
     this.date = new Date(this.today);
     const teamId = this.teamId;
     this.teamdeliverable = +this.route.snapshot.paramMap.get('id');
-    // this.comment = this.newComment();
     this.getComments(this.teamdeliverable, teamId);
     this.user = JSON.parse(localStorage.getItem('user'));
     this.profile = this.user.profile;
+    this.photo = this.user.profile.photo;
     this.is_team_member = this.user.profile.is_team_member;
     this.is_coach = this.user.profile.is_coach;
     if(this.user.profile.is_coach) {
