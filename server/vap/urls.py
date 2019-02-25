@@ -27,10 +27,6 @@ urlpatterns = [
     re_path(r'^teamdeliverables/(?P<pk>\d+)/?$',views.AllTeamDeliverableDetail.as_view()),
     re_path(r'^uploadteamdeliverables/?$',views.TeamDeliverableUploadList.as_view()),
     re_path(r'^uploadteamdeliverables/(?P<pk>\d+)/?$',views.TeamDeliverableUploadDetail.as_view()),
-    # re_path(r'^upload/?$', views.FileView.as_view()),
-    # re_path(r'^images/$', views.ImageList.as_view()),
-    # re_path(r'^images/(?P<pk>[0-9]+)/$', views.ImageDetail.as_view()),
-    # re_path(r'^images/create/$', views.ImageCreate.as_view()),
 ]+ static("/media/", document_root=settings.MEDIA_ROOT)
 
 # Adding this lets you use filename extensions on URLs to provide an endpoint for a given media type.

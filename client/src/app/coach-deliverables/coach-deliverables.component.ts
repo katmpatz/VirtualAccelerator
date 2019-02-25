@@ -45,7 +45,7 @@ export class CoachDeliverablesComponent implements OnInit {
 
   getAllTeamDeliverables(): void {
     this.teamDeliverableService.getAllTeamDeliverables()
-      .subscribe(teamDeliverables => this.teamDeliverables = teamDeliverables.slice(5, 15));
+      .subscribe(teamDeliverables => this.teamDeliverables = teamDeliverables.slice(0, 15));
   }
 
 }

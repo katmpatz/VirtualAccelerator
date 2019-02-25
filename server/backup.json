@@ -3,12 +3,12 @@
     "model": "vap.team",
     "pk": 1,
     "fields": {
-        "name": "Hom-e",
+        "name": "hom-e",
         "photo": "img/1.png",
         "pipeline": "Ennovation",
         "research_stream": true,
         "maturity_level": 2,
-        "date_of_entry": "2019-02-18",
+        "date_of_entry": "2019-02-23",
         "website": "www.hom-e.gr",
         "coorporate_existance": false,
         "tag_line": "\u0392\u03c1\u03b5\u03c2 \u03c4\u03bf \u03c3\u03c0\u03af\u03c4\u03b9 \u03c0\u03bf\u03c5 \u03c3\u03bf\u03c5 \u03c4\u03b1\u03b9\u03c1\u03b9\u03ac\u03b6\u03b5\u03b9!"
@@ -19,11 +19,11 @@
     "pk": 2,
     "fields": {
         "name": "Cargo Share",
-        "photo": "img/2.png",
+        "photo": "img/3.png",
         "pipeline": "Ennovation",
         "research_stream": true,
         "maturity_level": 4,
-        "date_of_entry": "2019-02-18",
+        "date_of_entry": "2019-02-23",
         "website": "www.cargo.gr",
         "coorporate_existance": true,
         "tag_line": "Make love not war!"
@@ -34,11 +34,11 @@
     "pk": 3,
     "fields": {
         "name": "Inagros",
-        "photo": "img/3.png",
+        "photo": "img/2.png",
         "pipeline": "Ennovation",
         "research_stream": true,
         "maturity_level": 5,
-        "date_of_entry": "2019-02-18",
+        "date_of_entry": "2019-02-23",
         "website": "www.inagros.gr",
         "coorporate_existance": true,
         "tag_line": ""
@@ -64,14 +64,29 @@
     "pk": 5,
     "fields": {
         "name": "yayaka",
-        "photo": "",
+        "photo": "img/yayaka_logo_9fhcMvK.png",
         "pipeline": "Athens Startup Weekend",
         "research_stream": false,
         "maturity_level": 4,
-        "date_of_entry": "2019-02-19",
+        "date_of_entry": "2019-02-23",
         "website": "www.yayaka.gr",
         "coorporate_existance": false,
         "tag_line": "\u03a6\u03c1\u03bf\u03bd\u03c4\u03af\u03b6\u03bf\u03c5\u03bc\u03b5 \u03b1\u03c5\u03c4\u03bf\u03cd\u03c2 \u03c0\u03bf\u03c5 \u03bc\u03b1\u03c2 \u03c6\u03c1\u03cc\u03bd\u03c4\u03b9\u03b6\u03b1\u03bd."
+    }
+},
+{
+    "model": "vap.team",
+    "pk": 11,
+    "fields": {
+        "name": "Rollong",
+        "photo": "",
+        "pipeline": "ennovation",
+        "research_stream": false,
+        "maturity_level": 5,
+        "date_of_entry": "2019-02-25",
+        "website": "www.rolling.com",
+        "coorporate_existance": false,
+        "tag_line": ""
     }
 },
 {
@@ -80,7 +95,7 @@
     "fields": {
         "title": "Team Manifesto",
         "description": "This document is a guideline, which will help to summarise all the team\u2019s vision, goals, expectations and culture. We strongly advise you to carefully go through all points below stated, discussion each one among the team members, before writing down.",
-        "release_date": "2019-02-18",
+        "release_date": "2019-02-23",
         "pipeline": "Ennovation",
         "template": "deliverables/01_-_Team_Manifesto.docx",
         "icon": "group"
@@ -91,8 +106,8 @@
     "pk": 2,
     "fields": {
         "title": "Market Validation",
-        "description": "At its heart, market validation is the process of finding out \u2013 before you spend money and time on the business \u2013 whether the market has any space for your idea. If there is space, if your idea is solving a real problem, and is neither ahead of its time nor behind, then is it worth the time, effort, and heartburn that are all natural parts of the entrepreneurial journey.",
-        "release_date": "2019-02-18",
+        "description": "At its heart, market validation is the process of finding out \u2013 before you spend money and time on the business \u2013 whether the market has any space for your idea. If your idea is solving a real problem then is it worth the time, effort, and heartburn.",
+        "release_date": "2019-02-25",
         "pipeline": "Ennovation",
         "template": "deliverables/Ennovation_2nd_Phase_Template.docx",
         "icon": "store"
@@ -103,10 +118,10 @@
     "pk": 3,
     "fields": {
         "title": "Business plan",
-        "description": "A business plan is a written document that describes in detail how a business, usually a new one, is going to achieve its goals. A business plan lays out a written plan from a marketing, financial and operational viewpoint. Sometimes, a business plan is prepared for an established business that is moving in a new direction.",
-        "release_date": "2019-02-18",
+        "description": "A business plan is a written document that describes in detail how a business, usually a new one, is going to achieve its goals. A business plan lays out a written plan from a marketing, financial and operational viewpoint.",
+        "release_date": "2019-02-25",
         "pipeline": "Ennovation",
-        "template": "deliverables/Business_Plan_HT_Tjpmbre.pdf",
+        "template": "deliverables/Business_Plan_HT.pdf",
         "icon": "feedback"
     }
 },
@@ -117,9 +132,8 @@
         "deliverable": 1,
         "team": 1,
         "deadline": "2019-02-18",
-        "delivery_day": "2019-02-18",
         "status": true,
-        "file": "media/deliverables/teams/Stakeholders.docx"
+        "file": "teamdeliverables/ca86a4d8-009.pdf"
     }
 },
 {
@@ -129,7 +143,6 @@
         "deliverable": 2,
         "team": 3,
         "deadline": "2019-02-28",
-        "delivery_day": "2019-02-19",
         "status": true,
         "file": "teamdeliverables/\u03a0\u03b5\u03c1\u03b9\u03b5\u03c7\u03cc\u03bc\u03b5\u03bd\u03b1_4sze7WH.odt"
     }
@@ -141,9 +154,8 @@
         "deliverable": 3,
         "team": 1,
         "deadline": "2019-02-26",
-        "delivery_day": null,
-        "status": false,
-        "file": ""
+        "status": true,
+        "file": "teamdeliverables/c93b0910-46f.pdf"
     }
 },
 {
@@ -153,7 +165,6 @@
         "deliverable": 1,
         "team": 2,
         "deadline": "2019-02-12",
-        "delivery_day": null,
         "status": false,
         "file": ""
     }
@@ -164,10 +175,9 @@
     "fields": {
         "deliverable": 2,
         "team": 2,
-        "deadline": "2019-02-28",
-        "delivery_day": null,
-        "status": false,
-        "file": ""
+        "deadline": "2019-02-23",
+        "status": true,
+        "file": "teamdeliverables/01_-_Team_Manifesto_DVfmCo1.docx"
     }
 },
 {
@@ -176,8 +186,7 @@
     "fields": {
         "deliverable": 3,
         "team": 2,
-        "deadline": "2019-02-24",
-        "delivery_day": null,
+        "deadline": "2019-03-30",
         "status": false,
         "file": ""
     }
@@ -188,10 +197,9 @@
     "fields": {
         "deliverable": 1,
         "team": 3,
-        "deadline": "2019-02-01",
-        "delivery_day": null,
-        "status": false,
-        "file": ""
+        "deadline": "2019-02-23",
+        "status": true,
+        "file": "teamdeliverables/01_-_Team_Manifesto_tTBEsoa.docx"
     }
 },
 {
@@ -201,7 +209,6 @@
         "deliverable": 1,
         "team": 4,
         "deadline": "2019-03-01",
-        "delivery_day": null,
         "status": false,
         "file": ""
     }
@@ -213,7 +220,6 @@
         "deliverable": 2,
         "team": 4,
         "deadline": "2019-02-19",
-        "delivery_day": null,
         "status": false,
         "file": ""
     }
@@ -224,10 +230,9 @@
     "fields": {
         "deliverable": 3,
         "team": 4,
-        "deadline": "2019-02-20",
-        "delivery_day": null,
-        "status": false,
-        "file": ""
+        "deadline": "2019-02-28",
+        "status": true,
+        "file": "teamdeliverables/01_-_Team_Manifesto.docx"
     }
 },
 {
@@ -236,10 +241,9 @@
     "fields": {
         "deliverable": 1,
         "team": 5,
-        "deadline": "2019-02-20",
-        "delivery_day": null,
-        "status": false,
-        "file": ""
+        "deadline": "2019-03-30",
+        "status": true,
+        "file": "teamdeliverables/Untitled.pdf"
     }
 },
 {
@@ -248,10 +252,9 @@
     "fields": {
         "deliverable": 2,
         "team": 1,
-        "deadline": "2019-02-13",
-        "delivery_day": null,
-        "status": false,
-        "file": ""
+        "deadline": "2019-03-29",
+        "status": true,
+        "file": "teamdeliverables/44982714-08b.pdf"
     }
 },
 {
@@ -260,8 +263,62 @@
     "fields": {
         "deliverable": 2,
         "team": 5,
-        "deadline": "2019-02-21",
-        "delivery_day": null,
+        "deadline": "2019-03-30",
+        "status": true,
+        "file": "teamdeliverables/0d9bff92-643.pdf"
+    }
+},
+{
+    "model": "vap.teamdeliverable",
+    "pk": 14,
+    "fields": {
+        "deliverable": 3,
+        "team": 5,
+        "deadline": "2019-02-24",
+        "status": true,
+        "file": "teamdeliverables/f6d78864-e29.pdf"
+    }
+},
+{
+    "model": "vap.teamdeliverable",
+    "pk": 15,
+    "fields": {
+        "deliverable": 3,
+        "team": 3,
+        "deadline": "2019-03-21",
+        "status": false,
+        "file": ""
+    }
+},
+{
+    "model": "vap.teamdeliverable",
+    "pk": 24,
+    "fields": {
+        "deliverable": 1,
+        "team": 11,
+        "deadline": "2019-02-25",
+        "status": false,
+        "file": ""
+    }
+},
+{
+    "model": "vap.teamdeliverable",
+    "pk": 25,
+    "fields": {
+        "deliverable": 2,
+        "team": 11,
+        "deadline": "2019-02-26",
+        "status": false,
+        "file": ""
+    }
+},
+{
+    "model": "vap.teamdeliverable",
+    "pk": 26,
+    "fields": {
+        "deliverable": 3,
+        "team": 11,
+        "deadline": "2019-02-27",
         "status": false,
         "file": ""
     }
@@ -288,22 +345,22 @@
 },
 {
     "model": "vap.comment",
-    "pk": 3,
-    "fields": {
-        "teamdeliverable": 1,
-        "coach": 4,
-        "text": "All we need is love!",
-        "date": "2019-02-21"
-    }
-},
-{
-    "model": "vap.comment",
     "pk": 4,
     "fields": {
         "teamdeliverable": 1,
         "coach": 4,
         "text": "Good!",
         "date": "2019-02-21"
+    }
+},
+{
+    "model": "vap.comment",
+    "pk": 20,
+    "fields": {
+        "teamdeliverable": 4,
+        "coach": 4,
+        "text": "Do you need any help?",
+        "date": "2019-02-25"
     }
 },
 {
@@ -3029,6 +3086,492 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 142,
+    "fields": {
+        "action_time": "2019-02-23T12:02:27.793Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "team"
+        ],
+        "object_id": "5",
+        "object_repr": "yayaka",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 143,
+    "fields": {
+        "action_time": "2019-02-23T12:06:00.962Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "team"
+        ],
+        "object_id": "5",
+        "object_repr": "yayaka",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 144,
+    "fields": {
+        "action_time": "2019-02-23T12:07:05.048Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "team"
+        ],
+        "object_id": "3",
+        "object_repr": "Inagros",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 145,
+    "fields": {
+        "action_time": "2019-02-23T12:07:17.503Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "team"
+        ],
+        "object_id": "1",
+        "object_repr": "hom-e",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 146,
+    "fields": {
+        "action_time": "2019-02-23T12:07:31.934Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "team"
+        ],
+        "object_id": "2",
+        "object_repr": "Cargo Share",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 147,
+    "fields": {
+        "action_time": "2019-02-23T12:08:01.602Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "team"
+        ],
+        "object_id": "2",
+        "object_repr": "Cargo Share",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 148,
+    "fields": {
+        "action_time": "2019-02-23T12:08:32.266Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "deliverable"
+        ],
+        "object_id": "1",
+        "object_repr": "Team Manifesto",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"template\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 149,
+    "fields": {
+        "action_time": "2019-02-23T12:09:49.777Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "deliverable"
+        ],
+        "object_id": "2",
+        "object_repr": "Market Validation",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"template\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 150,
+    "fields": {
+        "action_time": "2019-02-23T12:10:16.810Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "deliverable"
+        ],
+        "object_id": "3",
+        "object_repr": "Business plan",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"template\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 151,
+    "fields": {
+        "action_time": "2019-02-23T20:16:53.021Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "15",
+        "object_repr": "Business plan Inagros",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 152,
+    "fields": {
+        "action_time": "2019-02-23T20:17:10.788Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "14",
+        "object_repr": "Business plan yayaka",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 153,
+    "fields": {
+        "action_time": "2019-02-23T20:17:19.191Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "13",
+        "object_repr": "Market Validation yayaka",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 154,
+    "fields": {
+        "action_time": "2019-02-23T20:17:30.937Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "12",
+        "object_repr": "Market Validation hom-e",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 155,
+    "fields": {
+        "action_time": "2019-02-23T20:17:42.567Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "11",
+        "object_repr": "Team Manifesto yayaka",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 156,
+    "fields": {
+        "action_time": "2019-02-23T20:17:52.355Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "11",
+        "object_repr": "Team Manifesto yayaka",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 157,
+    "fields": {
+        "action_time": "2019-02-23T20:18:20.762Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "10",
+        "object_repr": "Business plan Book4Share",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\", \"delivery_day\", \"status\", \"file\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 158,
+    "fields": {
+        "action_time": "2019-02-23T20:18:44.333Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "7",
+        "object_repr": "Team Manifesto Inagros",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\", \"delivery_day\", \"status\", \"file\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 159,
+    "fields": {
+        "action_time": "2019-02-23T20:18:55.383Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "6",
+        "object_repr": "Business plan Cargo Share",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 160,
+    "fields": {
+        "action_time": "2019-02-23T20:19:12.055Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "5",
+        "object_repr": "Market Validation Cargo Share",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"deadline\", \"delivery_day\", \"status\", \"file\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 161,
+    "fields": {
+        "action_time": "2019-02-24T23:34:53.539Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "teamdeliverable"
+        ],
+        "object_id": "24",
+        "object_repr": "Team Manifesto Rollong",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 162,
+    "fields": {
+        "action_time": "2019-02-25T00:23:59.559Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "coach"
+        ],
+        "object_id": "4",
+        "object_repr": "Marianna Galani",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 163,
+    "fields": {
+        "action_time": "2019-02-25T00:29:21.812Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "coach"
+        ],
+        "object_id": "4",
+        "object_repr": "Marianna Galani",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 164,
+    "fields": {
+        "action_time": "2019-02-25T01:05:55.350Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "coach"
+        ],
+        "object_id": "4",
+        "object_repr": "Marianna Galani",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 165,
+    "fields": {
+        "action_time": "2019-02-25T01:27:01.821Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "coach"
+        ],
+        "object_id": "4",
+        "object_repr": "Marianna Galani",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 166,
+    "fields": {
+        "action_time": "2019-02-25T01:34:12.718Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "Marianna Galani",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"photo\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 167,
+    "fields": {
+        "action_time": "2019-02-25T12:52:48.510Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "deliverable"
+        ],
+        "object_id": "3",
+        "object_repr": "Business plan",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"description\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 168,
+    "fields": {
+        "action_time": "2019-02-25T12:54:27.042Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "vap",
+            "deliverable"
+        ],
+        "object_id": "2",
+        "object_repr": "Market Validation",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"description\"]}}]"
+    }
+},
+{
     "model": "vap.teammember",
     "pk": 2,
     "fields": {
@@ -3092,9 +3635,9 @@
     "model": "vap.user",
     "pk": 2,
     "fields": {
-        "name": "Katerina Mpaztiakoudi",
+        "name": "Katerina Mpatziakoudi",
         "email": "kmpatziakoudi@gmail.com",
-        "phone": "6976665370",
+        "phone": "6976665375",
         "is_coach": false,
         "is_team_member": true
     }
@@ -3116,7 +3659,7 @@
     "fields": {
         "name": "Marianna Galani",
         "email": "mgalani@aueb.gr",
-        "phone": "6987291028",
+        "phone": "6987291089",
         "is_coach": true,
         "is_team_member": false
     }
@@ -3127,7 +3670,7 @@
     "fields": {
         "name": "Theonymphi Anogeianaki",
         "email": "tanogeianaki@gmail.com",
-        "phone": "6987291028",
+        "phone": "6987291078",
         "is_coach": false,
         "is_team_member": true
     }
@@ -3138,7 +3681,7 @@
     "fields": {
         "name": "Kleio Fragkedaki",
         "email": "cfragkedaki@gmail.com",
-        "phone": "69476578756",
+        "phone": "69476578787",
         "is_coach": false,
         "is_team_member": true
     }

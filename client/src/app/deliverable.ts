@@ -1,5 +1,3 @@
-// import { Milestone } from './milestone';
-// import { Question } from './question';
 
 export class Deliverable {
   id: number;
@@ -9,5 +7,4 @@ export class Deliverable {
   release_date: Date;
   pipeline:string;
   icon:string;
-  // milestones: Array<Milestone>;
 }

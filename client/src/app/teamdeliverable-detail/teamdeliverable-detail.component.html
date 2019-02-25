@@ -45,11 +45,6 @@
                       <td *ngIf="!deadline_status(teamdeliverable.deadline) && !teamdeliverable.status"><h6 style="color:#ff0066">Deadline is passed!</h6></td>
                       <td *ngIf="!teamdeliverable.status && deadline_status(teamdeliverable.deadline)"><h6>Nothing has been submited yet</h6></td>
                   </tr>
-                  <!-- <tr>
-                      <td><h6><b class="bold">Release Date: </b></h6> </td>
-                      <td *ngIf="teamdeliverable.status"><h6>{{teamdeliverable.delivery_day | date: 'dd/MM/yyyy'}}</h6></td>
-                      <td *ngIf="!teamdeliverable.status"><h6>Nothing has been submited yet</h6></td>
-                  </tr> -->
                   <tr>
                       <td><h6><b class="bold">File: </b></h6> </td>
                       <td *ngIf="teamdeliverable.status"><a href="{{teamdeliverable.file}}"><i class="material-icons circle-icon">arrow_downward</i>{{teamdeliverable.deliverable.title}} Deliverable</a></td>

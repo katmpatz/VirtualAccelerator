@@ -4,12 +4,10 @@
       <div class="card card-profile">
         <div class="card-avatar">
           <a *ngIf="profile.is_coach">
-            <img *ngIf="photo" class="img" src="{{photo}}" />
-            <img *ngIf="!photo" src="../../assets/img/user.png"/>
+            <img  src="../../assets/img/faces/{{coach.user}}.png"/>
           </a>
           <a *ngIf="profile.is_team_member">
-            <img *ngIf="photo" class="img" src="{{teamMember.photo}}" />
-            <img *ngIf="!photo" src="../../assets/img/user.png"/>
+            <img  src="../../assets/img/faces/{{teamMember.user}}.png"/>
           </a>
         </div>
         <div class="card-body">

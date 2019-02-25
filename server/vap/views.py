@@ -30,7 +30,6 @@ def index(request, path=''):
 
 class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
-   # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = vap_user.objects.all()
@@ -43,12 +42,10 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = vap_user.objects.all()
     serializer_class = UserSerializer
     lookup_field = 'username'
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class TeamList(generics.ListCreateAPIView):
     serializer_class = TeamSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Team.objects.all()
@@ -60,12 +57,10 @@ class TeamList(generics.ListCreateAPIView):
 class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class TeamMemberList(generics.ListCreateAPIView):
     serializer_class = TeamMemberSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = TeamMember.objects.all()
@@ -78,12 +73,10 @@ class TeamMemberList(generics.ListCreateAPIView):
 class TeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class AllTeamMemberList(generics.ListCreateAPIView):
     serializer_class = TeamMemberSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = TeamMember.objects.all()
@@ -96,12 +89,10 @@ class AllTeamMemberList(generics.ListCreateAPIView):
 class AllTeamMemberDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class CoachList(generics.ListCreateAPIView):
     serializer_class = CoachSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Coach.objects.all()
@@ -113,12 +104,10 @@ class CoachList(generics.ListCreateAPIView):
 class CoachDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class TeamDeliverableList(generics.ListCreateAPIView):
     serializer_class = TeamDelSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = TeamDeliverable.objects.all()
@@ -130,7 +119,6 @@ class TeamDeliverableList(generics.ListCreateAPIView):
 class TeamDeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamDeliverable.objects.all()
     serializer_class = TeamDelSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class TeamDeliverableUploadList(generics.ListCreateAPIView):
@@ -158,12 +146,8 @@ class TeamDeliverableUploadDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TeamDeliverableSerializer
 
 
-
-
-
 class AllTeamDeliverableList(generics.ListCreateAPIView):
     serializer_class = AllTeamDeliverableSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = TeamDeliverable.objects.all()
@@ -177,13 +161,10 @@ class AllTeamDeliverableList(generics.ListCreateAPIView):
 class AllTeamDeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamDeliverable.objects.all()
     serializer_class = AllTeamDeliverableSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
 
 
 class DeliverableList(generics.ListCreateAPIView):
     serializer_class = DeliverableSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Deliverable.objects.all()
@@ -192,15 +173,24 @@ class DeliverableList(generics.ListCreateAPIView):
             queryset = queryset.filter(title__contains=name)
         return queryset
 
+
+    def post(self, request):
+
+        serializer = DeliverableSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class DeliverableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Deliverable.objects.all()
     serializer_class = DeliverableSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         queryset = Comment.objects.all()
@@ -212,4 +202,3 @@ class CommentList(generics.ListCreateAPIView):
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

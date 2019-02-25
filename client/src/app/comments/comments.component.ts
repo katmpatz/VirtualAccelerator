@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DatePipe, CommonModule } from '@angular/common';
-// import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { TeamDeliverable } from '../teamdeliverable';
 import { Comment } from '../comment';
@@ -39,9 +38,7 @@ export class CommentsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private datePipe: DatePipe,
-    // private teamDeliverableService: TeamdeliverableService,
     private commentsService: CommentsService,
-    // private modalService: NgbModal
     private teamMemberService: TeamMemberService,
     private coachService: CoachService,
   ) { }

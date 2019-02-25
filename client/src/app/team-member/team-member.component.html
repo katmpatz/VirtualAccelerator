@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-3 avatar_position">
         <img *ngIf="teamMember?.photo" src="{{teamMember.photo}}" class="avatar">
-        <img *ngIf="!teamMember?.photo" src="../../assets/img/user.png" class="avatar">
+        <img *ngIf="!teamMember?.photo" src="../../assets/img/faces/{{teamMember.user}}.png" class="avatar">
       </div>
       <div class="col-lg-9 row">
         <div class ="col-lg-9">
@@ -26,59 +26,12 @@
         <div class="col-lg-3 row" *ngIf="!user.profile.is_team_member">
           <button *ngIf="teamMember===editTeamMember" title="Save team member"(click)="update()" class="btn btn-circle" style="background-color:#00cc99;"><i class="material-icons circle-icon">done</i></button>
           <button *ngIf="teamMember!==editTeamMember" title="Edit team member" (click)="edit(teamMember)" class="btn btn-link"><i class="material-icons circle-icon">edit</i></button>
-          <button *ngIf="teamMember!==editTeamMember" title="Delete team member" (click)="delete(teamMember)" class="btn btn-link" style="color:#ff0066;"><i class="material-icons circle-icon">clear</i></button>
         </div>
       </div>
-    </div><!-- /row --> 
+    </div>
     <hr>
   </div>
   <div *ngIf="!teamMembers?.length" class="text-center">
-    <h6>This team hasn't got any member yet.</h6>
-  </div>
-  <div *ngIf="!user.profile.is_team_member" class="text-center">
-    <button  type="button" class="btn btn-outline-primary" (click)="open(content)"> Add new Member </button>
+    <h6>This team hasn't got any member yet. Team members are added only by the administrator of the system.</h6>
   </div>
 </div>
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add new team member</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="row justify-content-center">
-      <div class="col-10">
-        <form (ngSubmit)="onSubmit()" #teamMemberForm="ngForm">
-          <div class="form-group">
-            <input type="text"
-                   class="form-control"
-                   id="name"
-                   [(ngModel)]="teamMember.name"
-                   name="name"
-                   placeholder="Full name"
-                   required>
-          </div>
-          <div class="form-group">
-            <input class="form-control"
-                      id="email"
-                      [(ngModel)]="teamMember.email"
-                      name="email"
-                      placeholder="someone@something.com">
-          </div>
-          <div class="form-group">
-            <input class="form-control"
-                      id="phone"
-                      [(ngModel)]="teamMember.phone"
-                      name="phone"
-                      placeholder="Phone">
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</ng-template>

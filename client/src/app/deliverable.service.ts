@@ -8,6 +8,10 @@ import {MessageService} from './message.service';
 
 import { Deliverable } from './deliverable';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +40,26 @@ export class DeliverableService {
     return this.http.get<Deliverable>(url).pipe(
       tap(_ => this.log(`fetched deliverable id=${id}`)),
       catchError(this.handleError<Deliverable>(`getDeliverable id=${id}`))
+    );
+  }
+
+  /** POST: add a new deliverable to the server */
+  addDeliverable (deliverable: Deliverable): Observable<Deliverable> {
+    let url = `api/deliverables`;
+    return this.http.post<Deliverable>(url, deliverable, httpOptions).pipe(
+      tap((deliverable: Deliverable) => this.log(`added deliverable w/ id=${deliverable.id}`)),
+      catchError(this.handleError<Deliverable>('addDeliverable'))
+    );
+  }
+
+  /** DELETE: delete the deliverable from the server */
+  deleteDeliverable(deliverable: Deliverable | number): Observable<Deliverable> {
+    const id = typeof deliverable === 'number' ? deliverable : deliverable.id;
+    const url = `${this.deliverablesUrl}/${id}`;
+
+    return this.http.delete<Deliverable>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted deliverable id=${id}`)),
+      catchError(this.handleError<Deliverable>('deleteDeliverable'))
     );
   }
 
