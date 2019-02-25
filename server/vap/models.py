@@ -7,7 +7,7 @@ class User(models.Model):
     name = models.CharField(max_length=100, default="")
     email = models.CharField(max_length=100, default="", blank=True)
     phone = models.CharField(max_length=20, default="", blank=True)
-    # photo = models.ImageField(upload_to = 'static/img/', blank=True)
+    photo = models.ImageField(upload_to = 'img/', blank=True)
     is_coach = models.BooleanField(default=False)
     is_team_member = models.BooleanField(default=False)
 
@@ -63,9 +63,9 @@ class TeamDeliverable(models.Model):
     deliverable = models.ForeignKey(Deliverable, on_delete=models.CASCADE, related_name='deliverable')
     team = models.ForeignKey(Team, on_delete=models.CASCADE, )
     deadline = models.DateField(null=True, blank=True)
-    delivery_day = models.DateTimeField(null=True, blank=True)
+    # delivery_day = models.DateTimeField(null=True, blank=True)
     status = models.BooleanField(default=False)
-    file = models.FileField(upload_to = 'teamdeliverables/', blank=True)
+    file = models.FileField(upload_to = 'teamdeliverables/', blank=True, null=True)
 
     class Meta:
         unique_together = ('deliverable', 'team',)
@@ -87,7 +87,7 @@ class Comment(models.Model):
 #   remark = models.CharField(max_length=20)
 #   timestamp = models.DateTimeField(auto_now_add=True)
 
-class File(models.Model):
-  file = models.FileField(blank=False, null=False)
-  # remark = models.CharField(max_length=20)
-  timestamp = models.DateTimeField(auto_now_add=True)
+# class File(models.Model):
+#   file = models.FileField(blank=False, null=False)
+#   # remark = models.CharField(max_length=20)
+#   timestamp = models.DateTimeField(auto_now_add=True)

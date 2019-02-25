@@ -10,8 +10,9 @@
     </div>
     <div class="sidebar-wrapper">
       <div class="logo row">
-        <a *ngIf="profile?.is_coach"  class="user-text" style="font-weight:500;">COACH: {{userdata.username}}</a>
-        <a *ngIf="profile?.is_team_member" class="user-text" style="font-weight:500;">TEAM MEMBER: {{userdata.username}}</a>
+        <a *ngIf="profile?.is_coach"  class="user-text" style="font-weight:500;">COACH</a>
+        <a *ngIf="profile?.is_team_member" class="user-text" style="font-weight:500;">TEAM MEMBER</a>
+        <a  class="user-text" style="font-weight:500;">{{userdata.username}}</a>
       </div>
       <ul class="nav mr-auto">
         <li class="nav-item" routerLinkActive="active">

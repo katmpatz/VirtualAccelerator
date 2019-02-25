@@ -28,6 +28,7 @@ export class UserComponent implements OnInit {
   editTeamMember: TeamMember;
   editCoach: Coach;
   editUser: User;
+  photo: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +45,8 @@ export class UserComponent implements OnInit {
      this.profile = this.user.profile;
      this.is_team_member = this.user.profile.is_team_member;
      this.is_coach = this.user.profile.is_coach;
-     console.log(this.user.profile.is_team_member)
+     this.photo = this.user.profile.photo;
+     console.log(this.user);
      if(this.user.profile.is_team_member) {
        this.teamMember = this.newTeamMember();
        this.getTeamMemberDetails(this.user.id);

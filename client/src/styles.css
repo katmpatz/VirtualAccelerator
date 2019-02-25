@@ -10017,6 +10017,7 @@ label {
   .card .author .avatar {
     width: 30px;
     height: 30px;
+    background-color: #fff;
     overflow: hidden;
     border-radius: 50%;
     margin-right: 5px; }
@@ -10295,6 +10296,7 @@ label {
   .card-profile .card-avatar {
     margin: -50px auto 0;
     border-radius: 50%;
+    background-color: #fff;
     overflow: hidden;
     padding: 0;
     box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); }
@@ -11055,6 +11057,7 @@ Copyright (c) 2015 Daniel Eden
   margin-left: 10px;}
 
 .avatar{
+  background-color: #fff;
   border-radius: 50%;
   height:80px;
   width:80px;
@@ -11063,6 +11066,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .avatar_position{
+  background-color: #fff;
   text-align: right;
   padding-right: 0px;
   padding-left: 0px;

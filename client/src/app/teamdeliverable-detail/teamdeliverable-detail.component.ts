@@ -89,7 +89,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
       this.teamdeliverable.deliverable = delivId;
       this.teamdeliverable.file = this.file
       this.teamdeliverable.status = true;
-      this.teamdeliverable.delivery_day = new Date(this.today);
+      // this.teamdeliverable.delivery_day = new Date(this.today);
       this.teamdeliverableService.updateTeamDeliverable(this.teamdeliverable)
         .subscribe( teamdel => {
           if (teamdel) {
@@ -103,7 +103,7 @@ export class TeamdeliverableDetailComponent implements OnInit {
       if (!validFile) {
         this.teamdeliverable.file = null
         this.teamdeliverable.status = false;
-        this.teamdeliverable.delivery_day = null;
+        // this.teamdeliverable.delivery_day = null;
       }
       this.clear();
     }

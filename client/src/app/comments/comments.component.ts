@@ -31,6 +31,7 @@ export class CommentsComponent implements OnInit {
   teamdeliverable= +this.route.snapshot.paramMap.get('id');
   user = JSON.parse(localStorage.getItem('user'));
   profile = this.user.profile;
+  photo = this.user.profile.photo;
   coach: Coach;
   is_coach: boolean;
   is_team_member: boolean;
@@ -65,7 +66,10 @@ export class CommentsComponent implements OnInit {
 
   getCoachDetails(userId: number): void{
     this.coachService.getCoach(userId)
-      .subscribe(coach => this.coach = coach);
+      .subscribe(coach => {
+        this.coach = coach
+        this.photo = coach.photo;
+      });
   }
 
   getComments(teamdeliverableId: number, teamId: number): void {

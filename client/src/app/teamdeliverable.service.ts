@@ -56,24 +56,27 @@ export class TeamdeliverableService {
     let url = `api/teams/${teamdeliverable.team}/teamdeliverables`;
     return this.http.post<TeamDeliverable>(url, teamdeliverable, httpOptions).pipe(
       tap((teamdeliverable: TeamDeliverable) => this.log(`added teamdeliverable w/ id=${teamdeliverable.id}`)),
-      catchError(error => {
-        console.log("Return false catchError");
-        console.log(`Login service: ${error}`);
-        return of(false);
-      })
+      // catchError(error => {
+      //   console.log("Return false catchError");
+      //   console.log(`Login service: ${error}`);
+      //   return of(false);
+      // })
+      catchError(this.handleError<TeamDeliverable>(`addTeamdeliverable`))
     );
   }
 
+
   /** PUT: update the team on the server */
   updateTeamDeliverable (teamdeliverable: TeamDeliverable): Observable<any> {
-    const url = `api/teams/${teamdeliverable.team}/teamdeliverables/${teamdeliverable.id}`;
+    const url = `api/uploadteamdeliverables/${teamdeliverable.id}`;
     return this.http.put(url, teamdeliverable, httpOptions).pipe(
       tap(_ => this.log(`updated teamdeliverable id=${teamdeliverable.id}`)),
-      catchError(error => {
-        console.log("Return false catchError");
-        console.log(`Login service: ${error}`);
-        return of(false);
-      })
+      // catchError(error => {
+      //   console.log("Return false catchError");
+      //   console.log(`Login service: ${error}`);
+      //   return of(false);
+      // })
+      catchError(this.handleError<TeamDeliverable>(`addTeamdeliverable`))
     );
   }
 

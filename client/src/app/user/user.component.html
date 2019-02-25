@@ -3,9 +3,13 @@
     <div class="col-3">
       <div class="card card-profile">
         <div class="card-avatar">
-          <a href="#pablo">
-            <img *ngIf="!teamMember?.photo" class="img" src="{{profile.photo}}" />
-            <img *ngIf="!teamMember?.photo" src="../../assets/img/user.png"/>
+          <a *ngIf="profile.is_coach">
+            <img *ngIf="photo" class="img" src="{{photo}}" />
+            <img *ngIf="!photo" src="../../assets/img/user.png"/>
+          </a>
+          <a *ngIf="profile.is_team_member">
+            <img *ngIf="photo" class="img" src="{{teamMember.photo}}" />
+            <img *ngIf="!photo" src="../../assets/img/user.png"/>
           </a>
         </div>
         <div class="card-body">

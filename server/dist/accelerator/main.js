@@ -218,6 +218,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _deliverables_team_deliverables_team_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./deliverables-team/deliverables-team.component */ "./src/app/deliverables-team/deliverables-team.component.ts");
 /* harmony import */ var _comments_comments_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./comments/comments.component */ "./src/app/comments/comments.component.ts");
 /* harmony import */ var _coach_deliverables_coach_deliverables_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./coach-deliverables/coach-deliverables.component */ "./src/app/coach-deliverables/coach-deliverables.component.ts");
+/* harmony import */ var _upload_file_upload_file_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./upload-file/upload-file.component */ "./src/app/upload-file/upload-file.component.ts");
+
 
 
 
@@ -280,6 +282,7 @@ var AppModule = /** @class */ (function () {
                 _deliverables_team_deliverables_team_component__WEBPACK_IMPORTED_MODULE_32__["DeliverablesTeamComponent"],
                 _comments_comments_component__WEBPACK_IMPORTED_MODULE_33__["CommentsComponent"],
                 _coach_deliverables_coach_deliverables_component__WEBPACK_IMPORTED_MODULE_34__["CoachDeliverablesComponent"],
+                _upload_file_upload_file_component__WEBPACK_IMPORTED_MODULE_35__["UploadFileComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1296,6 +1299,26 @@ var EditTeamComponent = /** @class */ (function () {
             _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]])
     ], EditTeamComponent);
     return EditTeamComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/file.ts":
+/*!*************************!*\
+  !*** ./src/app/file.ts ***!
+  \*************************/
+/*! exports provided: File */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "File", function() { return File; });
+var File = /** @class */ (function () {
+    function File() {
+    }
+    return File;
 }());
 
 
@@ -2320,7 +2343,7 @@ module.exports = "#back{\r\n  margin-top:20px;\r\n  margin-left:20px;\r\n  paddi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button (click)=\"goBack()\" type=\"button\" class=\"btn btn-outline-primary\" id=\"back\"><i class=\"material-icons\">keyboard_arrow_left</i>Back </button>\n<div *ngIf=\"teamdeliverable\" class=\"content\" id=\"teamdeliverable\">\n  <div class=\"container-fluid\">\n    <div class=\"row justify-content-md-center\">\n      <div class=\"card card-nav-tabs\" id=\"del_card\">\n        <h4 class=\"card-header card-header-warning user-text click\" style=\"font-weight:500;\">\n          <b class=\"\">{{ teamdeliverable.deliverable.title | uppercase}}</b>\n        </h4>\n        <div class=\"card-body row\">\n          <div class=\"col-6\">\n          <br>\n          <h6> \"{{teamdeliverable.deliverable.description}}\"</h6>\n          <div class=\"text-center\">\n              <form (ngSubmit)=\"onSubmit()\" #teamdeliverableForm=\"ngForm\">\n                <h6><b class=\"bold\">Upload file:</b></h6>\n                <div>\n                  <span class=\"btn btn-outline-primary btn-file\">\n                    Upload <input (change)=\"onFileChange($event)\" type=\"file\" id=\"fileUpload\" [(ngModel)]=\"teamdeliverable.file\" name=\"file\" >\n                  </span>\n                </div>\n                <div *ngFor=\"let file of files\">\n                  <h6>{{file.name}}</h6>\n                  <div class=\"row justify-content-center\">\n                    <button class=\"clear\" (click)=\"clear()\" class=\"btn btn-circle\" style=\"background-color:#ff0066;\"><i class=\"material-icons circle-icon\">clear</i></button>\n                    <button type=\"submit\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n                  </div>\n                </div>\n              </form>\n          </div>\n          <br>\n          <table class=\"table col-10\">\n              <tbody>\n                  <tr>\n                      <td><h6><b class=\"bold\">Template: </b></h6> </td>\n                      <td><a href=\"{{teamdeliverable.deliverable.template}}\">{{teamdeliverable.deliverable.title}}</a></td>\n                  </tr>\n                  <tr>\n                      <td><h6><b class=\"bold\">Deadline: </b></h6> </td>\n                      <td *ngIf=\"!isEmptyObject(teamdeliverable.deadline)\"><h6>{{teamdeliverable.deadline | date: 'dd/MM/yyyy'}}</h6></td>\n                      <td *ngIf=\"isEmptyObject(teamdeliverable.deadline)\"><h6>Aknown</h6></td>\n                  </tr>\n                  <tr>\n                      <td><h6><b class=\"bold\">Status: </b></h6> </td>\n                      <td *ngIf=\"teamdeliverable.status\"><h6>Submited!</h6></td>\n                      <td *ngIf=\"!deadline_status(teamdeliverable.deadline) && !teamdeliverable.status\"><h6 style=\"color:#ff0066\">Deadline is passed!</h6></td>\n                      <td *ngIf=\"!teamdeliverable.status && deadline_status(teamdeliverable.deadline)\"><h6>Nothing has been submited yet</h6></td>\n                  </tr>\n                  <tr>\n                      <td><h6><b class=\"bold\">Release Date: </b></h6> </td>\n                      <td *ngIf=\"teamdeliverable.status\"><h6>{{teamdeliverable.delivery_day}}</h6></td>\n                      <td *ngIf=\"!teamdeliverable.status\"><h6>Nothing has been submited yet</h6></td>\n                  </tr>\n                  <tr>\n                      <td><h6><b class=\"bold\">File: </b></h6> </td>\n                      <td *ngIf=\"teamdeliverable.status\"><a href=\"{{teamdeliverable.file}}\">{{teamdeliverable.file.name}}</a></td>\n                      <td *ngIf=\"!teamdeliverable.status\"><h6>Nothing has been submited yet</h6></td>\n                  </tr>\n              </tbody>\n          </table>\n\n        </div>\n        <div class=\"vl\"></div>\n        <div class=\"col-6\">\n        <!-- Comments -->\n        <app-comments [teamId]=\"teamdeliverable.team\"></app-comments>\n        </div>\n      </div>\n    </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<button (click)=\"goBack()\" type=\"button\" class=\"btn btn-outline-primary\" id=\"back\"><i class=\"material-icons\">keyboard_arrow_left</i>Back </button>\n<div *ngIf=\"teamdeliverable\" class=\"content\" id=\"teamdeliverable\">\n  <div class=\"container-fluid\">\n    <div class=\"row justify-content-md-center\">\n      <div class=\"card card-nav-tabs\" id=\"del_card\">\n        <h4 class=\"card-header card-header-warning user-text click\" style=\"font-weight:500;\">\n          <b class=\"\">{{ teamdeliverable.deliverable.title | uppercase}}</b>\n        </h4>\n        <div class=\"card-body row\">\n          <div class=\"col-6\">\n          <br>\n          <h6> \"{{teamdeliverable.deliverable.description}}\"</h6>\n          <div class=\"text-center\" *ngIf=\"!is_coach\">\n                <h6 *ngIf=\"message\"><b class=\"bold\">{{message}}</b></h6>\n                <h6><b class=\"bold\">Upload a PDF file:</b></h6>\n                <div>\n                  <span class=\"btn btn-outline-primary btn-file\">\n                    Upload <input name=\"imageUrl\" type=\"file\" accept=\"application/pdf\" (change)=\"handleInputChange($event)\">\n                  </span>\n                </div>\n                <div *ngFor=\"let file of files\">\n                  <h6>{{file.name}}</h6>\n                  <div class=\"row justify-content-center\">\n                    <button class=\"clear\" (click)=\"clear()\" class=\"btn btn-circle\" style=\"background-color:#ff0066;\"><i class=\"material-icons circle-icon\">clear</i></button>\n                    <button (click)=\"save()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n                  </div>\n                </div>\n\n          </div>\n          <br>\n          <table class=\"table col-10\">\n              <tbody>\n                  <tr>\n                      <td><h6><b class=\"bold\">Template: </b></h6> </td>\n                      <td><a href=\"{{teamdeliverable.deliverable.template}}\"><i class=\"material-icons circle-icon\">arrow_downward</i>{{teamdeliverable.deliverable.title}} Template</a></td>\n                  </tr>\n                  <tr>\n                      <td><h6><b class=\"bold\">Deadline: </b></h6> </td>\n                      <td *ngIf=\"!isEmptyObject(teamdeliverable.deadline)\"><h6>{{teamdeliverable.deadline | date: 'dd/MM/yyyy'}}</h6></td>\n                      <td *ngIf=\"isEmptyObject(teamdeliverable.deadline)\"><h6>Aknown</h6></td>\n                  </tr>\n                  <tr>\n                      <td><h6><b class=\"bold\">Status: </b></h6> </td>\n                      <td *ngIf=\"teamdeliverable.status\"><h6>Submited!</h6></td>\n                      <td *ngIf=\"!deadline_status(teamdeliverable.deadline) && !teamdeliverable.status\"><h6 style=\"color:#ff0066\">Deadline is passed!</h6></td>\n                      <td *ngIf=\"!teamdeliverable.status && deadline_status(teamdeliverable.deadline)\"><h6>Nothing has been submited yet</h6></td>\n                  </tr>\n                  <!-- <tr>\n                      <td><h6><b class=\"bold\">Release Date: </b></h6> </td>\n                      <td *ngIf=\"teamdeliverable.status\"><h6>{{teamdeliverable.delivery_day | date: 'dd/MM/yyyy'}}</h6></td>\n                      <td *ngIf=\"!teamdeliverable.status\"><h6>Nothing has been submited yet</h6></td>\n                  </tr> -->\n                  <tr>\n                      <td><h6><b class=\"bold\">File: </b></h6> </td>\n                      <td *ngIf=\"teamdeliverable.status\"><a href=\"{{teamdeliverable.file}}\"><i class=\"material-icons circle-icon\">arrow_downward</i>{{teamdeliverable.deliverable.title}} Deliverable</a></td>\n                      <td *ngIf=\"!teamdeliverable.status\"><h6>Nothing has been submited yet</h6></td>\n                  </tr>\n              </tbody>\n          </table>\n\n        </div>\n        <div class=\"vl\"></div>\n        <div class=\"col-6\">\n        <!-- Comments -->\n        <app-comments [teamId]=\"teamdeliverable.team\"></app-comments>\n        </div>\n      </div>\n    </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2339,8 +2362,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _teamdeliverable_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../teamdeliverable.service */ "./src/app/teamdeliverable.service.ts");
-/* harmony import */ var _teamdeliverable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../teamdeliverable */ "./src/app/teamdeliverable.ts");
-
 
 
 
@@ -2354,8 +2375,14 @@ var TeamdeliverableDetailComponent = /** @class */ (function () {
         this.location = location;
         this.datePipe = datePipe;
         this.today = Date.now();
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.profile = this.user.profile;
     }
     TeamdeliverableDetailComponent.prototype.ngOnInit = function () {
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.profile = this.user.profile;
+        this.is_team_member = this.user.profile.is_team_member;
+        this.is_coach = this.user.profile.is_coach;
         this.date = new Date(this.today);
         this.getTeamdeliverable();
     };
@@ -2366,10 +2393,6 @@ var TeamdeliverableDetailComponent = /** @class */ (function () {
         this.teamdeliverableService.getTeamdeliverable(id, team_id)
             .subscribe(function (teamdeliverable) { return _this.teamdeliverable = teamdeliverable; });
     };
-    // save(): void {
-    // this.teamdeliverableService.updateTeamdeliverable(this.teamdeliverable)
-    //   .subscribe(() => this.goBack());
-    // }
     TeamdeliverableDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
@@ -2387,35 +2410,43 @@ var TeamdeliverableDetailComponent = /** @class */ (function () {
             return false;
         }
     };
-    TeamdeliverableDetailComponent.prototype.onFileChange = function (event) {
-        this.files = event.target.files;
-        // let reader = new FileReader();
-        // if(event.target.files && event.target.files.length > 0) {
-        //   let file = event.target.files[0];
-        //   reader.readAsDataURL(file);
-        //   reader.onload = () => {
-        //     this.form.get('fileUpload').setValue({
-        //       filename: file.name,
-        //       filetype: file.type,
-        //       value: reader.result.split(',')[1]
-        //     })
-        //   };
-        // }
+    TeamdeliverableDetailComponent.prototype.handleInputChange = function (e) {
+        this.files = e.target.files;
+        var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
     };
-    TeamdeliverableDetailComponent.prototype.updateTeamDeliverable = function (teamdeliverableId) {
-        var teamdeliverable = new _teamdeliverable__WEBPACK_IMPORTED_MODULE_5__["TeamDeliverable"]();
-        teamdeliverable.deliverable = this.teamdeliverable.deliverable;
-        teamdeliverable.team = this.teamdeliverable.team;
-        teamdeliverable.deadline = this.teamdeliverable.deadline;
-        teamdeliverable.delivery_day = this.date;
-        teamdeliverable.status = true;
-        teamdeliverable.file = '';
-        return teamdeliverable;
+    TeamdeliverableDetailComponent.prototype._handleReaderLoaded = function (e) {
+        var reader = e.target;
+        this.file = reader.result;
+        console.log(this.file);
     };
-    TeamdeliverableDetailComponent.prototype.onSubmit = function () {
+    TeamdeliverableDetailComponent.prototype.save = function () {
         var _this = this;
+        var validFile = true;
+        var delivId = this.teamdeliverable.deliverable.id;
+        this.teamdeliverable.deliverable = delivId;
+        this.teamdeliverable.file = this.file;
+        this.teamdeliverable.status = true;
+        // this.teamdeliverable.delivery_day = new Date(this.today);
         this.teamdeliverableService.updateTeamDeliverable(this.teamdeliverable)
-            .subscribe(function (teamdel) { return _this.teamdeliverable = teamdel; });
+            .subscribe(function (teamdel) {
+            if (teamdel) {
+                _this.teamdeliverable = teamdel;
+                _this.message = "Submited!";
+            }
+            else {
+                validFile = false;
+                _this.message = "You have to submit a PDF file.";
+            }
+        });
+        if (!validFile) {
+            this.teamdeliverable.file = null;
+            this.teamdeliverable.status = false;
+            // this.teamdeliverable.delivery_day = null;
+        }
+        this.clear();
     };
     TeamdeliverableDetailComponent.prototype.clear = function () {
         this.files = [];
@@ -2503,7 +2534,11 @@ var TeamdeliverableService = /** @class */ (function () {
     TeamdeliverableService.prototype.updateTeamDeliverable = function (teamdeliverable) {
         var _this = this;
         var url = "api/teams/" + teamdeliverable.team + "/teamdeliverables/" + teamdeliverable.id;
-        return this.http.put(url, teamdeliverable, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (_) { return _this.log("updated teamdeliverable id=" + teamdeliverable.id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('updateTeamDeliverable')));
+        return this.http.put(url, teamdeliverable, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (_) { return _this.log("updated teamdeliverable id=" + teamdeliverable.id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            console.log("Return false catchError");
+            console.log("Login service: " + error);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(false);
+        }));
     };
     /**
      * Handle Http operation that failed.
@@ -2722,7 +2757,7 @@ module.exports = ".teams_component{\r\n  margin-top: 20px;\r\n}\r\n\r\n.teams{\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"teams_component\" *ngIf=\"auth.isLoggedIn\">\n  <div class=\"container-fluid\">\n  <nav class=\"navbar navbar-expand-lg\">\n    <button class=\"navbar-toggler\"\n            type=\"button\"\n            data-toggle=\"collapse\"\n            data-target=\"#navbarSupportedContent\"\n            aria-controls=\"navbarSupportedContent\"\n            aria-expanded=\"false\"\n            aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <button  type=\"button\" class=\"btn btn-outline-primary\" (click)=\"open(content)\"> Add Team </button>\n    <div class=\"navbar-collapse collapse w-100 order-3 dual-collapse2\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <app-team-search></app-team-search>\n        </li>\n      </ul>\n    </div>\n  </nav>\n  <div class=\"teams\">\n    <div class=\"row\">\n      <div *ngFor=\"let team of teams\" class=\"col-lg-4 col-md-6 col-sm-12\">\n          <div class=\"card  text-center card-stats\">\n            <a href=\"deliverable.html\"><span></span></a>\n            <div class=\"card-header card-header-icon\">\n              <div class=\"team_card_icon\">\n                <img *ngIf=\"team.photo\" class=\"team_card_img\" src=\"{{team.photo}}\" alt=\"Card image cap\">\n                <img *ngIf=\"!team.photo\" class=\"team_card_img\" src=\"../../assets/img/default.jpg\" alt=\"Card image cap\">\n              </div>\n              <div class = \"row justify-content-between\">\n                <a [routerLink]=\"['/teams/', team.id]\"><h3 class=\"team_name\"><b>{{ team.name | uppercase}}</b></h3></a>\n                <button class=\"delete\" title=\"delete team\" type=\"button\" class=\"btn btn-link\"\n                (click)=\"delete(team)\">x</button>\n              </div>\n            </div>\n            <app-teamdel [team]=\"team.id\"></app-teamdel> \n            <div class=\"card-footer\" style=\"border-top: 1px solid #eee;\">\n              <div class=\"stats\">\n                <i class=\"material-icons\">category</i> {{ team.pipeline | uppercase }}\n              </div>\n              <div class=\"stats\">MATURITY LEVEL: {{ team.maturity_level }}</div>\n            </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n    </div>\n  </div>\n\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Add new team</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <!-- <input class=\"form-control col-8\" #teamName placeholder=\"Team name\"/>\n    <input class=\"form-control col-8\" #teamWebsite placeholder=\"Website\"/>\n    <input class=\"form-control col-8\" #teamPipeline placeholder=\"Pipeline\" />\n    <input type=\"number\" class=\"form-control col-8\" #teamMaturityLevel placeholder=\"Maturity level\"/>\n    <input type=\"text\" class=\"form-control col-8\" #teamTagline placeholder=\"Tagline\"/>\n    <input type=\"checkbox\" #teamResearch [checked]=\"teamResearch.checked == 'true'\">\n    <input type=\"checkbox\" #teamExistance [checked]=\"teamExistance.checked == 'true'\"> -->\n    <!-- <input type=\"file\"\n       id=\"file\"\n       (change)=\"handleFileInput($event.target.files)\" #teamPhoto> -->\n    <!-- <span style=\"color:red;\" *ngIf=\"message\">{{message}}</span>\n    <input #file type=\"file\" accept='image/*' (change)=\"onSelectFile($event)\" #teamPhoto/>\n    <img [src]=\"imgURL\" height=\"200\" *ngIf=\"imgURL\" > -->\n    <div class=\"row justify-content-center\">\n      <div class=\"col-10\">\n        <form (ngSubmit)=\"onSubmit()\" #teamForm=\"ngForm\">\n          <div class=\"form-group\">\n            <input type=\"text\"\n                   class=\"form-control\"\n                   id=\"name\"\n                   [(ngModel)]=\"team.name\"\n                   name=\"name\"\n                   placeholder=\"Team Name\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"text\"\n                   class=\"form-control\"\n                   id=\"website\"\n                   [(ngModel)]=\"team.website\"\n                   name=\"website\"\n                   placeholder=\"www.website.com\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"text\"\n                   class=\"form-control\"\n                   id=\"pipeline\"\n                   [(ngModel)]=\"team.pipeline\"\n                   name=\"pipeline\"\n                   placeholder=\"Pipeline\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"number\"\n                   class=\"form-control\"\n                   id=\"maturity_level\"\n                   [(ngModel)]=\"team.maturity_level\"\n                   name=\"maturity_level\"\n                   placeholder=\"Maturity Level\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <textarea class=\"form-control\"\n                      rows=\"5\"\n                      id=\"tag_line\"\n                      [(ngModel)]=\"team.tag_line\"\n                      name=\"tag_line\"\n                      placeholder=\"What is the tagline of the team?\">\n              </textarea>\n          </div>\n          <div class=\"form-check\">\n            <label for=\"research_stream\" class=\"form-check-label\">Research stream</label>\n            <input type=\"checkbox\" class=\"check-input\"\n                      id=\"research_stream\"\n                      [(ngModel)]=\"team.research_stream\"\n                      name=\"research_stream\">\n          </div>\n          <div class=\"form-check\">\n            <label for=\"coorporate_existance\" class=\"form-check-label\">Coorporate existance</label>\n            <input type=\"checkbox\" class=\"check-input\"\n                      id=\"coorporate_existance\"\n                      [(ngModel)]=\"team.coorporate_existance\"\n                      name=\"coorporate_existance\">\n          </div>\n          <div class=\"text-center\">\n            <br>\n            <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n          </div>\n          </form>\n        </div>\n  </div>\n  <!-- <div class=\"modal-footer\"> -->\n\n\n    <!-- <button type=\"button\" class=\"btn btn-outline-dark\"(click)=\"add(teamName.value,teamWebsite.value, teamPipeline.value, teamMaturityLevel.value, teamTagline.value, teamResearch.value, teamExistance.value);\n                     teamName.value='';\n                     teamWebsite.value='';\n                     teamPipeline.value='';\n                     teamMaturityLevel.value='';\n                     teamTagline.value = '';\n                     teamResearch.value = '';\n                     teamExistance.value = '';\n                     teamName.value=''\">Add</button> -->\n  </div>\n</ng-template>\n"
+module.exports = "<div class=\"teams_component\" *ngIf=\"auth.isLoggedIn\">\n  <div class=\"container-fluid\">\n  <nav class=\"navbar navbar-expand-lg\">\n    <button class=\"navbar-toggler\"\n            type=\"button\"\n            data-toggle=\"collapse\"\n            data-target=\"#navbarSupportedContent\"\n            aria-controls=\"navbarSupportedContent\"\n            aria-expanded=\"false\"\n            aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <button  type=\"button\" class=\"btn btn-outline-primary\" (click)=\"open(content)\"> Add Team </button>\n    <div class=\"navbar-collapse collapse w-100 order-3 dual-collapse2\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <app-team-search></app-team-search>\n        </li>\n      </ul>\n    </div>\n  </nav>\n  <div class=\"teams\">\n    <div class=\"row\">\n      <div *ngFor=\"let team of teams\" class=\"col-lg-4 col-md-6 col-sm-12\">\n          <div class=\"card  text-center card-stats\">\n            <a href=\"deliverable.html\"><span></span></a>\n            <div class=\"card-header card-header-icon\">\n              <div class=\"team_card_icon\">\n                <img *ngIf=\"team.photo\" class=\"team_card_img\" src=\"{{team.photo}}\" alt=\"Card image cap\">\n                <img *ngIf=\"!team.photo\" class=\"team_card_img\" src=\"../../assets/img/default.jpg\" alt=\"Card image cap\">\n              </div>\n              <div class = \"row justify-content-between\">\n                <a [routerLink]=\"['/teams/', team.id]\"><h3 class=\"team_name\"><b>{{ team.name | uppercase}}</b></h3></a>\n                <button class=\"delete\" title=\"delete team\" type=\"button\" class=\"btn btn-link\"\n                (click)=\"delete(team)\">x</button>\n              </div>\n            </div>\n            <app-teamdel [team]=\"team.id\"></app-teamdel>\n            <div class=\"card-footer\" style=\"border-top: 1px solid #eee;\">\n              <div class=\"stats\">\n                <i class=\"material-icons\">category</i> {{ team.pipeline | uppercase }}\n              </div>\n              <div class=\"stats\">MATURITY LEVEL: {{ team.maturity_level }}</div>\n            </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n    </div>\n  </div>\n\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Add new team</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-10\">\n        <form (ngSubmit)=\"onSubmit()\" #teamForm=\"ngForm\">\n          <div class=\"form-group\">\n            <input type=\"text\"\n                   class=\"form-control\"\n                   id=\"name\"\n                   [(ngModel)]=\"team.name\"\n                   name=\"name\"\n                   placeholder=\"Team Name\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"text\"\n                   class=\"form-control\"\n                   id=\"website\"\n                   [(ngModel)]=\"team.website\"\n                   name=\"website\"\n                   placeholder=\"www.website.com\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"text\"\n                   class=\"form-control\"\n                   id=\"pipeline\"\n                   [(ngModel)]=\"team.pipeline\"\n                   name=\"pipeline\"\n                   placeholder=\"Pipeline\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"number\"\n                   class=\"form-control\"\n                   id=\"maturity_level\"\n                   [(ngModel)]=\"team.maturity_level\"\n                   name=\"maturity_level\"\n                   placeholder=\"Maturity Level\"\n                   required>\n          </div>\n          <div class=\"form-group\">\n            <textarea class=\"form-control\"\n                      rows=\"5\"\n                      id=\"tag_line\"\n                      [(ngModel)]=\"team.tag_line\"\n                      name=\"tag_line\"\n                      placeholder=\"What is the tagline of the team?\">\n              </textarea>\n          </div>\n          <div class=\"form-check\">\n            <label for=\"research_stream\" class=\"form-check-label\">Research stream</label>\n            <input type=\"checkbox\" class=\"check-input\"\n                      id=\"research_stream\"\n                      [(ngModel)]=\"team.research_stream\"\n                      name=\"research_stream\">\n          </div>\n          <div class=\"form-check\">\n            <label for=\"coorporate_existance\" class=\"form-check-label\">Coorporate existance</label>\n            <input type=\"checkbox\" class=\"check-input\"\n                      id=\"coorporate_existance\"\n                      [(ngModel)]=\"team.coorporate_existance\"\n                      name=\"coorporate_existance\">\n          </div>\n          <div class=\"text-center\">\n            <br>\n            <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n          </div>\n          </form>\n        </div>\n  </div>\n  <!-- <div class=\"modal-footer\"> -->\n\n\n    <!-- <button type=\"button\" class=\"btn btn-outline-dark\"(click)=\"add(teamName.value,teamWebsite.value, teamPipeline.value, teamMaturityLevel.value, teamTagline.value, teamResearch.value, teamExistance.value);\n                     teamName.value='';\n                     teamWebsite.value='';\n                     teamPipeline.value='';\n                     teamMaturityLevel.value='';\n                     teamTagline.value = '';\n                     teamResearch.value = '';\n                     teamExistance.value = '';\n                     teamName.value=''\">Add</button> -->\n  </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -2909,6 +2944,168 @@ var TokenInterceptor = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/upload-file.service.ts":
+/*!****************************************!*\
+  !*** ./src/app/upload-file.service.ts ***!
+  \****************************************/
+/*! exports provided: UploadFileService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadFileService", function() { return UploadFileService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
+
+
+
+
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json' })
+};
+var UploadFileService = /** @class */ (function () {
+    function UploadFileService(http, messageService) {
+        this.http = http;
+        this.messageService = messageService;
+    }
+    /** POST: add new file to the server */
+    UploadFileService.prototype.addFile = function (file) {
+        var _this = this;
+        var headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        var url = "api/images/create/";
+        // console.log(JSON.stringify({ file: file.file, remark: file.remark }))
+        return this.http.post(url, file, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (file) { return _this.log("added file w/ id=" + file.id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('addFile', [])));
+    };
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    UploadFileService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            console.error(error); // log to console instead
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(result);
+        };
+    };
+    UploadFileService.prototype.log = function (message) {
+        this.messageService.add('TeamDeliverableService: ' + message);
+    };
+    UploadFileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _message_service__WEBPACK_IMPORTED_MODULE_5__["MessageService"]])
+    ], UploadFileService);
+    return UploadFileService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/upload-file/upload-file.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/upload-file/upload-file.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".btn-file {\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n.btn-file input[type=file] {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n    font-size: 100px;\r\n    text-align: right;\r\n    opacity: 0;\r\n    outline: none;\r\n    cursor: inherit;\r\n    display: block;\r\n}\r\n.btn-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  text-align: center;\r\n  padding: 6px 0;\r\n  font-size: 12px;\r\n  line-height: 1.428571429;\r\n  border-radius: 15px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBsb2FkLWZpbGUvdXBsb2FkLWZpbGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtJQUNuQixpQkFBaUI7Q0FDcEI7QUFDRDtJQUNJLG1CQUFtQjtJQUNuQixPQUFPO0lBQ1AsU0FBUztJQUNULGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsaUJBQWlCO0lBQ2pCLGtCQUFrQjtJQUNsQixXQUFXO0lBQ1gsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixlQUFlO0NBQ2xCO0FBRUQ7RUFDRSxZQUFZO0VBQ1osYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLHlCQUF5QjtFQUN6QixvQkFBb0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC91cGxvYWQtZmlsZS91cGxvYWQtZmlsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ0bi1maWxlIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbn1cclxuLmJ0bi1maWxlIGlucHV0W3R5cGU9ZmlsZV0ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBtaW4td2lkdGg6IDEwMCU7XHJcbiAgICBtaW4taGVpZ2h0OiAxMDAlO1xyXG4gICAgZm9udC1zaXplOiAxMDBweDtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gICAgb3BhY2l0eTogMDtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbiAgICBjdXJzb3I6IGluaGVyaXQ7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG5cclxuLmJ0bi1jaXJjbGUge1xyXG4gIHdpZHRoOiAzMHB4O1xyXG4gIGhlaWdodDogMzBweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgcGFkZGluZzogNnB4IDA7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjQyODU3MTQyOTtcclxuICBib3JkZXItcmFkaXVzOiAxNXB4O1xyXG59XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/upload-file/upload-file.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/upload-file/upload-file.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"text-center\">\n      <h6><b class=\"bold\">Upload file:</b></h6>\n      <div>\n        <span class=\"btn btn-outline-primary btn-file\">\n          Upload <input name=\"imageUrl\" type=\"file\" accept=\"application/pdf\" (change)=\"handleInputChange($event)\">\n          <!-- <input name=\"imageUrl\" type=\"file\" accept=\"image/*\" (change)=\"handleInputChange($event)\"> -->\n        </span>\n      </div>\n      <div *ngFor=\"let file of files\">\n        <h6>{{file.name}}</h6>\n        <div class=\"row justify-content-center\">\n          <button class=\"clear\" (click)=\"clear()\" class=\"btn btn-circle\" style=\"background-color:#ff0066;\"><i class=\"material-icons circle-icon\">clear</i></button>\n          <button (click)=\"save()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n        </div>\n      </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/upload-file/upload-file.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/upload-file/upload-file.component.ts ***!
+  \******************************************************/
+/*! exports provided: UploadFileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadFileComponent", function() { return UploadFileComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _upload_file_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../upload-file.service */ "./src/app/upload-file.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _file__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../file */ "./src/app/file.ts");
+
+
+
+
+
+var UploadFileComponent = /** @class */ (function () {
+    function UploadFileComponent(route, uploadFileService) {
+        this.route = route;
+        this.uploadFileService = uploadFileService;
+        this.file = '';
+    }
+    UploadFileComponent.prototype.ngOnInit = function () {
+    };
+    UploadFileComponent.prototype.handleInputChange = function (e) {
+        this.files = e.target.files;
+        var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+    };
+    UploadFileComponent.prototype._handleReaderLoaded = function (e) {
+        var reader = e.target;
+        this.file = reader.result;
+        console.log(this.file);
+    };
+    UploadFileComponent.prototype.save = function () {
+        var _this = this;
+        var f = new _file__WEBPACK_IMPORTED_MODULE_4__["File"]();
+        f.file = this.file;
+        this.uploadFileService.addFile(f)
+            .subscribe(function (file) { return _this.file = file; });
+        this.clear();
+    };
+    UploadFileComponent.prototype.clear = function () {
+        this.files = [];
+        this.ngOnInit();
+    };
+    UploadFileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-upload-file',
+            template: __webpack_require__(/*! ./upload-file.component.html */ "./src/app/upload-file/upload-file.component.html"),
+            styles: [__webpack_require__(/*! ./upload-file.component.css */ "./src/app/upload-file/upload-file.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _upload_file_service__WEBPACK_IMPORTED_MODULE_2__["UploadFileService"]])
+    ], UploadFileComponent);
+    return UploadFileComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/user.service.ts":
 /*!*********************************!*\
   !*** ./src/app/user.service.ts ***!
@@ -3038,7 +3235,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid content\">\n  <div class=\"row justify-content-center\" style=\"margin-top:100px;\">\n    <div class=\"col-3\">\n      <div class=\"card card-profile\">\n        <div class=\"card-avatar\">\n          <a href=\"#pablo\">\n            <img *ngIf=\"!teamMember?.photo\" class=\"img\" src=\"{{profile.photo}}\" />\n            <img *ngIf=\"!teamMember?.photo\" src=\"../../assets/img/user.png\"/>\n          </a>\n        </div>\n        <div class=\"card-body\">\n          <h6 *ngIf=\"profile.is_coach\" class=\"card-category text-gray\">Coach, {{coach?.organization}} </h6>\n          <h6 *ngIf=\"is_team_member\" class=\"card-category text-gray\">Team Member</h6>\n          <div *ngIf=\"is_team_member\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"teamMember===editTeamMember\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.email}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.phone}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Team: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.team?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.team.name\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.role\">Role: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.role\">{{teamMember?.role}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.role\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.field\">Field: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.field\">{{teamMember?.field}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.field\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"teamMember===editTeamMember\" title=\"Save team member\"(click)=\"updateTeamMember()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"teamMember!==editTeamMember\" title=\"Edit team member\" (click)=\"editTeamMemberMethod(teamMember)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n          <div *ngIf=\"is_coach\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"coach===editCoach\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"coach!==editCoach\">{{coach?.name}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.email}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.phone}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.field\">Organization: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.organization}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.organization\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.field\">Field: </strong>\n              <span *ngIf=\"coach!==editCoach && coach?.field\">{{coach?.field}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.field\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.job_title\">Job Title: </strong>\n              <span *ngIf=\"coach!==editCoach && coach?.job_title\">{{coach?.job_title}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.job_title\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"coach===editCoach\" title=\"Save coach\"(click)=\"updateCoach()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"coach!==editCoach\" title=\"Edit coach\" (click)=\"editCoachMethod(coach)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div *ngIf = \"is_team_member\" class=\"col-8\">\n      <app-team-card [team]=\"teamMember?.team\"></app-team-card>\n    </div>\n    <div *ngIf = \"is_coach\" class=\"col-8\">\n      <app-coach-deliverables></app-coach-deliverables>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid content\">\n  <div class=\"row justify-content-center\" style=\"margin-top:100px;\">\n    <div class=\"col-3\">\n      <div class=\"card card-profile\">\n        <div class=\"card-avatar\">\n          <a href=\"#pablo\">\n            <img *ngIf=\"!teamMember?.photo\" class=\"img\" src=\"{{profile.photo}}\" />\n            <img *ngIf=\"!teamMember?.photo\" src=\"../../assets/img/user.png\"/>\n          </a>\n        </div>\n        <div class=\"card-body\">\n          <h6 *ngIf=\"profile.is_coach\" class=\"card-category text-gray\">Coach, {{coach?.organization}} </h6>\n          <h6 *ngIf=\"is_team_member\" class=\"card-category text-gray\">Team Member, {{teamMember?.team?.name}} </h6>\n          <div *ngIf=\"is_team_member\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"teamMember===editTeamMember\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.name}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.email}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember\">{{teamMember?.phone}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.role\">Role: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.role\">{{teamMember?.role}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.role\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"teamMember===editTeamMember || teamMember?.field\">Field: </strong>\n              <span *ngIf=\"teamMember!==editTeamMember && teamMember?.field\">{{teamMember?.field}}</span>\n              <input *ngIf=\"teamMember===editTeamMember\" [(ngModel)]=\"teamMember.field\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"teamMember===editTeamMember\" title=\"Save team member\"(click)=\"updateTeamMember()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"teamMember!==editTeamMember\" title=\"Edit team member\" (click)=\"editTeamMemberMethod(teamMember)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n          <div *ngIf=\"is_coach\" style=\"text-align:left;\">\n            <h6><strong *ngIf=\"coach===editCoach\">Name: </strong></h6>\n            <h4 class=\"card-title\">\n              <span *ngIf=\"coach!==editCoach\">{{coach?.name}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.name\" class=\"form-control\">\n            </h4>\n            <h6>\n              <strong>Email: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.email}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.email\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong>Phone: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.phone}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.phone\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.field\">Organization: </strong>\n              <span *ngIf=\"coach!==editCoach\">{{coach?.organization}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.organization\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.field\">Field: </strong>\n              <span *ngIf=\"coach!==editCoach && coach?.field\">{{coach?.field}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.field\" class=\"form-control\">\n            </h6>\n            <h6>\n              <strong *ngIf=\"coach===editCoach || coach?.job_title\">Job Title: </strong>\n              <span *ngIf=\"coach!==editCoach && coach?.job_title\">{{coach?.job_title}}</span>\n              <input *ngIf=\"coach===editCoach\" [(ngModel)]=\"coach.job_title\" class=\"form-control\">\n            </h6>\n            <div style=\"float: right;\">\n              <button *ngIf=\"coach===editCoach\" title=\"Save coach\"(click)=\"updateCoach()\" class=\"btn btn-circle\" style=\"background-color:#00cc99;\"><i class=\"material-icons circle-icon\">done</i></button>\n              <button *ngIf=\"coach!==editCoach\" title=\"Edit coach\" (click)=\"editCoachMethod(coach)\" class=\"btn btn-circle\" style=\"background-color:#26c6da;\"><i class=\"material-icons circle-icon\">edit</i></button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div *ngIf = \"is_team_member\" class=\"col-8\">\n      <app-team-card [team]=\"teamMember?.team\"></app-team-card>\n    </div>\n    <div *ngIf = \"is_coach\" class=\"col-8\">\n      <app-coach-deliverables></app-coach-deliverables>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 

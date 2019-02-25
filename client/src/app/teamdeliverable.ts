@@ -3,7 +3,7 @@ export class TeamDeliverable {
   team: number;
   deliverable: number | any;
   deadline:Date;
-  delivery_day: Date | number;
+  // delivery_day: Date | number;
   status: boolean;
   file: string | any;
 }

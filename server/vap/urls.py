@@ -25,6 +25,8 @@ urlpatterns = [
     re_path(r'^teammembers/(?P<pk>\d+)/?$',views.TeamMemberDetail.as_view()),
     re_path(r'^teamdeliverables/?$',views.AllTeamDeliverableList.as_view()),
     re_path(r'^teamdeliverables/(?P<pk>\d+)/?$',views.AllTeamDeliverableDetail.as_view()),
+    re_path(r'^uploadteamdeliverables/?$',views.TeamDeliverableUploadList.as_view()),
+    re_path(r'^uploadteamdeliverables/(?P<pk>\d+)/?$',views.TeamDeliverableUploadDetail.as_view()),
     # re_path(r'^upload/?$', views.FileView.as_view()),
     # re_path(r'^images/$', views.ImageList.as_view()),
     # re_path(r'^images/(?P<pk>[0-9]+)/$', views.ImageDetail.as_view()),

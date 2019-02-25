@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Team, Coach, TeamMember, Deliverable, TeamDeliverable, Comment, File
+from .models import User, Team, Coach, TeamMember, Deliverable, TeamDeliverable, Comment
 from django.contrib.auth.models import User as vap_user
 from django.core.files.base import ContentFile
 import base64
@@ -85,29 +85,11 @@ class Base64ImageField(serializers.ImageField):
     	return extension
 
 
-# class ImageSerializer(serializers.HyperlinkedModelSerializer):
-#     file = Base64FileField(
-#         max_length=None, use_url=True,
-#     )
-#
-#     class Meta:
-#         model = File
-#         fields = ('id', 'file', 'timestamp')
-#
-class ImageSerializer(serializers.HyperlinkedModelSerializer):
-    file = Base64ImageField(
-        max_length=None, use_url=True,
-    )
-
-    class Meta:
-        model = File
-        fields = ('id', 'file', 'timestamp')
-
 
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('user', 'name', 'email', 'phone', 'is_coach', 'is_team_member')
+        fields = ('user', 'name', 'email', 'photo', 'phone', 'is_coach', 'is_team_member')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -121,9 +103,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CoachSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Coach
-        fields = '__all__'
+        fields = fields = ('user',  'name', 'email', 'phone', 'field', 'organization', 'job_title' )
 
 
 
@@ -160,12 +143,25 @@ class TeamDeliverableSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamDeliverable
-        fields = ('id', 'deliverable', 'team', 'deadline', 'delivery_day', 'status', 'file' )
+        fields = ('id', 'deliverable', 'team', 'deadline', 'status', 'file' )
 
     # For post
     def to_representation(self, instance):
         self.fields['deliverable'] =  DeliverableSerializer(read_only=False)
         return super(TeamDeliverableSerializer, self).to_representation(instance)
+
+
+class TeamDelSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TeamDeliverable
+        fields = ('id', 'deliverable', 'team', 'deadline', 'status', 'file' )
+
+    # For post
+    def to_representation(self, instance):
+        self.fields['deliverable'] =  DeliverableSerializer(read_only=False)
+        return super(TeamDelSerializer, self).to_representation(instance)
+
 
 
 class AllTeamDeliverableSerializer(serializers.ModelSerializer):
@@ -180,7 +176,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamMember
-        fields = ('user', 'team', 'name', 'email', 'phone', 'field', 'role' )
+        fields = ('user', 'team', 'name', 'email', 'photo', 'phone', 'field', 'role' )
 
     # For post
     def to_representation(self, instance):
